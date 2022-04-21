@@ -1,0 +1,82 @@
+{% extends 'lncrna/base.html' %}
+{% load custom_tags %}
+
+{% block content %}
+
+<style type="text/css">
+ a{
+color: black;
+text-decoration: none;
+}
+</style>
+
+
+<div class="container" style=" background-color: white; margin-top: 10px; padding: 30px;">
+<div class="row">
+{% for lncrna in lncrna_p %}
+    <div class="col  col-xs-6 mx-2 my-2" >
+
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            {% if lncrna.ensembl_id %}
+            <a  href="{% url 'lncraname' lncrna.ensembl_id %}">
+            <h5 class="card-title ">{{ lncrna.ensembl_id }}</h5> </a>
+            {% else %}
+            <a  href="{% url 'lncraname' lncrna.ncbi_gene %}">
+            <h5 class="card-title">{{ lncrna.ncbi_gene }}</h5> </a>
+            {% endif %}
+            <h6 class="card-subtitle mb-2 text-muted">{{ lncrna.expression }}</h6>
+            <p class="card-text"> {{ lncrna.stimuli|modify_name }}</p>
+          </div>
+        </div>
+
+    </div>
+
+{% endfor %}
+
+</div>
+</div>
+
+
+<div class="conatiner">
+<div class="row">
+    <div class="col" style=" margin-top: 10px" >
+    <div class="d-flex justify-content-center">
+
+
+
+
+
+<nav aria-label="Page navigation example">
+<ul class="pagination">
+
+<li class="page-item">
+    {% if lncrna_p.has_previous %}
+<a href="?page=1" class="page-link" >&laquo First</a> </li>
+<li class="page-item">
+    <a class="page-link" href="?page={{ lncrna_p.previous_page_number }}">Previous</a>
+{% endif %}
+</li>
+<li class="page-item btn">
+Page {{ lncrna_p.number }} of {{ lncrna_p.paginator.num_pages }}
+</li>
+{% if lncrna_p.has_next %}
+
+<li class="page-item">
+<a class="page-link" href="?page={{ lncrna_p.next_page_number }}"> next </a>
+</li>
+<li class="page-item">
+    <a class="page-link" href="?page={{ lncrna_p.paginator.num_pages }}"> last &raquo</a>
+
+{% endif %}
+</li>
+</ul>
+</nav>
+
+</div>
+</div>
+</div>
+</div>
+
+
+{% endblock %}

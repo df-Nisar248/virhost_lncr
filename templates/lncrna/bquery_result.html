@@ -1,0 +1,73 @@
+{% extends 'lncrna/base.html' %}
+
+{% block content %}
+
+<style type="text/css">
+ a{
+color: black;
+text-decoration: none;
+}
+</style>
+
+<div class=" mt-4">
+<div class="row d-flex justify-content-center">
+<div class="col col-xl-10">
+<table class = "table" style="background-color: white;">
+    <thead class="thead-dark">
+     <tr>
+    <th class="align-top">NCBI/Ensembl ID</th>
+    <th class="align-top">lncRNA name as in article</th>
+    <th class="align-top">Virus & Strain Name</th>
+    <th class="align-top">Dosage & Time point</th>
+    <th class="align-top">Cell line</th>
+    <th class="align-top">Experiment Type</th>
+    <th class="align-top">Foldchange</th>
+    <th class="align-top">Expression</th>
+
+    </tr>
+
+    {% for vrs in lncra %}
+  <tr>
+
+    {% if vrs.ncbi_gene %}
+        <td>
+    <a  target="_blank" href="https://www.ncbi.nlm.nih.gov/gene/?term={{ vrs.ncbi_gene }}"> {{ vrs.ncbi_gene }} </a> </td>
+    {% else %}
+        <td>
+    <a target="_blank" href="https://asia.ensembl.org/Multi/Search/Results?q={{ vrs.ensembl_id }}">
+
+        {{ vrs.ensembl_id }}</a></td>
+    {% endif %}
+      <td> {{ vrs.lncrna_name }}</td>
+      <td>{{ vrs.stimuli }}</td>
+      <td>{{ vrs.dosage }};
+        <br>
+      {{ vrs.time_point }}</td>
+      <td>{{ vrs.cell_line }}</td>
+      <td>{{ vrs.experiment_type }}</td>
+      <td>{{ vrs.foldchange }}</td>
+      <td>{{ vrs.expression }}</td>
+
+  </tr>
+{% endfor %}
+</table>
+</div>
+</div>
+</div>
+
+<div class="mt-1">
+  <div class="row">
+    <div class=""></div>
+
+    <div class="col xl-10" style="margin-left: 8%;">
+      <div class="d-flex justify-content-left">
+  <p class=" text-muted">* MOI :Multiplicity of infection , TCID :Tissue Culture Infectious Dose</p>
+    </div>
+
+    </div>
+  </div>
+
+
+</div>
+
+{% endblock %}

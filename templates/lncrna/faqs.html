@@ -1,0 +1,35 @@
+{%  extends 'lncrna/base.html' %}
+
+{% block content %}
+
+<div style="background-color: white; margin-top: 10px; margin-bottom: 10px;" class="container">
+    <div class="row">
+        <div class="col" style="padding: 20px">
+
+    <h4>1. What is VirhostlncR ? </h4>
+    <p>
+    VirhostlncR is a database that encompasses long non-coding RNAs (lncRNAs) that are perturbed by viral infections in mammalian host cells. It assembles the lncRNAs that are reported by qPCR or microarray or RNA-Seq based experiments across the literature. Currently, this information is assembled for 25 viral strains across 29 distinct cell lines/types.
+    </p>
+
+    <h4>2. Why VirhostlncR ? </h4>
+    <p>
+    Long non-coding-RNAs (lncRNAs) are an expanding set of cis-/trans-regulatory RNA genes/ transcripts that outnumber the protein-coding genes. Their role in chromatin remodeling, regulation of transcription, and post-transcriptional qualitative/quantitative regulation of gene expression is well perceived. Modulation of a number of cellular lncRNAs are already associated with innate immunity and reasonably, the development and progression of infectious disorders. With few of them associated with anti-viral responses, they are also modulated/hijacked distinctly by specific viruses/strains for their effective interactions with the host cells. Although the lncRNAs impact the molecular profiles at multiple levels, a large majority of them currently reported are functionally orphans and demand focused analysis in the future. Some of the lncRNAs perturbed in different infection conditions could be common and this may provide background for the focused analysis and identification of their functional role and also significantly as therapeutic targets. Hence, we provide the catalog of diverse lncRNAs identified to be modulated by distinct viral strains through the VirhostlncR resource. For the vast number of cellular microRNAs modulated by infections already established, including viral infections, the current dataset will serve as a platform for the functional analysis of the competing endogenous RNA (ceRNAs) interactions in infections
+    </p>
+    <h4>
+    3. Data features of VirhostlncR </h4>
+    <p>VirhostlncR hosts the virus modulated host lncRNAs with further information on specific virus/strain, the multiplicity of infections (MOIs), time points of infection and analysis, cell line/type, differentially regulated lncRNAs, their expression (up/down) with fold change, and the experiment type as additional features obtained by manual curation for value-added analysis. Each of these features is also linked to their corresponding research article for additional reference.
+    </p>
+    <h4>4. Download the VirhostlncR data </h4>
+    <p>
+    The data curated in VirhostlncR can be downloaded from the site.
+    </p>
+    <h4>
+    5. Mapping of the lncRNA genes
+    </h4>
+    <p>The lncRNAs are mapped at the gene level either to the HGNC gene symbols or Ensembl Gene IDs and else to their specific transcript IDs. The lncRNA genes that are currently updated as protein-coding genes in the current version of the databases were excluded. Towards the interoperability and mapping to multiple resources that are growing/evolving as the primary resources for lncRNAs, the lncRNA name as in the articles are also provided and are also linked to their corresponding research articles for probe-, +locus-, alternate identifier- or sequence-level information.
+    We are committed to continued annotation at the level of sequence-based features and variants in the future. We request the support and active participation of the scientific community for efficient mapping of these lncRNAs towards their continued annotation into VirhostlncR.
+    </p>
+</div>
+</div>
+</div>
+{% endblock %}

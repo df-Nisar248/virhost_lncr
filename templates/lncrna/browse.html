@@ -1,0 +1,17 @@
+
+{% load custom_tags %}
+
+
+<h3>Virus</h3>
+{% for virus in viruses %}
+<a href="{% url 'virus' virus.stimuli %}"> <p> {{ virus.stimuli|modify_name }}</p> </a>
+{% endfor %}
+
+<h3>LncRNAs</h3>
+
+
+
+<h3> VirhostlncR Targets </h3>
+
+
+{% endblock %}

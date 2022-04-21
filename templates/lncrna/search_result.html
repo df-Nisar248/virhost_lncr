@@ -1,0 +1,53 @@
+{% extends 'lncrna/base.html' %}
+{% load custom_tags %}
+
+{% block content %}
+
+<style type="text/css">
+
+ a{
+color: black;
+text-decoration: none;
+}
+</style>
+
+<div class="container mt-4">
+  <div class="row"></div>
+  <div class="col col-xl-2"></div>
+  <div class="col col-xl-10"></div>
+<h5> Search result for: {{ q }}</h5>
+</div>
+
+
+</div>
+<div class="container" style=" background-color: white; margin-top: 10px; padding: 30px;">
+<div class="row">
+{% for lncrna in lncrna_p %}
+    <div class="col  col-xs-6 mx-2 my-2" >
+
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            {% if lncrna.ncbi_gene %}
+            <a  href="{% url 'lncraname' lncrna.ncbi_gene %}">
+            <h5 class="card-title ">{{ lncrna.ncbi_gene }}</h5> </a>
+            {% else %}
+            <a  href="{% url 'lncraname' lncrna.ensembl_id %}">
+            <h5 class="card-title">{{ lncrna.ensembl_id }}</h5> </a>
+            {% endif %}
+            <h6 class="card-subtitle mb-2 text-muted">{{ lncrna.expression }}</h6>
+            <p class="card-text"> {{ lncrna.stimuli|modify_name }}</p>
+          </div>
+        </div>
+
+    </div>
+
+{% endfor %}
+
+</div>
+</div>
+
+
+
+
+
+{% endblock %}

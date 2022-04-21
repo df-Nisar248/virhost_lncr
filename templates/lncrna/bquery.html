@@ -1,0 +1,51 @@
+{% extends 'lncrna/base.html' %}
+
+{% block content %}
+
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <div class="alert alert-danger" role="alert">
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+
+        </div>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+<div class="conatiner mt-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col col-xl-6">
+<form method="GET" action="{% url 'bquerysearch' %}">
+ {% csrf_token %}
+
+
+<div class="form-group">
+  <label for="exampleFormControlTextarea1">Search with NCBI/Ensembl ID</label>
+  <textarea  name =q class="form-control rounded-0"  rows="10"></textarea>
+</div>
+
+<input type="submit" class="btn btn-outline-success my-2 my-sm-0">
+
+
+</form>
+<p class="form-text text-muted">Maximum number of input per search is 100.</p>
+<p class="form-text text-muted">Provide list of values or comma seprated values</p>
+<p class="form-text text-muted">
+    Example:
+    <br>
+    LOC101902030
+    <br>
+    LOC112444864
+    <br>
+    ENSG00000233002
+    <br>
+    ENSG00000248064
+</p>
+</div>
+</div>
+</div>
+{% endblock %}
+

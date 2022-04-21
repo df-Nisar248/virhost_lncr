@@ -1,0 +1,36 @@
+{% extends 'lncrna/base.html' %}
+
+
+{% block content %}
+
+<style type="text/css">
+ a{
+color: black;
+text-decoration: none;
+}
+</style>
+
+<div class="container" style=" background-color: white; margin-top: 10px; padding: 30px;">
+<div class="row">
+{% for target in targets %}
+    <div class="col  col-xs-6 mx-2 my-2" >
+
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <a href="{% url 'targetdetails' target.regulator %}">
+            <h5 class="card-title ">{{ target.regulator }}</h5> </a>
+
+            <h6 class="card-subtitle mb-2 text-muted">{{ target.regulatory_mech }}</h6>
+            <p class="card-text"> {{ target.regulatory_type }}</p>
+          </div>
+        </div>
+
+    </div>
+{% endfor %}
+</div>
+</div>
+
+
+
+
+{% endblock %}

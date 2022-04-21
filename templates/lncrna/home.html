@@ -1,0 +1,133 @@
+{% extends 'lncrna/base.html' %}
+
+{% load custom_tags %}
+
+{% block content %}
+
+
+<style type="text/css">
+.hmain{
+    display: flex;
+}
+
+.intro{
+    flex: 3;
+    padding: 50px;
+    margin: 30px;
+}
+
+.statistics{
+    flex: 1;
+    padding: 50px;
+    margin: 30px;
+}
+
+
+.virus_list{
+    display: flex;
+}
+
+</style>
+
+
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <div class="alert alert-danger" role="alert">
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+
+        </div>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+<div class="conatiner ">
+<div class="row d-flex justify-content-center">
+    <div class="intro col col-xl-6" >
+            <div class="d-flex justify-content-center">
+            <h1 >Welcome to VirhostlncR</h1>
+            </div>
+            <div class="d-flex justify-content-center">
+
+            <h5>(Virus modulated host-cellular long non-coding RNAs)</h5>
+            </div>
+
+    <p  style=" text-align: justify;"
+>
+        The VirhostlncR is a user-friendly online database of experimentally identified long non-coding RNAs (lncRNAs) perturbed
+        by diverse viral infections in the mammalian host cell lines. Currently, it hosts over {{ lncrna_count }} lncRNAs differentially
+        expressed in {{ host_cell_line_count }} different cell lines in response to {{ virus_count }} viral infections. Such lncRNAs reported in the published research
+        articles identified using RNA-Seq, microarray, northern blot and qPCR-based approaches are assembled in this database. The details on
+        specific virus/strain, the multiplicity of infections (MOIs), time points of infection and analysis, cell line/type,
+         differentially regulated lncRNAs, their differential expression type (Up/Down) (Cutoff: Fold change -1.5; p-value < 0.05)
+         and the experiment type are provided for value-addition analysis. Each of these parameters is also linked to their
+         corresponding research article for additional reference. All the data in VirhostlncR were obtained by manual
+         inspection/biocuration. We request the support of the scientific community for efficient mapping of these lncRNAs towards
+         their continued annotation into VirhostlncR. Search and <a href="{% url 'bquery' %}">Batch Query</a> using lncRNA name (NCBI/Ensembl ID) is also made avilabile.
+
+    </p>
+
+
+<div class="d-flex justify-content-center">
+ <div class="dropdown">
+  <button class="btn btn-primary btn-lg dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Select virus strains
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+    {% for virus in viruses %}
+
+    <a class="dropdown-item d-flex justify-content-center" href= "{% url 'virus' virus.stimuli %}" > {{ virus.stimuli|modify_name }} </a>
+
+    {% endfor %}
+
+
+  </div>
+
+</div>
+</div>
+
+    </div>
+
+    <div class="col col-xl-4" >
+
+    <div class="statistics">
+        <h4>Statistics</h4>
+
+
+        <strong>
+        <table>
+            <tr>
+                <td>Viral strains:</td>
+                <td>&ensp;{{ virus_count }}</td>
+            </tr>
+             <tr>
+                <td>Host cell line count:</td>
+                <td>  &ensp;  {{ host_cell_line_count }}</td>
+            </tr>
+
+              <tr>
+                <td>LncRNA accessions:</td>
+                <td> &ensp;   {{ lncrna_count }}</td>
+            </tr>
+
+        </table>
+        </strong>
+        <div class="mt-5">
+<!-- <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=qLvvW1fPodo9tiNLm1KUZBLKf6qeJM_rRxbgP4yXxGI&cl=ffffff&w=a"></script>
+ -->
+<script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=qLvvW1fPodo9tiNLm1KUZBLKf6qeJM_rRxbgP4yXxGI"></script>
+
+</div>
+
+</div>
+    </div>
+</div>
+</div>
+
+
+
+
+{% endblock %}

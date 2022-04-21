@@ -1,0 +1,25 @@
+{% extends 'lncrna/base.html' %}
+{% load custom_tags %}
+
+{% block content %}
+
+<style type="text/css">
+ a {
+color: black;
+text-decoration: none;
+}
+
+</style>
+
+<div  style=" background-color: white; margin-top: 10px; padding: 30px;" class="container">
+    <div class="row ">
+        <ul id = "nav">
+{% for virus in viruses %}
+<a  href="{% url 'virus' virus.stimuli %}"> <li> {{ virus.stimuli|modify_name }}</li></a>
+{% endfor %}
+        </ul>
+</div>
+</div>
+
+
+{% endblock %}

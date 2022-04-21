@@ -1,0 +1,74 @@
+{% extends 'lncrna/base.html' %}
+
+{% block content %}
+
+
+
+<style type="text/css">
+ a{
+color: black;
+text-decoration: none;
+}
+</style>
+
+<div class="cotainer" >
+<div class="row d-flex">
+ <div class="col col-xl-1">
+  </div>
+<div class="col col-xl-6 pt-4">
+
+<h5 class="h5" style="padding-left: 20px" >Regulator:&ensp;<a target="blank"  href="https://www.ncbi.nlm.nih.gov/gene/?term={{ dis_regulator }}">{{ dis_regulator }}
+</a>
+</h5>
+</div>
+</div>
+</div>
+
+
+<div class="cotainer">
+<div class="row d-flex justify-content-center">
+<div class="col col-xl-10">
+
+<table class="table" style="background-color: white;">
+<thead class="thead-dark">
+
+<tr>
+
+    <th class="align-top">Target</th>
+    <th class="align-top">Regulator Mechanism</th>
+    <th class="align-top">Relation</th>
+    <th class="align-top">Target Type</th>
+    <th class="align-top">Regulator Ensemble ID</th>
+
+</tr>
+
+{% for target in lncrnatarget %}
+<tr>
+<td><a href=" https://www.genecards.org/cgi-bin/carddisp.pl?gene={{ target.target }}" target="_blank"> {{ target.target }}</a></td>
+
+{% if target.regulatory_mech %}
+
+<td>
+{{ target.regulatory_mech }}</td>
+{% else %}
+<td><strong> -- </strong>  </td>
+{% endif %}
+
+<td>{{ target.regulatory_type }}</td>
+<td>{{ target.Target_type }}</td>
+<td> <a href="http://asia.ensembl.org/Multi/Search/Results?q={{ target.regulator_ensemble_id }}" target="_blank">{{ target.regulator_ensemble_id }} </a> </td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+</div>
+</div>
+</div>
+
+
+
+
+{% endblock %}
+

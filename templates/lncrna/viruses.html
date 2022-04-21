@@ -1,0 +1,90 @@
+{% extends 'lncrna/base.html' %}
+{% load custom_tags %}
+
+{% block content %}
+
+
+<style type="text/css">
+ a{
+color: black;
+text-decoration: none;
+}
+</style>
+
+<div class="cotainer">
+<div class="row">
+   <div class="col col-xl-1">
+  </div>
+<div class="col col-xl-10">
+<h5 class="h5 mt-3" >Virus & Strain : {{ sel_virus|modify_name }}
+</h5>
+</div>
+</div>
+</div>
+
+<div class="cotainer">
+<div class="row d-flex justify-content-center">
+<div class="col col-xl-10">
+
+<table class="table" style="background-color: white;">
+    <thead class="thead-dark">
+
+  <tr>
+    <th class="align-top">NCBI/Ensembl Id</th>
+    <th class="align-top">Dosage & Time point</th>
+    <th class="align-top">Cell line</th>
+    <th class="align-top">Experiment Type</th>
+    <th class="align-top">Foldchange</th>
+    <th class="align-top">lncRNA name</th>
+    <th class="align-top">Expression</th>
+    <th class="align-top">PubMed ID</th>
+  </tr>
+
+{% for vrs in viruses %}
+
+  <tr> {% if q %}
+        <td> {{ q }}</td>
+        {% else %}
+      {% if vrs.ncbi_gene %}
+        <td>{{ vrs.ncbi_gene }}</td>
+      {% else %}
+        <td>{{ vrs.ensembl_id }}</td>
+
+      {% endif %}
+            {% endif %}
+
+
+      <td>{{ vrs.dosage }};<br>
+      {{ vrs.time_point }}</td>
+      <td>{{ vrs.cell_line }}</td>
+      <td>{{ vrs.experiment_type }}</td>
+      <td>{{ vrs.foldchange }}</td>
+      <td>{{ vrs.lncrna_name }}</td>
+      <td>{{ vrs.expression }}</td>
+      <td> <a href="https://pubmed.ncbi.nlm.nih.gov/{{ vrs.pubmed_id }}" target="_blank"> {{ vrs.pubmed_id }} </a></td>
+
+  </tr>
+{% endfor %}
+
+
+</table></div>
+</div>
+</div>
+
+
+<div class="mt-1">
+  <div class="row">
+    <div class=""></div>
+
+    <div class="col xl-10" style="margin-left: 8%;">
+      <div class="d-flex justify-content-left">
+  <p class=" text-muted">* MOI :Multiplicity of infection , TCID :Tissue Culture Infectious Dose</p>
+    </div>
+
+    </div>
+  </div>
+
+
+</div>
+
+{% endblock %}

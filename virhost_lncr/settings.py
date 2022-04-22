@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-6y_k8_amv&2(r3qhnmy0j7=1l)b9-u3(sb^m0br6ga=6dfcu*6'
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['virhost-lncr.herokuapp.com','127.0.0.1','localhost']
 

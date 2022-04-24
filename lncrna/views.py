@@ -58,7 +58,11 @@ def targetdetails(request, regulator):
     return render(request,'lncrna/target_details.html',context)
 
 def faqs(request):
-    return render(request,'lncrna/faqs.html')
+    viruses = Lncrna.objects.values('stimuli').distinct().count()
+    host_cell_line_count = Lncrna.objects.values('cell_line').distinct().count()
+
+    context = {'viruses':viruses ,'host_cell_line_count':host_cell_line_count}
+    return render(request,'lncrna/faqs.html',context)
 
 
 def lncrna_list(request):

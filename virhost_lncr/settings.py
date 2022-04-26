@@ -1,7 +1,5 @@
 from pathlib import Path
-import django_heroku
-import dj_database_url
-from decouple import config
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -69,9 +67,13 @@ WSGI_APPLICATION = 'virhost_lncr.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME':'virhostlncr',
+        'USER':'root',
+        'PASSWORD':'password',
+        'PORT':3306,
+        'HOST': '127.0.0.1'
+            }
 }
 
 
@@ -116,7 +118,6 @@ STATIC_URL = '/static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -127,5 +128,3 @@ EMAIL_PORT = '587'
 EMAIL_HOST_USER = 'virhostlncrdb@gmail.com'
 EMAIL_HOST_PASSWORD = '4vp09is010'
 EMAIL_USE_TLS = True
-
-django_heroku.settings(locals())

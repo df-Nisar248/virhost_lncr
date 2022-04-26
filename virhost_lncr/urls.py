@@ -3,7 +3,8 @@ from django.urls import path,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('lncrna.urls')),
+    path('',include('ciods.urls')),
+    path('Virhostlncr/',include('lncrna.urls')),
     path('contact/',include('contact.urls')),
 
 ]

@@ -15,6 +15,7 @@ ALLOWED_HOSTS = ['virhost-lncr.herokuapp.com','127.0.0.1','localhost']
 
 
 INSTALLED_APPS = [
+    'rememb_prot.apps.RemembProtConfig',
     'ciods.apps.CiodsConfig',
     'lncrna.apps.LncrnaConfig',
     'contact.apps.ContactConfig',

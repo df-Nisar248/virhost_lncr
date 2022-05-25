@@ -15,15 +15,22 @@ def contacts(request):
             message_email = request.POST['email']
             message = request.POST['message']
 
-            send_mail(
+            try:
+                send_mail(
                     'Email from VirhostlncR website user:'+' '+message_email,
                     message,
                     message_email,
                     ['rajrrnbt@gmail.com','rexprem@yenepoya.edu.in','nisar.bb91@gmail.com']
                     )
 
-            messages.info(request, 'Thank you for your feedback. We will get back to you ASAP.')
-            return redirect('contact')
+                messages.info(request, 'Thank you for your feedback. We will get back to you ASAP.')
+                return redirect('contact')
+
+            except Exception:
+                messages.info(request, 'something went wrong! please try again later')
+                return redirect('contact')
+
+
         else:
             messages.error(request, 'please enter valid information')
 

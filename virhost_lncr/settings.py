@@ -1,6 +1,5 @@
 import os
 from pathlib import Path
-import django_heroku
 import dj_database_url
 from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -134,5 +133,3 @@ EMAIL_PORT = '587'
 EMAIL_HOST_USER = 'virhostlncrdb@gmail.com'
 EMAIL_HOST_PASSWORD = '4vp09is010'
 EMAIL_USE_TLS = True
-
-django_heroku.settings(locals())

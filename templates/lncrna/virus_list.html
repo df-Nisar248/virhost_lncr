@@ -15,7 +15,7 @@ text-decoration: none;
     <div class="row ">
         <ul id = "nav">
 {% for virus in viruses %}
-<a  href="{% url 'virus' virus.stimuli %}"> <li> {{ virus.stimuli|modify_name }}</li></a>
+<a  href="{% url 'lncrna:virus' virus.stimuli %}"> <li> {{ virus.stimuli|modify_name }}</li></a>
 {% endfor %}
         </ul>
 </div>

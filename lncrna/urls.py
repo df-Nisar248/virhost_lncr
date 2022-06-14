@@ -3,6 +3,8 @@ from django.views.generic import TemplateView
 
 from . import views
 
+app_name = 'lncrna'
+
 urlpatterns = [
 path('',views.home, name = 'home'),
 path('virus_list/', views.virus_list, name = 'virus_list'),

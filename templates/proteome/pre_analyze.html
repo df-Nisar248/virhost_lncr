@@ -1,0 +1,206 @@
+{% extends 'proteome/base.html' %}
+{% block content %}
+
+
+<style type="text/css">
+
+.dragging{
+    opacity: 0.5;
+}
+
+#sample-container {
+  /*width: 100%;*/
+  display: flex;
+  margin: 10px;
+  flex-wrap: wrap;
+}
+
+#control-container {
+  /*width: 100%;*/
+  display: flex;
+  margin: 10px;
+  flex-wrap: wrap;
+}
+
+
+div[class^="samples"]
+ {
+  background-color: tomato;
+  margin: 10px;
+  width: 200px;
+  height: 200px;
+  border-radius: 5px;
+}
+
+
+</style>
+
+
+    {% if abd_columns %}
+        <form action="{% url 'proteome:analaze_cols' %}" method="POST">
+          {% csrf_token %}
+          <div class="container">
+            <div class="row">
+          <input type="hidden" id="no_of_sample" name="no_of_sample" value="{{ number_of_samples }}">
+          <input type="hidden"  id="no_of_control" name="no_of_control" value="{{ number_of_control }}">
+          <input type="hidden"  id="job_id" name="job_id" value="{{ job_id }}">
+          <input type="hidden" id = "final_sample_data" name="final_sample_data">
+          <input type="hidden" id = "final_control_data" name="final_control_data">
+
+          <p>Drag and drop all group of samples:</p>
+
+          <div id="sample-container">
+
+         </div>
+                   <p>Drag and drop all control:</p>
+
+          <div id="control-container">
+
+          </div>
+
+
+
+       </div>
+     </div>
+
+      <ul style="display: inline;">
+        {% for column in abd_columns %}
+      <li class="draggable" draggable ="true" type="text" name="samples" style="cursor: move; color: black;display: inline;
+      background-color: #F0F8FF;margin:2px" >{{ column }}
+      </li>
+       {% endfor %}
+     </ul>
+
+      <input type="button" id="confirm" class="btn btn-primary" value="confirm">
+      <input class ="btn btn-primary mt-4" type="submit" name="Analyze">
+
+
+    </form>
+    {% endif %}
+
+
+        </div>
+    </div>
+
+</div>
+
+
+
+<script type="text/javascript">
+'use strict';
+
+const number_of_samples = Number(document.querySelector('#no_of_sample').value);
+const number_of_control = Number(document.querySelector('#no_of_control').value);
+
+for(var i = 1; i <= number_of_samples ; ++i){
+    var div = document.createElement('div');
+      div.id = `samples-${i}`;
+      div.classList.add('samples')
+
+      document.getElementById('sample-container').appendChild(div);
+    }
+
+
+for(var i = 1; i <= number_of_control ; ++i){
+    var div = document.createElement('div');
+      div.id = `control-${i}`;
+      div.classList.add('samples')
+
+      document.getElementById('control-container').appendChild(div);
+    }
+
+
+const draggables = document.querySelectorAll('.draggable');
+const containers = document.querySelectorAll('.samples');
+
+draggables.forEach(draggable =>{
+    draggable.addEventListener('dragstart',() =>{
+        draggable.classList.add('dragging')
+        })
+    draggable.addEventListener('dragend',() =>{
+      draggable.classList.remove('dragging')
+      draggable.classList.add('inside-div')
+    })
+})
+
+containers.forEach(container => {
+    container.addEventListener('dragover', e => {
+      e.preventDefault()
+      const draggable = document.querySelector('.dragging')
+      container.appendChild(draggable)
+            });
+});
+
+
+document.querySelector('#confirm').addEventListener('click', function() {
+let value;
+let abdSample;
+let abdarray = [];
+let sample_data = [];
+
+
+let controlValue;
+let abdControl;
+let controlAbdarray = [];
+let controlData = [];
+
+
+for (let i = 1; i <= number_of_samples; ++i){
+  let sample_div = document.querySelector(`#samples-${i}`)
+  if(sample_div.childNodes.length > 0){
+  for (let index = 0; index < sample_div.childNodes.length; index++){
+      abdSample= sample_div.childNodes[index];
+      value = abdSample.textContent;
+      abdarray.push(value);
+    }
+    abdarray.push("SaMpSepeR");
+  }
+    sample_data.push(abdarray);
+abdarray = [];
+}
+console.log(sample_data)
+
+document.querySelector('#final_sample_data').value = sample_data;
+
+for (let i = 1; i <= no_of_control; i++){
+    console.log(`control-${i}`)
+console.log(`contsssssssssssssssssrol`)
+
+  let control_div = document.querySelector(`#control-${i}`)
+  if(control_div.childNodes.length > 0){
+  for (let index = 0; index < control_div.childNodes.length; index++){
+      abdControl= control_div.childNodes[index];
+      controlValue = abdControl.textContent;
+      controlAbdarray.push(controlValue);
+    }
+    controlAbdarray.push("SaMpSepeR");
+  }
+    controlData.push(controlAbdarray);
+    console.log(controlAbdarray)
+
+  controlAbdarray = [];
+}
+
+console.log(controlData)
+document.querySelector('#final_control_data').value = controlData;
+
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+{% endblock %}

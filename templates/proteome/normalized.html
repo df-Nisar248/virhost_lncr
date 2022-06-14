@@ -1,0 +1,48 @@
+{% extends 'proteome/base.html' %}
+
+{% block content %}
+
+<style type="text/css">
+.mainframe {
+  overflow: hidden;
+  position: fixed;
+  background-color:white;
+  height:70%;
+  width:90%;
+}
+.wrapper {
+  margin: 5%;
+  width: 90%;
+  height:80%;
+}
+
+.allow-scroll {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: scroll;
+}
+
+</style>
+
+<a href="{% url 'proteome:plots' %}">View plots</a>
+<div class="mainframe">
+  <div class="wrapper">
+    <div class="allow-scroll">
+      <table>
+     {{ data|safe }}
+      </table>
+    </div>
+  </div>
+</div>
+
+<a download="#"><button>download the file</button>
+</a>
+<br>
+<br>
+
+
+
+
+{% endblock %}

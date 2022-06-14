@@ -17,7 +17,7 @@ text-decoration: none;
 
         <div class="card" style="width: 18rem;">
           <div class="card-body">
-            <a href="{% url 'targetdetails' target.regulator %}">
+            <a href="{% url 'lncrna:targetdetails' target.regulator %}">
             <h5 class="card-title ">{{ target.regulator }}</h5> </a>
 
             <h6 class="card-subtitle mb-2 text-muted">{{ target.regulatory_mech }}</h6>

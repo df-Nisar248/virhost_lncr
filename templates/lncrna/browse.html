@@ -4,7 +4,7 @@
 
 <h3>Virus</h3>
 {% for virus in viruses %}
-<a href="{% url 'virus' virus.stimuli %}"> <p> {{ virus.stimuli|modify_name }}</p> </a>
+<a href="{% url 'lncrna:virus' virus.stimuli %}"> <p> {{ virus.stimuli|modify_name }}</p> </a>
 {% endfor %}
 
 <h3>LncRNAs</h3>

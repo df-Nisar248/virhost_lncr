@@ -39,8 +39,3 @@ def contacts(request):
 
 
 
-
-
-
-
-

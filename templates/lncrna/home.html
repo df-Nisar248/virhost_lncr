@@ -65,7 +65,7 @@
          and the experiment type are provided for value-addition analysis. Each of these parameters is also linked to their
          corresponding research article for additional reference. All the data in VirhostlncR were obtained by manual
          inspection/biocuration. We request the support of the scientific community for efficient mapping of these lncRNAs towards
-         their continued annotation into VirhostlncR. Search and <a href="{% url 'bquery' %}">Batch Query</a> using lncRNA name (NCBI/Ensembl ID) is also made avilabile.
+         their continued annotation into VirhostlncR. Search and <a href="{% url 'lncrna:bquery' %}">Batch Query</a> using lncRNA name (NCBI/Ensembl ID) is also made avilabile.
 
     </p>
 
@@ -79,7 +79,7 @@
 
     {% for virus in viruses %}
 
-    <a class="dropdown-item d-flex justify-content-center" href= "{% url 'virus' virus.stimuli %}" > {{ virus.stimuli|modify_name }} </a>
+    <a class="dropdown-item d-flex justify-content-center" href= "{% url 'lncrna:virus' virus.stimuli %}" > {{ virus.stimuli|modify_name }} </a>
 
     {% endfor %}
 

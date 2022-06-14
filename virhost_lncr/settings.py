@@ -9,10 +9,11 @@ SECRET_KEY = 'django-insecure-6y_k8_amv&2(r3qhnmy0j7=1l)b9-u3(sb^m0br6ga=6dfcu*6
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['virhost-lncr.herokuapp.com','127.0.0.1','localhost']
-
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
+    'accounts.apps.AccountsConfig',
+    'proteome.apps.ProteomeConfig',
     'rememb_prot.apps.RemembProtConfig',
     'ciods.apps.CiodsConfig',
     'lncrna.apps.LncrnaConfig',
@@ -64,7 +65,7 @@ WSGI_APPLICATION = 'virhost_lncr.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+# https://docs.djangoproject.com/en/3.2/RemembProtConfig/settings/#databases
 
 DATABASES = {
     'default': {
@@ -121,12 +122,15 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#email setting
 
+AUTH_USER_MODEL = 'accounts.UserBase'
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/accounts/login/'
+
+#email setting
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
 EMAIL_HOST_USER = 'virhostlncrdb@gmail.com'

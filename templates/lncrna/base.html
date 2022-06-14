@@ -39,7 +39,7 @@ background-color: #E0FFFF;
 
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="{% url 'home' %}"> <h1>VirhostlncR </h1></a>
+  <a class="navbar-brand" href="{% url 'lncrna:home' %}"> <h1>VirhostlncR </h1></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -48,35 +48,35 @@ background-color: #E0FFFF;
     <ul class="navbar-nav mr-auto">
 
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'home' %}">Home </a>
+        <a class="nav-link" href="{% url 'lncrna:home' %}">Home </a>
       </li>
 
         <li class="nav-item">
-        <a class="nav-link " href="{% url 'virus_list' %}" >Virus</a>
+        <a class="nav-link " href="{% url 'lncrna:virus_list' %}" >Virus</a>
       </li>
         <li class="nav-item">
-        <a class="nav-link " href="{% url 'lncrna_list' %}" >lncRNAs</a>
+        <a class="nav-link " href="{% url 'lncrna:lncrna_list' %}" >lncRNAs</a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link " href="{% url 'target_list' %}" >VirhostlncR-Targets</a>
+        <a class="nav-link " href="{% url 'lncrna:target_list' %}" >VirhostlncR-Targets</a>
       </li>
 
 
 
       <li class="nav-item">
-        <a class="nav-link " href="{% url 'faqs' %}" >FAQs</a>
+        <a class="nav-link " href="{% url 'lncrna:faqs' %}" >FAQs</a>
       </li>
           <li class="nav-item">
         <a class="nav-link " href="{% url 'contact' %}" >Contact Us</a>
       </li>
 
            <li class="nav-item">
-        <a class="nav-link " href="{% url 'bquery' %}" >Batch Query</a>
+        <a class="nav-link " href="{% url 'lncrna:bquery' %}" >Batch Query</a>
       </li>
 
     </ul>
-    <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'search' %}">
+    <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'lncrna:search' %}">
       <input class="form-control mr-sm-2" type="search" placeholder="(NCBI/Ensembl ID)" aria-label="Search" name = q >
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
@@ -96,7 +96,7 @@ background-color: #E0FFFF;
 <div  class="spacer"> . </div>
 
 <div class="footer">
-  <p>© 2022 Copyright: <a href="{% url 'ciods' %}">CIODS </a>| <a target="_blank" href="https://www.yenepoya.edu.in/">YENEPOYA </a></p>
+  <p>© 2022 Copyright: <a href="{% url 'ciods:ciods' %}">CIODS </a>| <a target="_blank" href="https://www.yenepoya.edu.in/">YENEPOYA </a></p>
 </div>
 
 </body>

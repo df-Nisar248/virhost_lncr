@@ -28,10 +28,10 @@ text-decoration: none;
         <div class="card" style="width: 18rem;">
           <div class="card-body">
             {% if lncrna.ncbi_gene %}
-            <a  href="{% url 'lncraname' lncrna.ncbi_gene %}">
+            <a  href="{% url 'lncrna:lncraname' lncrna.ncbi_gene %}">
             <h5 class="card-title ">{{ lncrna.ncbi_gene }}</h5> </a>
             {% else %}
-            <a  href="{% url 'lncraname' lncrna.ensembl_id %}">
+            <a  href="{% url 'lncrna:lncraname' lncrna.ensembl_id %}">
             <h5 class="card-title">{{ lncrna.ensembl_id }}</h5> </a>
             {% endif %}
             <h6 class="card-subtitle mb-2 text-muted">{{ lncrna.expression }}</h6>

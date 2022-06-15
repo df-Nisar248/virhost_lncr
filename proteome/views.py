@@ -77,14 +77,10 @@ def analaze_cols(request):
         final_control_data = request.POST.get('final_control_data')
         job_id = request.POST.get('job_id')
 
-        print(final_control_data)
         sample_columns = clean_coulumn_heading(sample_data_columns)
         control_columns = clean_coulumn_heading(final_control_data)
 
-        # print(all_columns)
-        print(control_columns, job_id)
-
-        # final_data = normaliz.normaliz_data(job_id,all_columns)
+        normaliz.normaliz_data(job_id,sample_columns,control_columns)
         # return render(request, 'proteome/normalized.html',{'data':data})
         return render(request, 'proteome/home.html')
 

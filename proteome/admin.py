@@ -1,4 +1,6 @@
 from django.contrib import admin
 from . models import DataAnalysis
 
-admin.site.register(DataAnalysis)
+@admin.register(DataAnalysis)
+class DataAnalysisAdmin(admin.ModelAdmin):
+    list_display = ['user','created']

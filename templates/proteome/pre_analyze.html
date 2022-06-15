@@ -138,14 +138,12 @@ let abdSample;
 let abdarray = [];
 let sample_data = [];
 
-
 let controlValue;
 let abdControl;
 let controlAbdarray = [];
 let controlData = [];
 
-
-for (let i = 1; i <= number_of_samples; ++i){
+for (let i = 1; i <= number_of_samples; i++){
   let sample_div = document.querySelector(`#samples-${i}`)
   if(sample_div.childNodes.length > 0){
   for (let index = 0; index < sample_div.childNodes.length; index++){
@@ -158,48 +156,24 @@ for (let i = 1; i <= number_of_samples; ++i){
     sample_data.push(abdarray);
 abdarray = [];
 }
-console.log(sample_data)
 
-document.querySelector('#final_sample_data').value = sample_data;
-
-for (let i = 1; i <= no_of_control; i++){
-    console.log(`control-${i}`)
-console.log(`contsssssssssssssssssrol`)
-
-  let control_div = document.querySelector(`#control-${i}`)
-  if(control_div.childNodes.length > 0){
-  for (let index = 0; index < control_div.childNodes.length; index++){
-      abdControl= control_div.childNodes[index];
-      controlValue = abdControl.textContent;
-      controlAbdarray.push(controlValue);
-    }
-    controlAbdarray.push("SaMpSepeR");
+for(let j = 1; j<= number_of_control; j++){
+let control_div = document.querySelector(`#control-${j}`)
+if(control_div.childNodes.length > 0){
+  for(let x = 0; x < control_div.childNodes.length; x++){
+    abdControl = control_div.childNodes[x];
+    controlValue = abdControl.textContent;
+    controlAbdarray.push(controlValue);
   }
-    controlData.push(controlAbdarray);
-    console.log(controlAbdarray)
-
-  controlAbdarray = [];
+controlAbdarray.push("SaMpSepeR");
 }
-
-console.log(controlData)
+controlData.push(controlAbdarray);
+controlAbdarray = [];
+}
+document.querySelector('#final_sample_data').value = sample_data;
 document.querySelector('#final_control_data').value = controlData;
 
-
-
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </script>
 

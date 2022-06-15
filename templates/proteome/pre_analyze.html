@@ -65,13 +65,36 @@ div[class^="samples"]
 
       <ul style="display: inline;">
         {% for column in abd_columns %}
-      <li class="draggable" draggable ="true" type="text" name="samples" style="cursor: move; color: black;display: inline;
+      <li class="draggable" draggable ="true" type="text" name="samples" style="margin: 10px;cursor: move; color: black;display: inline;
       background-color: #F0F8FF;margin:2px" >{{ column }}
       </li>
        {% endfor %}
      </ul>
 
       <input type="button" id="confirm" class="btn btn-primary" value="confirm">
+
+          <!-- normalization method -->
+          <div class="form-check">
+          <input class="form-check-input" type="radio" name="norm_method" id="Median" value="Median" checked>
+          <label class="form-check-label" for="Median">
+            Median
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="norm_method" id="Sum" value="Sum">
+          <label class="form-check-label" for="Sum">
+            Sum
+          </label>
+        </div>
+
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="norm_method" id="Quntail" value="Quntail">
+          <label class="form-check-label" for="Quntail">
+            Quntail
+          </label>
+        </div>
+        <label>Fill missing value with:</label>
+        <input type="text" name="missing_val">
       <input class ="btn btn-primary mt-4" type="submit" name="Analyze">
 
 

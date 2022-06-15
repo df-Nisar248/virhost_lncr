@@ -1,39 +1,5 @@
-from django.conf import settings
-import pandas as pd
-from scipy import stats
-from matplotlib import pyplot as plt
-import os
-
-from . models import DataAnalysis
-
-
-def normaliz_data(job_id,sample_columns,control_columns,norm_method,missing_val_rep):
-
-    data = DataAnalysis.objects.get(id = job_id)
-    print(data.file.path)
-    df = pd.read_excel(data.file.path)
-    missing_val = int(missing_val_rep)
-    print(missing_val)
-    df.fillna(missing_val, inplace = True )
-    if (norm_method == Median):
-        mediun_list = []
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    # mediun_list = []
+notes.txt
+ # mediun_list = []
     # median_df = pd.DataFrame()
 
     # median_control_1 = df['Abundances (by Bio. Rep.): Cntrol 1'].median()

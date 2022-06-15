@@ -76,11 +76,12 @@ def analaze_cols(request):
         sample_data_columns = request.POST.get('final_sample_data')
         final_control_data = request.POST.get('final_control_data')
         job_id = request.POST.get('job_id')
-
+        missing_val_rep = request.POST.get('missing_val')
+        norm_method = request.POST.get('norm_method')
         sample_columns = clean_coulumn_heading(sample_data_columns)
         control_columns = clean_coulumn_heading(final_control_data)
 
-        normaliz.normaliz_data(job_id,sample_columns,control_columns)
+        normaliz.normaliz_data(job_id,sample_columns,control_columns,norm_method,missing_val_rep)
         # return render(request, 'proteome/normalized.html',{'data':data})
         return render(request, 'proteome/home.html')
 

@@ -2,6 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import base64
 from io import BytesIO
+from difflib import SequenceMatcher
 
 def get_graph():
     buffer = BytesIO()
@@ -47,3 +48,23 @@ def clean_coulumn_heading(sample_data_columns):
         sample_list.append(abd_list)
     final_list = [x for x in sample_list if x != []]
     return final_list
+
+def sort_name(samples):
+    name = ''
+    if len(samples) > 1:
+        string1 = samples[0]
+        string2 = samples[1]
+        match = SequenceMatcher(None, string1,
+                        string2).find_longest_match(0, len(string1), 0,
+                                                    len(string2))
+        name =  string1[match.a:match.a + match.size]
+
+    else:
+        name = samples
+    if 'Abundances' in name:
+        name = name.replace('Abundances','')
+    if  'Abundance' in name:
+        name = name.replace('Abundance','')
+
+    return name
+

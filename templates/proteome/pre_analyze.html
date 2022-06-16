@@ -95,7 +95,7 @@ div[class^="samples"]
         </div>
         <label>Fill missing value with:</label>
         <input type="text" name="missing_val">
-      <input class ="btn btn-primary mt-4" type="submit" name="Analyze">
+      <input class ="btn btn-primary mt-4" type="submit" name="Analyze" id="submit" disabled>
 
 
     </form>
@@ -195,7 +195,8 @@ controlAbdarray = [];
 }
 document.querySelector('#final_sample_data').value = sample_data;
 document.querySelector('#final_control_data').value = controlData;
-
+const submitButton = document.querySelector('#submit');
+submitButton.disabled = false;
 });
 
 </script>

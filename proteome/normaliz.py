@@ -3,6 +3,7 @@ import pandas as pd
 from scipy import stats
 from matplotlib import pyplot as plt
 import os
+import numpy as np
 
 from . models import DataAnalysis
 from . utils import sort_name
@@ -33,37 +34,32 @@ def normaliz_data(job_id,sample_columns,control_columns,norm_method,missing_val_
         for key,value in mediun_list.items():
             multiplication_fact_list[key] = (minn/value)
 
-        control_array = []
+        control_norm_array = []
         for controls in control_columns:
             for replicates in controls:
-                control_array.append('normalized '+replicates)
                 df['normalized '+replicates] = df[replicates] * multiplication_fact_list[replicates]
+                control_norm_array.append('normalized '+replicates)
 
-
-        sample_array = []
+        sample_normalized_array = []
         for samples in sample_columns:
+            each_sample = []
             for samp_replicates in samples:
-                sample_array.append('normalized '+samp_replicates)
                 df['normalized '+samp_replicates] = df[samp_replicates] * multiplication_fact_list[samp_replicates]
+                each_sample.append('normalized '+samp_replicates)
+            sample_normalized_array.append(each_sample)
 
-# ------------------------------------------ask them what column to select and what to ignore------------------------------------------------------------
-    # df_new = df[['Unique Sequence ID','Protein Group IDs', 'Accession','Description',
-    #         'normalized_control_1', 'normalized_contorl_2','normalized_control_3','normalized_sample_a1','normalized_sample_a2',
-    #         'normalized_sample_a3','normalized_sample_b1','normalized_sample_b2','normalized_sample_b3',
-    #         'normalized_sample_c1','normalized_sample_c2','normalized_sample_c3']]
-# -------------------------------------------------------------------------------------------------------------------
+        df_control = df[[y for y in control_norm_array]]
+        for samples in sample_normalized_array:
+            #caculating average normalized
+            df["average_normalized"+sort_name(samples)] = df.groupby(x for x in sample_normalized_array).mean(axis = 1)
+            #calculating P value
+            df_sample = df[[y for y in samples]]
+            _ ,df["P VALUE of"+sort_name(samples)]= stats.ttest_ind(df_control,df_sample,axis=1, equal_var = False)
 
+        print(df)
 
-        for samples in sample_columns:
+        df.to_csv("withPval.csv")
 
-            _ ,df["P VALUE of "sort_name(samples)]= stats.ttest_ind([df[x for x in control_array]],
-                [df[x for x in control_array]], equal_var = False )
-
-    # _ ,df_new['p_value_b']= stats.ttest_ind([df_new['normalized_control_1'],df_new['normalized_contorl_2'],df_new['normalized_control_3']],
-    #      [df_new['normalized_sample_b1'],df_new['normalized_sample_b2'],df_new['normalized_sample_b3']] , equal_var = False)
-
-    # _ ,df_new['p_value_c']= stats.ttest_ind([df_new['normalized_control_1'],df_new['normalized_contorl_2'],df_new['normalized_control_3']],
-    #      [df_new['normalized_sample_c1'],df_new['normalized_sample_c2'],df_new['normalized_sample_c3']], equal_var = False )
 
 
     # df_new['average_normalized_A']  = df_new[['normalized_sample_a1','normalized_sample_a2','normalized_sample_a3']].mean( axis = 1)

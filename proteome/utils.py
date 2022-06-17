@@ -65,6 +65,7 @@ def sort_name(samples):
         name = name.replace('Abundances','')
     if  'Abundance' in name:
         name = name.replace('Abundance','')
-
+    if  'normalized' in name:
+        name = name.replace('normalized','')
     return name
 

@@ -27,6 +27,7 @@ def get_plot(x):
 def abundances(columns):
     abundance_list =  []
     for l in columns:
+        l = l.strip()
         if ('Abundances' in l) or ('Abundance' in l):
             abundance_list.append(l)
     abundance_list.sort()
@@ -40,13 +41,14 @@ def clean_coulumn_heading(sample_data_columns):
     sample_list = []
     for sample in samples:
         abd_list = []
-        abundance = sample.split(',')
+        abundance = sample.split('RepsepRatTor')
         for abd in abundance:
             abd = abd.strip()
             if abd != '':
                 abd_list.append(abd)
         sample_list.append(abd_list)
     final_list = [x for x in sample_list if x != []]
+    print(final_list)
     return final_list
 
 def sort_name(samples):
@@ -67,5 +69,8 @@ def sort_name(samples):
         name = name.replace('Abundance','')
     if  'normalized' in name:
         name = name.replace('normalized','')
+    if 'average_normalized' in name:
+        name = name.replace('average_normalized','')
+
     return name
 

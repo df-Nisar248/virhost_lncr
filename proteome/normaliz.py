@@ -12,7 +12,22 @@ def normaliz_data(job_id,sample_columns,control_columns,norm_method,missing_val_
 
     data = DataAnalysis.objects.get(id = job_id)
     df = pd.read_excel(data.file.path)
-    missing_val = int(missing_val_rep)
+    columns = df.columns
+
+    cleaned_col = []
+
+    for column in columns:
+            if ',' in column:
+                column =column.strip()
+                column = column.replace(',',' ')
+                cleaned_col.append(column)
+            else:
+                column =column.strip()
+                cleaned_col.append(column)
+    df.columns = cleaned_col
+
+    missing_val = float(missing_val_rep)
+
     df.fillna(missing_val, inplace = True )
 
     #for median normalization
@@ -49,23 +64,30 @@ def normaliz_data(job_id,sample_columns,control_columns,norm_method,missing_val_
             sample_normalized_array.append(each_sample)
 
         df_control = df[[y for y in control_norm_array]]
+
+        average_normalized_sample_array = []
         for samples in sample_normalized_array:
-            #caculating average normalized
-            df["average_normalized"+sort_name(samples)] = df.groupby(x for x in sample_normalized_array).mean(axis = 1)
-            #calculating P value
+
             df_sample = df[[y for y in samples]]
+            #caculating average normalized
+
+            average_normalized_sample_array.append("average_normalized"+sort_name(samples))
+            df["average_normalized"+sort_name(samples)] = df_sample.mean(axis = 1)
+            #calculating P value
+
             _ ,df["P VALUE of"+sort_name(samples)]= stats.ttest_ind(df_control,df_sample,axis=1, equal_var = False)
 
-        print(df)
+        df["average_normalized_of_CONTROL"] = df_control.mean(axis =1 )
 
-        df.to_csv("withPval.csv")
+        #calculating foldchange
+        # for avg_sample in average_normalized_sample_array:
+        #     df['FOLDCHANGE of '+sort_name(avg_sample)] = df["average_normalized_of_CONTROL"] / df
+        # # print(df["average_normalized_of_CONTROL"])
+
+        # df.to_csv("withPval.csv")
 
 
 
-    # df_new['average_normalized_A']  = df_new[['normalized_sample_a1','normalized_sample_a2','normalized_sample_a3']].mean( axis = 1)
 
-    # df_new['average_normalized_B']  = df_new[['normalized_sample_b1','normalized_sample_b2','normalized_sample_b3']].mean( axis = 1)
 
-    # df_new['average_normalized_C']  = df_new[['normalized_sample_c1','normalized_sample_c2','normalized_sample_c3']].mean(axis = 1)
-
-    # return df_new
+    return df

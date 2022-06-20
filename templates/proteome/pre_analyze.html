@@ -160,10 +160,13 @@ let value;
 let abdSample;
 let abdarray = [];
 let sample_data = [];
+let sampleJoinedAbdarray = [];
 
 let controlValue;
 let abdControl;
 let controlAbdarray = [];
+let controlJoinedAbdarray = [];
+
 let controlData = [];
 
 for (let i = 1; i <= number_of_samples; i++){
@@ -173,12 +176,18 @@ for (let i = 1; i <= number_of_samples; i++){
       abdSample= sample_div.childNodes[index];
       value = abdSample.textContent;
       abdarray.push(value);
+      // abdarray.push("RepsepRatTor");
     }
-    abdarray.push("SaMpSepeR");
+    sampleJoinedAbdarray = abdarray.join("RepsepRatTor")
+    // abdarray.push("SaMpSepeR");
   }
-    sample_data.push(abdarray);
+    sample_data.push(sampleJoinedAbdarray);
 abdarray = [];
 }
+let sample_data_return = sample_data.join("SaMpSepeR")
+
+
+
 
 for(let j = 1; j<= number_of_control; j++){
 let control_div = document.querySelector(`#control-${j}`)
@@ -187,16 +196,25 @@ if(control_div.childNodes.length > 0){
     abdControl = control_div.childNodes[x];
     controlValue = abdControl.textContent;
     controlAbdarray.push(controlValue);
+    // controlAbdarray.push("RepsepRatTor");
+
   }
-controlAbdarray.push("SaMpSepeR");
+  controlJoinedAbdarray = controlAbdarray.join("RepsepRatTor")
+// controlAbdarray.push("SaMpSepeR");
 }
-controlData.push(controlAbdarray);
+controlData.push(controlJoinedAbdarray);
 controlAbdarray = [];
 }
-document.querySelector('#final_sample_data').value = sample_data;
-document.querySelector('#final_control_data').value = controlData;
+
+let control_data_return = controlData.join("SaMpSepeR")
+
+document.querySelector('#final_sample_data').value = sample_data_return;
+
+document.querySelector('#final_control_data').value = control_data_return;
 const submitButton = document.querySelector('#submit');
 submitButton.disabled = false;
+console.log(sample_data_return)
+
 });
 
 </script>

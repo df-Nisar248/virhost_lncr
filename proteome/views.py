@@ -25,9 +25,16 @@ def inputf(request):
         data_als.save()
         df = pd.read_excel(files)
         columns = df.columns
+        all_column = []
+        for column in columns:
+            if ',' in column:
+                column = column.replace(',',' ')
+                all_column.append(column)
+            else:
+                all_column.append(column)
         #send all column name to templates as well
-        abd_columns = abundances(columns)
-        context = {'abd_columns':abd_columns, 'columns':columns,'number_of_samples':number_of_samples,
+        abd_columns = abundances(all_column)
+        context = {'abd_columns':abd_columns, 'columns':all_column,'number_of_samples':number_of_samples,
         'number_of_control':number_of_control,'job_id':job_id}
 
         return render(request,'proteome/pre_analyze.html',context)
@@ -78,11 +85,12 @@ def analaze_cols(request):
         job_id = request.POST.get('job_id')
         missing_val_rep = request.POST.get('missing_val')
         norm_method = request.POST.get('norm_method')
+
         sample_columns = clean_coulumn_heading(sample_data_columns)
         control_columns = clean_coulumn_heading(final_control_data)
 
-        normaliz.normaliz_data(job_id,sample_columns,control_columns,norm_method,missing_val_rep)
-        # return render(request, 'proteome/normalized.html',{'data':data})
-        return render(request, 'proteome/home.html')
+        final_data = normaliz.normaliz_data(job_id,sample_columns,control_columns,norm_method,missing_val_rep)
+        data = final_data.head(30).to_string()
+        return render(request, 'proteome/normalized.html',{'data':data})
 
     return render(request, 'proteome/home.html')

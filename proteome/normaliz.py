@@ -68,6 +68,8 @@ def normaliz_data(job_id,sample_columns,control_columns,norm_method,missing_val_
         average_normalized_sample_array = []
         for samples in sample_normalized_array:
 
+            print(samples)
+
             df_sample = df[[y for y in samples]]
             #caculating average normalized
 

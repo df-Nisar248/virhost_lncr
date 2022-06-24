@@ -1,10 +1,20 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 import pandas as pd
+from django.core.files.base import ContentFile
+from django.http import HttpResponse
+from django.http import Http404
+
+import os
+from django.conf import settings
+import csv
+from io import StringIO
+from django.core.files.base import ContentFile
 
 from .import normaliz
 from .utils import get_plot, abundances,clean_coulumn_heading
 from .models import DataAnalysis
+
 
 normalized_df = pd.DataFrame()
 
@@ -71,11 +81,22 @@ def pre_process(request):
 
 
 @login_required
-def downloadfile(request):
-    response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
-    response['Content-Disposition'] = 'attachment; filename="filename.xlsx"'  #filename???????
-    df.to_excel(response)
-    return response
+def downloadfile(request,job_id = None):
+
+    print(job_id)
+    q = DataAnalysis.objects.get(id = job_id)
+    file = q.resultData.path
+
+    download_path = os.path.join(settings.MEDIA_ROOT, file)
+
+    if os.path.exists(download_path):
+        with open(download_path, 'rb') as fh:
+            response = HttpResponse(fh.read(), content_type="text/csv")
+            response['Content-Disposition'] = 'inline; filename=' + os.path.basename(download_path)
+            return response
+
+    raise Http404
+
 
 @login_required
 def analaze_cols(request):
@@ -90,7 +111,15 @@ def analaze_cols(request):
         control_columns = clean_coulumn_heading(final_control_data)
 
         final_data = normaliz.normaliz_data(job_id,sample_columns,control_columns,norm_method,missing_val_rep)
-        data = final_data.head(30).to_string()
-        return render(request, 'proteome/normalized.html',{'data':data})
+        final_data.to_csv('resultttt.csv', mode='a')
+        new_df = final_data.to_csv()
+        updated_file = ContentFile(new_df)
+        updated_file.name = "result.csv"
+
+        result_q = DataAnalysis.objects.get(id =job_id)
+        result_q.resultData = updated_file
+        result_q.save()
+        data = final_data.head(30)
+        return render(request, 'proteome/normalized.html',{'data':data,'job_id':job_id} )
 
     return render(request, 'proteome/home.html')

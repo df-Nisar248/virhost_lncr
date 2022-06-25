@@ -6,6 +6,7 @@ app_name = 'proteome'
 
 urlpatterns = [
     path('', views.home, name = 'home'),
+    path('input/', views.input, name = 'input'),
     path('inputfile/', views.inputf, name='inputfile'),
     path('plots/', views.plotss, name = 'plots'),
     path('download<int:job_id>',views.downloadfile, name='download_file'),

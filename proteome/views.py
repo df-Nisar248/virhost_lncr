@@ -20,7 +20,12 @@ normalized_df = pd.DataFrame()
 
 @login_required
 def home(request):
+    return render(request,'proteome/index.html')
+
+@login_required
+def input(request):
     return render(request,'proteome/home.html')
+
 
 @login_required
 def inputf(request):

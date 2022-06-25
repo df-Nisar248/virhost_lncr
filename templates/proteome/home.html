@@ -2,32 +2,48 @@
 
 {% block content %}
 
-<style type="text/css">
-  .box{
-width: 40%;
-height: 40%;
-border: 1px solid black;
-}
 
-</style>
+<div class="container mt-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-xl-6 shadow" style="background-color: #F8F8FF;">
 
 
-
-<h1>home page</h1>
-
-<div class="mt-5"></div>
-<div class="mt-5"></div>
-<div class="container-fluid">
-  <div class="row d-flex justify-content-center">
-    <div class="col">
-      <div class="box">
+    <form action="{% url 'proteome:inputfile' %}" method="POST" enctype="multipart/form-data" class="m-4 " >
+     {% csrf_token %}
 
 
-      </div>
+  <div class="form-group">
+      <label>Number of samples:</label>
+      <input type="number" name="no_of_sample" >
 
-    </div>
+    <small class="form-text text-muted">Input the number of samples. You will get the option to group all the
+    replicates for the sample in next page</small>
   </div>
+
+
+  <div class="form-group">
+      <label>Number of Control:</label>
+      <input type="number" name="no_of_control" placeholder="1" disabled>
+
+    <small class="form-text text-muted">Replicates of the control will be grouped in the next step.</small>
+  </div>
+
+  <div class="form-group">
+    <label >Upload Your File:</label>
+          <input type="file" class="btn" name="file">
+          <small class="form-text text-muted">make sure the file is xlsx / csv / tab seperated txt file.</small>
+          <small class="form-text text-muted">Your data will be confidential , It will be stored temporarily and deleted after the analysis</small>
+
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+
 </div>
+</div>
+</div>
+
+
 
 {% endblock %}
 

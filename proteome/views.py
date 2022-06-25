@@ -33,7 +33,7 @@ def inputf(request):
         files = request.FILES['file']
         # if files.name.endswith('.xlsx'):
         number_of_samples = int(request.POST.get('no_of_sample'))
-        number_of_control = int(request.POST.get('no_of_control'))
+        number_of_control = 1
         user = request.user
         data_als = DataAnalysis.objects.create(file = files, user = user)
         job_id = data_als.id

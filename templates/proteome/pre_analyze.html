@@ -25,7 +25,7 @@
 
 div[class^="samples"]
  {
-  background-color: tomato;
+  background-color: #f7cac9;
   margin: 10px;
   width: 200px;
   height: 200px;
@@ -41,35 +41,48 @@ div[class^="samples"]
           {% csrf_token %}
           <div class="container">
             <div class="row">
+
           <input type="hidden" id="no_of_sample" name="no_of_sample" value="{{ number_of_samples }}">
           <input type="hidden"  id="no_of_control" name="no_of_control" value="{{ number_of_control }}">
           <input type="hidden"  id="job_id" name="job_id" value="{{ job_id }}">
           <input type="hidden" id = "final_sample_data" name="final_sample_data">
           <input type="hidden" id = "final_control_data" name="final_control_data">
 
-          <p>Drag and drop all group of samples:</p>
-
-          <div id="sample-container">
-
-         </div>
-                   <p>Drag and drop all control:</p>
-
-          <div id="control-container">
-
-          </div>
-
-
-
        </div>
      </div>
 
-      <ul style="display: inline;">
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="col-xl-2">
+
+         <ul style="display: inline;">
         {% for column in abd_columns %}
       <li class="draggable" draggable ="true" type="text" name="samples" style="margin: 10px;cursor: move; color: black;display: inline;
       background-color: #F0F8FF;margin:2px" >{{ column }}
       </li>
        {% endfor %}
      </ul>
+
+    </div>
+
+      <div class="col-xl-10">
+
+
+
+        </div>
+    </div>
+  </div>
+</div>
+
+
+
+          <p>Drag and drop all group of samples:</p>
+          <div id="sample-container"> </div>
+          <p>Drag and drop all control:</p>
+          <div id="control-container"></div>
+
+
 
       <input type="button" id="confirm" class="btn btn-primary" value="confirm">
 
@@ -119,8 +132,10 @@ for(var i = 1; i <= number_of_samples ; ++i){
     var div = document.createElement('div');
       div.id = `samples-${i}`;
       div.classList.add('samples')
+      div.classList.add('shadow')
 
       document.getElementById('sample-container').appendChild(div);
+
     }
 
 
@@ -128,6 +143,8 @@ for(var i = 1; i <= number_of_control ; ++i){
     var div = document.createElement('div');
       div.id = `control-${i}`;
       div.classList.add('samples')
+      div.classList.add('shadow')
+
 
       document.getElementById('control-container').appendChild(div);
     }

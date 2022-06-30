@@ -6,7 +6,7 @@ import os
 import numpy as np
 
 from . models import DataAnalysis
-from . utils import sort_name
+from . utils import sort_name,removeSpaceAndComma,forPCA
 
 def normaliz_data(job_id,sample_columns,control_columns,norm_method,missing_val_rep):
 
@@ -14,17 +14,7 @@ def normaliz_data(job_id,sample_columns,control_columns,norm_method,missing_val_
     df = pd.read_excel(data.file.path)
     columns = df.columns
 
-    cleaned_col = []
-
-    for column in columns:
-            if ',' in column:
-                column =column.strip()
-                column = column.replace(',',' ')
-                cleaned_col.append(column)
-            else:
-                column =column.strip()
-                cleaned_col.append(column)
-    df.columns = cleaned_col
+    df.columns = removeSpaceAndComma(columns)
 
     missing_val = float(missing_val_rep)
 
@@ -87,8 +77,9 @@ def normaliz_data(job_id,sample_columns,control_columns,norm_method,missing_val_
 
         # df.to_csv("withPval.csv")
 
+        before_norm,after_norm = forPCA(sample_columns,control_columns,sample_normalized_array)
+        df_PCA_before = df[before_norm]
+        df_PCA_after = df[after_norm].join(df_control)
 
+        return df, df_PCA_before, df_PCA_after
 
-
-
-    return df

@@ -48,7 +48,6 @@ def clean_coulumn_heading(sample_data_columns):
                 abd_list.append(abd)
         sample_list.append(abd_list)
     final_list = [x for x in sample_list if x != []]
-    print(final_list)
     return final_list
 
 def sort_name(samples):
@@ -74,3 +73,35 @@ def sort_name(samples):
 
     return name
 
+
+def removeSpaceAndComma(columns):
+    cleaned_col = []
+    for column in columns:
+            if ',' in column:
+                column =column.strip()
+                column = column.replace(',',' ')
+                cleaned_col.append(column)
+            else:
+                column =column.strip()
+                cleaned_col.append(column)
+
+    return cleaned_col
+
+def forPCA(sample_columns,control_columns,sample_normalized_array):
+    before_norm = []
+    after_norm = []
+    for sample_list in sample_columns:
+        for sample in sample_list:
+            before_norm.append(sample)
+
+    for control_list in control_columns:
+        for control in control_list:
+            before_norm.append(control)
+
+    for norm_sample_list in sample_normalized_array:
+        for sample in norm_sample_list:
+            after_norm.append(sample)
+
+    before_norm = removeSpaceAndComma(before_norm)
+    after_norm = removeSpaceAndComma(after_norm)
+    return before_norm,after_norm

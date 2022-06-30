@@ -1,20 +1,22 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-import pandas as pd
 from django.core.files.base import ContentFile
 from django.http import HttpResponse
 from django.http import Http404
+from django.core.files.base import ContentFile
+from django.conf import settings
 
 import os
-from django.conf import settings
 import csv
 from io import StringIO
-from django.core.files.base import ContentFile
+
+import pandas as pd
+from plotly.offline import plot
+import plotly.express as px
 
 from .import normaliz
 from .utils import get_plot, abundances,clean_coulumn_heading
 from .models import DataAnalysis
-
 
 normalized_df = pd.DataFrame()
 
@@ -88,7 +90,6 @@ def pre_process(request):
 @login_required
 def downloadfile(request,job_id = None):
 
-    print(job_id)
     q = DataAnalysis.objects.get(id = job_id)
     file = q.resultData.path
 
@@ -115,8 +116,8 @@ def analaze_cols(request):
         sample_columns = clean_coulumn_heading(sample_data_columns)
         control_columns = clean_coulumn_heading(final_control_data)
 
-        final_data = normaliz.normaliz_data(job_id,sample_columns,control_columns,norm_method,missing_val_rep)
-        final_data.to_csv('resultttt.csv', mode='a')
+        final_data,df_PCA_before, df_PCA_after = normaliz.normaliz_data(job_id,sample_columns,control_columns,norm_method,missing_val_rep)
+        # final_data.to_csv('resultttt.csv', mode='a',index=False)
         new_df = final_data.to_csv()
         updated_file = ContentFile(new_df)
         updated_file.name = "result.csv"
@@ -125,6 +126,24 @@ def analaze_cols(request):
         result_q.resultData = updated_file
         result_q.save()
         data = final_data.head(30)
-        return render(request, 'proteome/normalized.html',{'data':data,'job_id':job_id} )
+
+        # box_plot = plot(fig, output_type = "div")
+        # 'box_plot':box_plot
+
+        pcafig_before = px.scatter(
+            df_PCA_before,
+            )
+
+        pcafig_after = px.scatter(
+            df_PCA_after,
+            )
+
+        pcafig_before_plot = plot(pcafig_before, output_type = "div")
+        pcafig_after_plot = plot(pcafig_after, output_type = "div")
+
+        context = {'data':data,'job_id':job_id,
+            'pcafig_before_plot':pcafig_before_plot,'pcafig_after_plot':pcafig_after_plot}
+
+        return render(request, 'proteome/normalized.html', context)
 
     return render(request, 'proteome/home.html')

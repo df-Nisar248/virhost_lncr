@@ -2,45 +2,25 @@
 
 {% block content %}
 
-<style type="text/css">
-.mainframe {
-  overflow: hidden;
-  position: fixed;
-  background-color:white;
-  height:80%;
-  width:100%;
-}
-.wrapper {
-  margin: 5%;
-  width: 90%;
-  height:80%;
-}
+<a href="{% url 'proteome:download_file' job_id %}"> Download</a>
+<div>
 
-.allow-scroll {
-    position: relative;
-    height: 100%;
-    width: 100%;
-    overflow-y: scroll;
-    overflow-x: scroll;
-}
+<div style="height: 70%;width: 80%">
 
-</style>
+{% autoescape off %}
+{{ pcafig_before_plot }}
+{% endautoescape %}
 
-<a href="{% url 'proteome:plots' %}">View plots</a>
-<div class="mainframe">
-  <div class="wrapper">
-    <div class="allow-scroll">
-      <table>
-     {{ data|safe }}
-      </table>
-    </div>
-  </div>
 </div>
 
-<a href="{% url 'proteome:download_file' job_id %}"> Download</a>
 
-<br>
-<br>
+<div style="height: 70%;width: 80%">
 
+{% autoescape off %}
+{{ pcafig_after_plot }}
+{% endautoescape %}
+
+</div>
+</div>
 
 {% endblock %}

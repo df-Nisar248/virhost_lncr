@@ -15,7 +15,7 @@ from plotly.offline import plot
 import plotly.express as px
 
 from .import normaliz
-from .utils import get_plot, abundances,clean_coulumn_heading
+from .utils import abundances,clean_coulumn_heading
 from .models import DataAnalysis
 
 normalized_df = pd.DataFrame()
@@ -28,52 +28,85 @@ def home(request):
 def input(request):
     return render(request,'proteome/home.html')
 
-
 @login_required
 def inputf(request):
     if (request.method == 'POST'):
-        files = request.FILES['file']
-        # if files.name.endswith('.xlsx'):
-        number_of_samples = int(request.POST.get('no_of_sample'))
-        number_of_control = 1
-        user = request.user
-        data_als = DataAnalysis.objects.create(file = files, user = user)
-        job_id = data_als.id
-        data_als.save()
-        df = pd.read_excel(files)
-        columns = df.columns
-        all_column = []
-        for column in columns:
-            if ',' in column:
-                column = column.replace(',',' ')
-                all_column.append(column)
-            else:
-                all_column.append(column)
-        #send all column name to templates as well
-        abd_columns = abundances(all_column)
-        context = {'abd_columns':abd_columns, 'columns':all_column,'number_of_samples':number_of_samples,
-        'number_of_control':number_of_control,'job_id':job_id}
 
-        return render(request,'proteome/pre_analyze.html',context)
+        files = request.FILES['file']
+
+        if files.name.endswith('.xlsx') or files.name.endswith('.csv') or files.name.endswith('.txt'):
+            user = request.user
+
+            if (request.POST.get('rep_method')) == "techrep":
+                # files = request.FILES['file']
+                number_of_samples = int(request.POST.get('no_of_sample'))
+                number_of_control = 1
+                data_als = DataAnalysis.objects.create(file = files, user = user)
+                job_id = data_als.id
+
+                data_als.save()
+                df = pd.DataFrame()
+                if files.name.endswith('.xlsx'):
+                    df = pd.read_excel(files,engine='openpyxl')
+                elif files.name.endswith('.csv'):
+                    df = pd.read_csv(files)
+                else:
+                    data = DataAnalysis.objects.get(id = job_id)
+                    df = pd.read_csv(data.file.path, delimiter = '\t')
+
+                columns = df.columns
+                all_column = []
+                for column in columns:
+                    if ',' in column:
+                        column = column.replace(',',' ')
+                        all_column.append(column)
+                    else:
+                        all_column.append(column)
+                #send all column name to templates as well
+                abd_columns = abundances(all_column)
+                context = {'abd_columns':abd_columns, 'columns':all_column,'number_of_samples':number_of_samples,
+                'number_of_control':number_of_control,'job_id':job_id}
+                return render(request,'proteome/pre_analyze.html',context)
+
+            else:
+                number_of_batches = int(request.POST.get('no_of_batches'))
+                data_als = DataAnalysis.objects.create(file = files, user = user)
+                job_id = data_als.id
+                data_als.save()
+
+                if files.name.endswith('.xlsx'):
+                    df = pd.read_excel(files,engine='openpyxl')
+                elif files.name.endswith('.csv'):
+                    df = pd.read_csv(files)
+                else:
+                    data = DataAnalysis.objects.get(id = job_id)
+                    df = pd.read_csv(data.file.path, delimiter = '\t')
+
+                columns = df.columns
+                all_column = []
+                for column in columns:
+                    if ',' in column:
+                        column = column.replace(',',' ')
+                        all_column.append(column)
+                    else:
+                        all_column.append(column)
+                #send all column name to templates as well
+                abd_columns = abundances(all_column)
+
+                context = {'abd_columns':abd_columns, 'columns':all_column,'number_of_batches':number_of_batches,
+                    'job_id':job_id}
+
+                return render(request,'proteome/pre_anlz_bio.html',context)
+
+        else:
+            #send message saying file format incorrect
+            return render(request, 'proteome/home.html')
+
+
     # form = FileUpload()
     # data = {'form': form}
     return render(request, 'proteome/home.html')
 
-@login_required
-def plotss(request):
-    df = normalized_df
-
-    x1 = data.x1
-
-    x2 = data.x2
-
-    x3 = data.x3
-
-    sample_a_plot = get_plot([x1,x2,x3])
-    context = {'sample_a_plot': sample_a_plot}
-    return render(request, 'proteome/plots.html',context)
-    # sample_b_plot = get_plot([b1,b2,b3])
-    # sample_c_plot = get_plot([c1,c2,c3])
 
 @login_required
 def pre_process(request):
@@ -118,7 +151,7 @@ def analaze_cols(request):
 
         final_data,df_PCA_before, df_PCA_after = normaliz.normaliz_data(job_id,sample_columns,control_columns,norm_method,missing_val_rep)
         # final_data.to_csv('resultttt.csv', mode='a',index=False)
-        new_df = final_data.to_csv()
+        new_df = final_data.to_csv(index = False)
         updated_file = ContentFile(new_df)
         updated_file.name = "result.csv"
 
@@ -147,3 +180,78 @@ def analaze_cols(request):
         return render(request, 'proteome/normalized.html', context)
 
     return render(request, 'proteome/home.html')
+
+
+@login_required
+def analaze_cols_bio(request):
+    if (request.method == 'POST'):
+        sample_data_columns = request.POST.get('final_sample_data')
+        final_control_data = request.POST.get('final_control_data')
+        job_id = request.POST.get('job_id')
+        missing_val_rep = request.POST.get('missing_val')
+        norm_method = request.POST.get('norm_method')
+
+        sample_columns = clean_coulumn_heading(sample_data_columns)
+        control_columns = clean_coulumn_heading(final_control_data)
+
+        # final_data,df_PCA_before, df_PCA_after = normaliz.normaliz_data_bio(job_id,sample_columns,control_columns,norm_method,missing_val_rep)
+
+        final_data, df_bc, df_after_bc = normaliz.normaliz_data_bio(job_id,sample_columns,control_columns,norm_method,missing_val_rep)
+
+        new_df = final_data.to_csv(index = False)
+        updated_file = ContentFile(new_df)
+        updated_file.name = "result.csv"
+
+        result_q = DataAnalysis.objects.get(id =job_id)
+        result_q.resultData = updated_file
+        result_q.save()
+        data = final_data.head(30)
+
+        # box_plot = plot(fig, output_type = "div")
+        # 'box_plot':box_plot
+
+        # pcafig_before = px.scatter(
+        #     df_PCA_before,
+        #     )
+
+        # pcafig_after = px.scatter(
+        #     df_PCA_after,
+        #     )
+
+        before_bc_box = px.box(df_bc)
+
+        after_bc_box = px.box(df_after_bc)
+
+        box_before_plot = plot(before_bc_box, output_type = "div")
+        box_after_plot = plot(after_bc_box, output_type = "div")
+
+        context = {'data':data,'job_id':job_id,
+            'box_before_plot':box_before_plot,'box_after_plot':box_after_plot}
+
+        return render(request, 'proteome/normalized.html', context)
+
+    return render(request, 'proteome/home.html')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

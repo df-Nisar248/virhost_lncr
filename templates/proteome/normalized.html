@@ -1,8 +1,8 @@
 {% extends 'proteome/base.html' %}
 
 {% block content %}
-
-<a href="{% url 'proteome:download_file' job_id %}"> Download</a>
+<label>Download Complete Result</label>
+<a href="{% url 'proteome:download_file' job_id %}"><button class="btn btn-lg btn-danger">Download</button></a>
 <div>
 
 <div style="height: 70%;width: 80%">
@@ -13,7 +13,6 @@
 
 </div>
 
-
 <div style="height: 70%;width: 80%">
 
 {% autoescape off %}
@@ -23,4 +22,25 @@
 </div>
 </div>
 
+
+<div>
+
+
+{% if box_before_plot %}
+<div style="height: 70%;width: 80%">
+<h4>Before Batch correction</h4>
+{% autoescape off %}
+{{ box_before_plot }}
+{% endautoescape %}
+
+</div>
+
+<h4>After Batch correction</h4>
+<div style="height: 70%;width: 80%">
+{% autoescape off %}
+{{ box_after_plot }}
+{% endautoescape %}
+</div>
+</div>
+{% endif %}
 {% endblock %}

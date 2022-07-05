@@ -1,28 +1,5 @@
 import pandas as pd
-import matplotlib.pyplot as plt
-import base64
-from io import BytesIO
 from difflib import SequenceMatcher
-
-def get_graph():
-    buffer = BytesIO()
-    plt.savefig(buffer, fromat = 'png')
-    buffer.seek(0)
-    img_png = buffer.getvalue()
-    graph = base64.b64encode(img_png)
-    graph = graph.decode('utf-8')
-    buffer.close()
-    return graph
-
-def get_plot(x):
-    plt.switch_backend('AGG')
-    plt.figure(figsize = (10,5))
-    plt.title('Abundance of peptides')
-    plt.boxplot(x)
-    plt.xlabel('Abundance')
-    plt.tight_layout()
-    graph = get_graph()
-    return graph
 
 def abundances(columns):
     abundance_list =  []
@@ -105,3 +82,20 @@ def forPCA(sample_columns,control_columns,sample_normalized_array):
     before_norm = removeSpaceAndComma(before_norm)
     after_norm = removeSpaceAndComma(after_norm)
     return before_norm,after_norm
+
+
+def expandNCleanColumns(sample_columns,control_columns):
+    colum_list = []
+    for sample_list in sample_columns:
+        for sample in sample_list:
+            colum_list.append(sample)
+
+    for control_list in control_columns:
+        for control in control_list:
+            colum_list.append(control)
+
+    colum_list = removeSpaceAndComma(colum_list)
+
+    return colum_list
+
+

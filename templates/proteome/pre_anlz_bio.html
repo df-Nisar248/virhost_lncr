@@ -1,9 +1,8 @@
 {% extends 'proteome/base.html' %}
+
 {% block content %}
 
-
 <style type="text/css">
-
 .dragging{
     opacity: 0.5;
 }
@@ -21,6 +20,7 @@
   margin: 10px;
   flex-wrap: wrap;
 }
+
 
 div[class^="samples"]
  {
@@ -80,28 +80,26 @@ div[class^="samples"]
     overflow-y: scroll;
     overflow-x: scroll;
 }
-
-
-
 </style>
 
 
-    {% if abd_columns %}
-        <form action="{% url 'proteome:analaze_cols' %}" method="POST">
+
+
+
+ {% if abd_columns %}
+<form action="{% url 'proteome:analaze_cols_bio' %}" method="POST">
           {% csrf_token %}
-          <div class="container">
+    <div class="container">
             <div class="row">
-          <input type="hidden" id="no_of_sample" name="no_of_sample" value="{{ number_of_samples }}">
-          <input type="hidden"  id="no_of_control" name="no_of_control" value="{{ number_of_control }}">
+          <input type="hidden" id="number_of_batches" name="number_of_batches" value="{{ number_of_batches }}">
           <input type="hidden"  id="job_id" name="job_id" value="{{ job_id }}">
           <input type="hidden" id = "final_sample_data" name="final_sample_data">
           <input type="hidden" id = "final_control_data" name="final_control_data">
           </div>
-     </div>
+    </div>
 
 
 <div class="main-container" id="main-cont">
-
   <div class="abdlistcolumn">
     <div class="wrapper1">
     <div class="allow-scroll1">
@@ -119,27 +117,25 @@ div[class^="samples"]
   </div>
   </div>
 
-<div class="control-and-sample">
 
+<div class="control-and-sample">
   <div class="wrapper">
     <div class="allow-scroll">
-
-      <p>Drag and drop all group of samples:</p>
+      <p>Drag and drop samples in each Batch</p>
           <div id="sample-container"> </div>
-          <p>Drag and drop all control:</p>
+      <p>Drag and drop Control of each Batch</p>
           <div id="control-container"></div>
     </div>
   </div>
+</div>
+<input type="button" id="confirm" class="btn btn-lg btn-primary" value="Next>>" style="position: relative; top: 570px; left: 50%">
 
 </div>
 
-  <input type="button" id="confirm" class="btn btn-lg btn-primary" value="Next>>" style="position: relative; top: 570px; left: 50%">
-
-</div>
+{% endif %}
 
 
-       <div id="hidden-from" style="display: none;">
-
+     <div id="hidden-from" style="display: none;">
         <div class="shadow-lg px-5 py-5" style="position:absolute; top:30%; left:30%;">
 
           <label>Normalization method:</label>
@@ -160,47 +156,46 @@ div[class^="samples"]
         <div class="form-check">
           <input class="form-check-input" type="radio" name="norm_method" id="Quntail" value="Quntail">
           <label class="form-check-label" for="Quntail">
-              Smooth Quantile
+            Quntail
           </label>
         </div>
         <label>Impute missing value with:</label>
         <input type="text" name="missing_val">
       <input class ="form-button btn btn-primary mt-4" type="submit" name="Analyze" id="submit" disabled>
     </div>
+ </div>
 
-  </div>
 
+</form>
 
-    </form>
-    {% endif %}
 
 
 
 <script type="text/javascript">
+
 'use strict';
 
-const number_of_samples = Number(document.querySelector('#no_of_sample').value);
-const number_of_control = Number(document.querySelector('#no_of_control').value);
+const number_of_batches = Number(document.querySelector('#number_of_batches').value);
 
-for(var i = 1; i <= number_of_samples ; ++i){
+for(var i = 1; i <= number_of_batches ; ++i){
     var div = document.createElement('div');
       div.id = `samples-${i}`;
-      div.classList.add('samples')
-      div.classList.add('shadow-lg')
+      div.classList.add('samples');
+      div.classList.add('shadow-lg');
       document.getElementById('sample-container').appendChild(div);
 
     }
 
 
-for(var i = 1; i <= number_of_control ; ++i){
+for(var i = 1; i <= number_of_batches ; ++i){
     var div = document.createElement('div');
       div.id = `control-${i}`;
       div.classList.add('samples')
       div.classList.add('shadow-lg')
 
+
       document.getElementById('control-container').appendChild(div);
     }
-
 
 
 const draggables = document.querySelectorAll('.draggable');
@@ -243,57 +238,44 @@ let controlJoinedAbdarray = [];
 let controlData = [];
 
 
-for (let i = 1; i <= number_of_samples; i++){
+for (let i = 1; i <= number_of_batches; i++){
   let sample_div = document.querySelector(`#samples-${i}`)
   if(sample_div.childNodes.length > 0){
   for (let index = 0; index < sample_div.childNodes.length; index++){
       abdSample= sample_div.childNodes[index];
       value = abdSample.textContent;
       abdarray.push(value);
-      // abdarray.push("RepsepRatTor");
     }
     sampleJoinedAbdarray = abdarray.join("RepsepRatTor")
-    // abdarray.push("SaMpSepeR");
   }
-    sample_data.push(sampleJoinedAbdarray);
+sample_data.push(sampleJoinedAbdarray);
 abdarray = [];
 }
 let sample_data_return = sample_data.join("SaMpSepeR")
 
 
-for(let j = 1; j<= number_of_control; j++){
+
+for(let j = 1; j<= number_of_batches; j++){
 let control_div = document.querySelector(`#control-${j}`)
 if(control_div.childNodes.length > 0){
   for(let x = 0; x < control_div.childNodes.length; x++){
     abdControl = control_div.childNodes[x];
     controlValue = abdControl.textContent;
     controlAbdarray.push(controlValue);
-    // controlAbdarray.push("RepsepRatTor");
-
   }
   controlJoinedAbdarray = controlAbdarray.join("RepsepRatTor")
-// controlAbdarray.push("SaMpSepeR");
 }
 controlData.push(controlJoinedAbdarray);
 controlAbdarray = [];
 }
-
 let control_data_return = controlData.join("SaMpSepeR")
 
 document.querySelector('#final_sample_data').value = sample_data_return;
-
-console.log(sample_data_return)
-
 document.querySelector('#final_control_data').value = control_data_return;
-
-console.log(control_data_return)
-
 const submitButton = document.querySelector('#submit');
 submitButton.disabled = false;
-
 hidForm.style.display = 'block';
 document.querySelector('#main-cont').style.opacity = 0.08;
-
 });
 
 </script>

@@ -7,12 +7,13 @@ import numpy as np
 from combat.pycombat import pycombat
 
 from . models import DataAnalysis
-from . utils import sort_name,removeSpaceAndComma,forPCA,expandNCleanColumns
+from . utils import sort_name,removeSpaceAndComma,forPCA,expandNCleanColumns,removeavgsmp
 
 def normaliz_data(job_id,sample_columns,control_columns,norm_method,missing_val_rep):
 
     data = DataAnalysis.objects.get(id = job_id)
     datafile = data.file.path
+    islabelled  = data.labledData
     df = pd.DataFrame()
 
     if (datafile.endswith('.xlsx')):
@@ -60,7 +61,6 @@ def normaliz_data(job_id,sample_columns,control_columns,norm_method,missing_val_
         df_for_qunt.set_index('Accession', inplace = True)
         quant_df = quantile_normalize(df_for_qunt)
 
-        print(quant_df)
 
 
     minn = min(mediun_list.values())
@@ -70,51 +70,36 @@ def normaliz_data(job_id,sample_columns,control_columns,norm_method,missing_val_
     for key,value in mediun_list.items():
         multiplication_fact_list[key] = (minn/value)
 
-    control_norm_array = []
+    cna = []
     for controls in control_columns:
+        each_control = []
         for replicates in controls:
             df['normalized '+replicates] = df[replicates] * multiplication_fact_list[replicates]
-            control_norm_array.append('normalized '+replicates)
+            each_control.append('normalized '+replicates)
+        cna.append(each_control)
 
-    sample_normalized_array = []
+
+    sna = []
     for samples in sample_columns:
         each_sample = []
         for samp_replicates in samples:
             df['normalized '+samp_replicates] = df[samp_replicates] * multiplication_fact_list[samp_replicates]
             each_sample.append('normalized '+samp_replicates)
-        sample_normalized_array.append(each_sample)
+        sna.append(each_sample)
 
-    df_control = df[[y for y in control_norm_array]]
-    average_normalized_sample_array = []
 
-    for samples in sample_normalized_array:
-        df_sample = df[[y for y in samples]]
-        #caculating average normalized
-        average_normalized_sample_array.append("average_normalized"+sort_name(samples))
+    before_norm,after_norm = forPCA(sample_columns,control_columns,sna,cna)
 
-        df["average_normalized"+sort_name(samples)] = df_sample.mean(axis = 1)
-        #calculating P value
 
-        _ ,df["P VALUE of"+sort_name(samples)]= stats.ttest_ind(df_control,df_sample,axis=1, equal_var = False)
-
-    df["average_normalized_of_CONTROL"] = df_control.mean(axis =1 )
-
-    #calculating foldchange
-    # for avg_sample in average_normalized_sample_array:
-    #     df['FOLDCHANGE of '+sort_name(avg_sample)] = df["average_normalized_of_CONTROL"] / df
-    # # print(df["average_normalized_of_CONTROL"])
-
-    # df.to_csv("withPval.csv")
-
-    before_norm,after_norm = forPCA(sample_columns,control_columns,sample_normalized_array)
     df_PCA_before = df[before_norm]
+    df_PCA_after = df[after_norm]
+
     df_PCA_before['Accession']  = df ['Accession']
     df_PCA_before.set_index('Accession', inplace = True)
-    df_PCA_after = df[after_norm].join(df_control)
 
     df_PCA_after['Accession']  = df ['Accession']
     df_PCA_after.set_index('Accession', inplace = True)
-    return df, df_PCA_before, df_PCA_after
+    return df, df_PCA_before, df_PCA_after , cna, sna
 
 
 # normalizing biological rreplicates data
@@ -165,32 +150,32 @@ def normaliz_data_bio(job_id,sample_columns,control_columns,norm_method,missing_
     for key,value in mediun_list.items():
         multiplication_fact_list[key] = (minn/value)
 
-    control_norm_array = []
+    cna = []
     for controls in control_columns:
         each_control = []
         for replicates in controls:
             df['normalized '+replicates] = df[replicates] * multiplication_fact_list[replicates]
             each_control.append('normalized '+replicates)
 
-        control_norm_array.append(each_control)
+        cna.append(each_control)
 
 
 
-    sample_normalized_array = []
+    sna = []
     for samples in sample_columns:
         each_sample = []
         for samp_replicates in samples:
             df['normalized '+samp_replicates] = df[samp_replicates] * multiplication_fact_list[samp_replicates]
             each_sample.append('normalized '+samp_replicates)
 
-        sample_normalized_array.append(each_sample)
+        sna.append(each_sample)
 
-    # df_control = df[[y for y in control_norm_array]]
+    # df_control = df[[y for y in cna]]
 
     batch_list = []
     df_list_sample = []
     i = 1
-    for batch in sample_normalized_array:
+    for batch in sna:
         for sample in batch:
             batch_list.append(i)
             df_list_sample.append(sample)
@@ -198,23 +183,19 @@ def normaliz_data_bio(job_id,sample_columns,control_columns,norm_method,missing_
 
     i = 1
     df_list_control = []
-    for batch in control_norm_array:
+    for batch in cna:
         for control in batch:
             batch_list.append(i)
             df_list_control.append(control)
         i +=1
 
     df_columns_for_bc = df_list_sample + df_list_control
-    print(batch_list)
-    print(df_columns_for_bc)
 
-
-    before_norm,after_norm = forPCA(sample_columns,control_columns,sample_normalized_array)
+    before_norm,after_norm = forPCA(sample_columns,control_columns,sna)
     df_PCA_before = df[before_norm]
     df_PCA_before['Accession']  = df ['Accession']
     df_PCA_before.set_index('Accession', inplace = True)
 
-    print(df_PCA_before)
 
     df_bc = df[df_columns_for_bc]
     df_bc['Accession'] = df['Accession']
@@ -226,7 +207,7 @@ def normaliz_data_bio(job_id,sample_columns,control_columns,norm_method,missing_
 
     # average_normalized_sample_array = []
 
-    # for samples in sample_normalized_array:
+    # for samples in sna:
 
     #     df_sample = df[[y for y in samples]]
     #     #caculating average normalized
@@ -239,7 +220,7 @@ def normaliz_data_bio(job_id,sample_columns,control_columns,norm_method,missing_
 
     # df["average_normalized_of_CONTROL"] = df_control.mean(axis =1 )
 
-    # before_norm,after_norm = forPCA(sample_columns,control_columns,sample_normalized_array)
+    # before_norm,after_norm = forPCA(sample_columns,control_columns,sna)
     # df_PCA_before = df[before_norm]
     # df_PCA_after = df[after_norm].join(df_control)
 
@@ -256,3 +237,58 @@ def quantile_normalize(df):
     df_mean.index = np.arange(1, len(df_mean) + 1)
     df_qn =df.rank(method="min").stack().astype(int).map(df_mean).unstack()
     return(df_qn)
+
+def pvalAndRatio(cna,sna,job_id):
+    data = DataAnalysis.objects.get(id = job_id)
+    datafile = data.resultData.path
+    islabelled  = data.labledData
+    df = pd.DataFrame()
+
+    if (datafile.endswith('.xlsx')):
+        df = pd.read_excel(datafile, engine='openpyxl')
+
+    elif(datafile.endswith('.csv')):
+        df = pd.read_csv(datafile,)
+    else:
+        df = pd.read_csv(datafile, delimiter = '\t')
+    columns = df.columns
+    df.columns = removeSpaceAndComma(columns)
+
+
+    average_normalized_sample_array = []
+    average_normalized_control_array = []
+
+    controlcols = []
+
+    for controls in cna:
+        for control in controls:
+            controlcols.append(control)
+
+    avrg_norm_array = []
+
+    for samples in sna:
+        df_sample = df[[y for y in samples]]
+        #caculating average normalized
+        average_normalized_sample_array.append("average_normalized"+sort_name(samples))
+        df["average_normalized"+sort_name(samples)] = df_sample.mean(axis = 1)
+        avrg_norm_array.append("average_normalized"+sort_name(samples))
+        #calculating P value
+        _ ,df["P VALUE of"+sort_name(samples)]= stats.ttest_ind(df[controlcols],df_sample,axis=1, equal_var = False)
+
+    df["average_normalized_of_CONTROL"] = df[controlcols].mean(axis =1 )
+
+    #calculating foldchange
+    foldchange_array = []
+    print(avrg_norm_array)
+    for avg_sample in avrg_norm_array:
+        sample_name  = avg_sample.replace("average_normalized" , '')
+        foldchange_array.append('FOLDCHANGE of '+ sample_name)
+        df['FOLDCHANGE of '+ sample_name ] = df["average_normalized_of_CONTROL"].div(df[avg_sample])
+
+    #caluclating log2 of foldchange
+    for foldchange in foldchange_array:
+        name = foldchange.replace("FOLDCHANGE of ",'')
+        df['LOG2 foldchange of'+ name ] = np.log2(df[foldchange])
+
+    df.to_csv('log2.csv')
+    return df

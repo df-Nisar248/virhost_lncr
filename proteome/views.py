@@ -15,7 +15,7 @@ from plotly.offline import plot
 import plotly.express as px
 
 from .import normaliz
-from .utils import abundances,clean_coulumn_heading
+from .utils import abundances,clean_coulumn_heading,intensities
 from .models import DataAnalysis
 
 normalized_df = pd.DataFrame()
@@ -33,6 +33,13 @@ def inputf(request):
     if (request.method == 'POST'):
 
         files = request.FILES['file']
+        lableornot = request.POST.get('lableornot')
+        lablled = False
+        lablefree = False
+        if (lableornot == "lablled"):
+            lablled = True
+        if (lableornot == "lablefree"):
+            lablefree = True
 
         if files.name.endswith('.xlsx') or files.name.endswith('.csv') or files.name.endswith('.txt'):
             user = request.user
@@ -41,21 +48,21 @@ def inputf(request):
                 # files = request.FILES['file']
                 number_of_samples = int(request.POST.get('no_of_sample'))
                 number_of_control = 1
-                data_als = DataAnalysis.objects.create(file = files, user = user)
+                data_als = DataAnalysis.objects.create(file = files, user = user, labledData = lablled,lableFreeData = lablefree )
                 job_id = data_als.id
-
                 data_als.save()
                 df = pd.DataFrame()
                 if files.name.endswith('.xlsx'):
                     df = pd.read_excel(files,engine='openpyxl')
                 elif files.name.endswith('.csv'):
-                    df = pd.read_csv(files)
+                    df = pd.read_csv(files , encoding_errors = 'ignore')
                 else:
                     data = DataAnalysis.objects.get(id = job_id)
-                    df = pd.read_csv(data.file.path, delimiter = '\t')
+                    df = pd.read_csv(data.file.path, delimiter = '\t', encoding_errors = 'ignore')
 
                 columns = df.columns
                 all_column = []
+                abd_columns = []
                 for column in columns:
                     if ',' in column:
                         column = column.replace(',',' ')
@@ -63,7 +70,11 @@ def inputf(request):
                     else:
                         all_column.append(column)
                 #send all column name to templates as well
-                abd_columns = abundances(all_column)
+                if lableornot == "lablled":
+                    abd_columns = abundances(all_column)
+                else:
+                    abd_columns = intensities(all_column)
+
                 context = {'abd_columns':abd_columns, 'columns':all_column,'number_of_samples':number_of_samples,
                 'number_of_control':number_of_control,'job_id':job_id}
                 return render(request,'proteome/pre_analyze.html',context)
@@ -77,10 +88,10 @@ def inputf(request):
                 if files.name.endswith('.xlsx'):
                     df = pd.read_excel(files,engine='openpyxl')
                 elif files.name.endswith('.csv'):
-                    df = pd.read_csv(files)
+                    df = pd.read_csv(files, encoding_errors = 'ignore')
                 else:
                     data = DataAnalysis.objects.get(id = job_id)
-                    df = pd.read_csv(data.file.path, delimiter = '\t')
+                    df = pd.read_csv(data.file.path, delimiter = '\t', encoding_errors = 'ignore')
 
                 columns = df.columns
                 all_column = []
@@ -149,7 +160,13 @@ def analaze_cols(request):
         sample_columns = clean_coulumn_heading(sample_data_columns)
         control_columns = clean_coulumn_heading(final_control_data)
 
-        final_data,df_PCA_before, df_PCA_after = normaliz.normaliz_data(job_id,sample_columns,control_columns,norm_method,missing_val_rep)
+        final_data, df_PCA_before, df_PCA_after , cna, sna = normaliz.normaliz_data(job_id,sample_columns,
+            control_columns,norm_method,missing_val_rep)
+
+        request.session['cna'] = cna
+        request.session['sna'] = sna
+
+
         # final_data.to_csv('resultttt.csv', mode='a',index=False)
         new_df = final_data.to_csv(index = False)
         updated_file = ContentFile(new_df)
@@ -175,7 +192,7 @@ def analaze_cols(request):
         pcafig_after_plot = plot(pcafig_after, output_type = "div")
 
         context = {'data':data,'job_id':job_id,
-            'pcafig_before_plot':pcafig_before_plot,'pcafig_after_plot':pcafig_after_plot}
+            'pcafig_before_plot':pcafig_before_plot,'pcafig_after_plot':pcafig_after_plot, 'cna':cna}
 
         return render(request, 'proteome/normalized.html', context)
 
@@ -226,32 +243,17 @@ def analaze_cols_bio(request):
         box_after_plot = plot(after_bc_box, output_type = "div")
 
         context = {'data':data,'job_id':job_id,
-            'box_before_plot':box_before_plot,'box_after_plot':box_after_plot}
+            'box_before_plot':box_before_plot,'box_after_plot':box_after_plot, 'job_id':job_id}
 
         return render(request, 'proteome/normalized.html', context)
 
     return render(request, 'proteome/home.html')
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@login_required
+def pvalues(request):
+    if (request.method == 'POST'):
+        job_id = request.POST.get('job_id')
+        cna = request.session.get('cna')
+        sna = request.session.get('sna')
+        pval = normaliz.pvalAndRatio(cna,sna,job_id)
 

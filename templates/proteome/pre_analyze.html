@@ -81,9 +81,10 @@ div[class^="samples"]
     overflow-x: scroll;
 }
 
-
-
 </style>
+
+
+
 
 
     {% if abd_columns %}
@@ -104,13 +105,14 @@ div[class^="samples"]
 
   <div class="abdlistcolumn">
     <div class="wrapper1">
-    <div class="allow-scroll1">
+    <div class="allow-scroll1" id = "abdlistspace">
 
        <ul>
         {% for column in abd_columns %}
 
       <li class="draggable bd-highlight" draggable ="true" type="text" name="samples" style="cursor: move; color: black;
       background-color: #F0F8FF; margin: 5px;" >{{ column }}
+
       </li>
 
        {% endfor %}
@@ -205,6 +207,7 @@ for(var i = 1; i <= number_of_control ; ++i){
 
 const draggables = document.querySelectorAll('.draggable');
 const containers = document.querySelectorAll('.samples');
+const abdlistspace = document.getElementById('abdlistspace');
 
 draggables.forEach(draggable =>{
     draggable.addEventListener('dragstart',() =>{
@@ -213,14 +216,21 @@ draggables.forEach(draggable =>{
     draggable.addEventListener('dragend',() =>{
       draggable.classList.remove('dragging')
       draggable.classList.add('inside-div')
+
     })
 })
 
 containers.forEach(container => {
-    container.addEventListener('dragover', e => {
+      container.addEventListener('dragover', e => {
       e.preventDefault()
       const draggable = document.querySelector('.dragging')
       container.appendChild(draggable)
+            });
+
+      abdlistspace.addEventListener('dragover', e => {
+      e.preventDefault()
+      const draggable = document.querySelector('.dragging')
+      abdlistspace.appendChild(draggable)
             });
 });
 

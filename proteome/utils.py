@@ -64,7 +64,7 @@ def removeSpaceAndComma(columns):
 
     return cleaned_col
 
-def forPCA(sample_columns,control_columns,sample_normalized_array):
+def forPCA(sample_columns,control_columns,sna,cna):
     before_norm = []
     after_norm = []
     for sample_list in sample_columns:
@@ -75,9 +75,13 @@ def forPCA(sample_columns,control_columns,sample_normalized_array):
         for control in control_list:
             before_norm.append(control)
 
-    for norm_sample_list in sample_normalized_array:
+    for norm_sample_list in sna:
         for sample in norm_sample_list:
             after_norm.append(sample)
+
+    for norm_control_list in cna:
+        for control in norm_control_list:
+            after_norm.append(control)
 
     before_norm = removeSpaceAndComma(before_norm)
     after_norm = removeSpaceAndComma(after_norm)
@@ -98,4 +102,18 @@ def expandNCleanColumns(sample_columns,control_columns):
 
     return colum_list
 
+def intensities(columns):
+    intensitiy_list =  []
+    for l in columns:
+        l = l.strip()
+        if ('intensity' in l) or ('Intensity' in l) or ('intensities' in l) or ('Intensities' in l):
+            intensitiy_list.append(l)
+    intensitiy_list.sort()
+    return intensitiy_list
 
+def removeavgsmp(avg_sample):
+    if 'average_normalized' in avg_sample:
+        colname = avg_sample.replace('average_normalized','')
+        return colname
+    else:
+        return avg_sample

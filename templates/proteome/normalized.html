@@ -1,6 +1,8 @@
 {% extends 'proteome/base.html' %}
 
 {% block content %}
+
+
 <label>Download Complete Result</label>
 <a href="{% url 'proteome:download_file' job_id %}"><button class="btn btn-lg btn-danger">Download</button></a>
 <div>
@@ -42,5 +44,44 @@
 {% endautoescape %}
 </div>
 </div>
+
 {% endif %}
+
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col col-xl-6">
+
+<form action="{% url 'proteome:pvalues' %}" method="POST" class="m-5">
+
+    {% csrf_token %}
+
+<input type="hidden"  id="job_id" name="job_id" value="{{ job_id }}">
+
+
+
+<h6 class="h6">Ratio calculation:</h6>
+
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="pvalue" id="pvalue" checked>
+  <label class="form-check-label" for="pvalue">P-Value</label>
+</div>
+
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="adjpvalue" id="adjpvalue">
+  <label class="form-check-label" for="adjpvalue"> Adjusted P value
+
+    </label>
+
+</div>
+
+
+
+
+<input type="submit" name="submit">
+
+</form>
+
+</div>
+</div>
+</div>
 {% endblock %}

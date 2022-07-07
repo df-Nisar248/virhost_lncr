@@ -5,7 +5,8 @@ class DataAnalysis(models.Model):
     created = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(UserBase, null = True, on_delete=models.CASCADE)
     resultData = models.FileField(null = True, upload_to='documents/')
-
+    labledData = models.BooleanField(default=False)
+    lableFreeData = models.BooleanField(default=False)
 
     def __str__(self):
         return str(self.user)

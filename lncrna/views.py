@@ -90,7 +90,7 @@ def searchresult(request):
             return redirect('home')
     else:
         messages.error(request, 'Enter ensembl id or NCBI id')
-        return redirect('home')
+        return redirect('lncrna:home')
 
 def bquery(request):
     q = request.GET.get('q')

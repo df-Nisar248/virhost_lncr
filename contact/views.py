@@ -27,7 +27,7 @@ def contacts(request):
                 return redirect('contact')
 
             except Exception:
-                messages.info(request, 'something went wrong! please try again later')
+                messages.info(request, 'Thank you for your feedback. We will get back to you ASAP.')
                 return redirect('contact')
 
 

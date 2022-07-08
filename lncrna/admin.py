@@ -28,11 +28,11 @@ class LncrnaAdmin(admin.ModelAdmin):
     def upload_csv(self, request):
         if (request.method == 'POST' ):
             csv_file = request.FILES['csv_upload']
-            if not csv_file.name.endswith('.csv'):
-                messages.warning(request,'the wrong type of file was uploaded ')
-                return HttpResponseRedirect(request.path_info)
+            # if not csv_file.name.endswith('.csv') or csv_file.name.endswith('.xlsx'):
+            #     messages.warning(request,'the wrong type of file was uploaded ')
+            #     return HttpResponseRedirect(request.path_info)
 
-            df = pd.read_csv(csv_file, encoding_errors='ignore')
+            df = pd.read_excel(csv_file)
             df.fillna('', inplace=True)
             df['Stimuli'] = df['Stimuli'].str.replace('/','_')
 
@@ -76,11 +76,8 @@ class LncrnaTargetAdmin(admin.ModelAdmin):
     def upload_csv_trgt(self, request):
         if (request.method == 'POST' ):
             csv_file = request.FILES['csv_upload']
-            if not csv_file.name.endswith('.csv'):
-                messages.warning(request,'the wrong type of file was uploaded ')
-                return HttpResponseRedirect(request.path_info)
 
-            df = pd.read_csv(csv_file, encoding_errors='ignore')
+            df = pd.read_excel(csv_file)
             df.fillna('', inplace=True)
             df_records = df.to_dict('records')
 

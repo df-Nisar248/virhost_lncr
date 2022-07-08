@@ -99,7 +99,7 @@ def normaliz_data(job_id,sample_columns,control_columns,norm_method,missing_val_
 
     df_PCA_after['Accession']  = df ['Accession']
     df_PCA_after.set_index('Accession', inplace = True)
-    return df, df_PCA_before, df_PCA_after , cna, sna
+    return df_PCA_before, df_PCA_after , cna, sna
 
 
 # normalizing biological rreplicates data
@@ -236,6 +236,7 @@ def quantile_normalize(df):
     df_mean = df_sorted.mean(axis=1)
     df_mean.index = np.arange(1, len(df_mean) + 1)
     df_qn =df.rank(method="min").stack().astype(int).map(df_mean).unstack()
+    df_qn.to_csv('quantiled.csv')
     return(df_qn)
 
 def pvalAndRatio(cna,sna,job_id):
@@ -283,7 +284,7 @@ def pvalAndRatio(cna,sna,job_id):
     for avg_sample in avrg_norm_array:
         sample_name  = avg_sample.replace("average_normalized" , '')
         foldchange_array.append('FOLDCHANGE of '+ sample_name)
-        df['FOLDCHANGE of '+ sample_name ] = df["average_normalized_of_CONTROL"].div(df[avg_sample])
+        df['FOLDCHANGE of '+ sample_name ] = df[avg_sample].div(df["average_normalized_of_CONTROL"])
 
     #caluclating log2 of foldchange
     for foldchange in foldchange_array:

@@ -166,8 +166,6 @@ def analaze_cols(request):
         request.session['cna'] = cna
         request.session['sna'] = sna
 
-
-        # final_data.to_csv('resultttt.csv', mode='a',index=False)
         new_df = final_data.to_csv(index = False)
         updated_file = ContentFile(new_df)
         updated_file.name = "result.csv"
@@ -192,7 +190,7 @@ def analaze_cols(request):
         pcafig_after_plot = plot(pcafig_after, output_type = "div")
 
         context = {'data':data,'job_id':job_id,
-            'pcafig_before_plot':pcafig_before_plot,'pcafig_after_plot':pcafig_after_plot, 'cna':cna}
+            'pcafig_before_plot':pcafig_before_plot,'pcafig_after_plot':pcafig_after_plot}
 
         return render(request, 'proteome/normalized.html', context)
 
@@ -211,9 +209,11 @@ def analaze_cols_bio(request):
         sample_columns = clean_coulumn_heading(sample_data_columns)
         control_columns = clean_coulumn_heading(final_control_data)
 
-        # final_data,df_PCA_before, df_PCA_after = normaliz.normaliz_data_bio(job_id,sample_columns,control_columns,norm_method,missing_val_rep)
+        df_bc, df_after_bc, cna, sna = normaliz.normaliz_data_bio(job_id,sample_columns,control_columns,
+            norm_method,missing_val_rep)
 
-        final_data, df_bc, df_after_bc = normaliz.normaliz_data_bio(job_id,sample_columns,control_columns,norm_method,missing_val_rep)
+        request.session['cna'] = cna
+        request.session['sna'] = sna
 
         new_df = final_data.to_csv(index = False)
         updated_file = ContentFile(new_df)
@@ -222,7 +222,6 @@ def analaze_cols_bio(request):
         result_q = DataAnalysis.objects.get(id =job_id)
         result_q.resultData = updated_file
         result_q.save()
-        data = final_data.head(30)
 
         # box_plot = plot(fig, output_type = "div")
         # 'box_plot':box_plot
@@ -256,4 +255,3 @@ def pvalues(request):
         cna = request.session.get('cna')
         sna = request.session.get('sna')
         pval = normaliz.pvalAndRatio(cna,sna,job_id)
-

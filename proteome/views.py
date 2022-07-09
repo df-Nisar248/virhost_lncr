@@ -160,7 +160,7 @@ def analaze_cols(request):
         sample_columns = clean_coulumn_heading(sample_data_columns)
         control_columns = clean_coulumn_heading(final_control_data)
 
-        final_data, df_PCA_before, df_PCA_after , cna, sna = normaliz.normaliz_data(job_id,sample_columns,
+        final_data,df_PCA_before, df_PCA_after , cna, sna = normaliz.normaliz_data(job_id,sample_columns,
             control_columns,norm_method,missing_val_rep)
 
         request.session['cna'] = cna
@@ -173,7 +173,6 @@ def analaze_cols(request):
         result_q = DataAnalysis.objects.get(id =job_id)
         result_q.resultData = updated_file
         result_q.save()
-        data = final_data.head(30)
 
         # box_plot = plot(fig, output_type = "div")
         # 'box_plot':box_plot
@@ -189,7 +188,7 @@ def analaze_cols(request):
         pcafig_before_plot = plot(pcafig_before, output_type = "div")
         pcafig_after_plot = plot(pcafig_after, output_type = "div")
 
-        context = {'data':data,'job_id':job_id,
+        context = {'job_id':job_id,
             'pcafig_before_plot':pcafig_before_plot,'pcafig_after_plot':pcafig_after_plot}
 
         return render(request, 'proteome/normalized.html', context)
@@ -209,7 +208,7 @@ def analaze_cols_bio(request):
         sample_columns = clean_coulumn_heading(sample_data_columns)
         control_columns = clean_coulumn_heading(final_control_data)
 
-        df_bc, df_after_bc, cna, sna = normaliz.normaliz_data_bio(job_id,sample_columns,control_columns,
+        final_data,df_bc,df_after_bc, cna, sna = normaliz.normaliz_data_bio(job_id,sample_columns,control_columns,
             norm_method,missing_val_rep)
 
         request.session['cna'] = cna
@@ -241,8 +240,8 @@ def analaze_cols_bio(request):
         box_before_plot = plot(before_bc_box, output_type = "div")
         box_after_plot = plot(after_bc_box, output_type = "div")
 
-        context = {'data':data,'job_id':job_id,
-            'box_before_plot':box_before_plot,'box_after_plot':box_after_plot, 'job_id':job_id}
+        context = {'box_before_plot':box_before_plot,
+            'box_after_plot':box_after_plot, 'job_id':job_id}
 
         return render(request, 'proteome/normalized.html', context)
 

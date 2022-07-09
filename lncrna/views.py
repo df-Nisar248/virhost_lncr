@@ -2,8 +2,11 @@ from django.shortcuts import render ,redirect
 from django.db.models import Q
 from django.contrib import messages
 from django.core.paginator import Paginator
-
-from .models import Lncrna , LncrnaTarget
+import os
+from django.conf import settings
+from django.http import HttpResponse
+from django.http import Http404
+from .models import Lncrna , LncrnaTarget , Files
 
 
 def home(request):
@@ -117,3 +120,40 @@ def bquery(request):
         else:
             messages.error(request, 'Entered Id is invalid or does not exist!')
             return redirect('bquery')
+
+
+def donwloadvh(request):
+
+    q = Files.objects.all()
+
+    file = q[0].mailfile.path
+
+    download_path = os.path.join(settings.MEDIA_ROOT, file)
+
+    if os.path.exists(download_path):
+        with open(download_path, 'rb') as fh:
+            response = HttpResponse(fh.read(), content_type="text/csv")
+            response['Content-Disposition'] = 'inline; filename=' + os.path.basename(download_path)
+            return response
+
+    raise Http404
+
+
+
+
+def donwloadtarget(request):
+
+    q = Files.objects.all()
+
+    file = q[0].target.path
+
+    download_path = os.path.join(settings.MEDIA_ROOT, file)
+
+    if os.path.exists(download_path):
+        with open(download_path, 'rb') as fh:
+            response = HttpResponse(fh.read(), content_type="text/csv")
+            response['Content-Disposition'] = 'inline; filename=' + os.path.basename(download_path)
+            return response
+
+    raise Http404
+

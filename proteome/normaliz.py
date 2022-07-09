@@ -13,7 +13,6 @@ def normaliz_data(job_id,sample_columns,control_columns,norm_method,missing_val_
 
     data = DataAnalysis.objects.get(id = job_id)
     datafile = data.file.path
-    islabelled  = data.labledData
     df = pd.DataFrame()
 
     if (datafile.endswith('.xlsx')):
@@ -32,6 +31,7 @@ def normaliz_data(job_id,sample_columns,control_columns,norm_method,missing_val_
 
     df.fillna(missing_val, inplace = True )
 
+    # df = deletemultizero(df,sample_columns,control_columns)
     #for median normalization
     mediun_list = {}
 
@@ -55,13 +55,34 @@ def normaliz_data(job_id,sample_columns,control_columns,norm_method,missing_val_
                 mediun_list[samp_replicates] = df[samp_replicates].mean()
 
     elif (norm_method == "Quntail"):
-        col_list = expandNCleanColumns(sample_columns,control_columns)
+        col_list_samp, col_list_cont = expandNCleanColumns(sample_columns,control_columns)
+
+        col_list = col_list_samp + col_list_cont
+
         df_for_qunt = df[col_list]
         df_for_qunt['Accession'] = df['Accession']
         df_for_qunt.set_index('Accession', inplace = True)
+        df_PCA_before = df_for_qunt
         quant_df = quantile_normalize(df_for_qunt)
+        print(quant_df)
+        col_names = {}
+        for columns in quant_df.columns:
+            col_names[columns] = "normalized "+columns
+
+        quant_df.rename(columns = col_names, inplace = True)
+        df_PCA_after = quant_df
+        df = pd.merge(df,quant_df, on = "Accession")
+        cna = []
+        sna = []
+        for samp in col_list_samp:
+            sna.append("normalized "+samp)
+        for cntrl in col_list_cont:
+            cna.append("normalized "+cntrl)
 
 
+
+
+        return df,df_PCA_before, df_PCA_after , cna, sna
 
     minn = min(mediun_list.values())
 
@@ -99,7 +120,7 @@ def normaliz_data(job_id,sample_columns,control_columns,norm_method,missing_val_
 
     df_PCA_after['Accession']  = df ['Accession']
     df_PCA_after.set_index('Accession', inplace = True)
-    return df_PCA_before, df_PCA_after , cna, sna
+    return df,df_PCA_before, df_PCA_after , cna, sna
 
 
 # normalizing biological rreplicates data
@@ -293,3 +314,33 @@ def pvalAndRatio(cna,sna,job_id):
 
     df.to_csv('log2.csv')
     return df
+
+# def deletemultizero(df,sample_columns,control_columns):
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

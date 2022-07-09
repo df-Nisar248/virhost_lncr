@@ -89,18 +89,20 @@ def forPCA(sample_columns,control_columns,sna,cna):
 
 
 def expandNCleanColumns(sample_columns,control_columns):
-    colum_list = []
+    colum_list_sample = []
     for sample_list in sample_columns:
         for sample in sample_list:
-            colum_list.append(sample)
+            colum_list_sample.append(sample)
 
+    column_list_control = []
     for control_list in control_columns:
         for control in control_list:
-            colum_list.append(control)
+            column_list_control.append(control)
 
-    colum_list = removeSpaceAndComma(colum_list)
+    colum_list_sample = removeSpaceAndComma(colum_list_sample)
+    column_list_control = removeSpaceAndComma(column_list_control)
 
-    return colum_list
+    return colum_list_sample, column_list_control
 
 def intensities(columns):
     intensitiy_list =  []

@@ -8,7 +8,7 @@ from django.urls import reverse
 import pandas as pd
 import csv
 
-from .models import Lncrna , LncrnaTarget
+from .models import Lncrna , LncrnaTarget , Files
 
 
 class CsvImportForm(forms.Form):
@@ -102,3 +102,5 @@ class LncrnaTargetAdmin(admin.ModelAdmin):
 
 admin.site.register(Lncrna, LncrnaAdmin)
 admin.site.register(LncrnaTarget, LncrnaTargetAdmin)
+
+admin.site.register(Files)

@@ -1,0 +1,11 @@
+{% extends 'lncrna/base.html' %}
+
+{% block content %}
+<div class="m-5">
+
+    <a class="p-5" href="{% url 'lncrna:donwloadvh' %}"> <button class="btn btn-primary"> Download Virhost Data</button></a>
+
+        <a class="p-5" href="{% url 'lncrna:donwloadtarget' %}"> <button class="btn btn-primary"> Download target Data</button></a>
+
+</div>
+{% endblock %}

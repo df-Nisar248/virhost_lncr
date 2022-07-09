@@ -33,3 +33,8 @@ class LncrnaTarget(models.Model):
 
     def __str__(self):
         return self.regulator
+
+
+class Files(models.Model):
+    mailfile = models.FileField(null = True, upload_to='documents/')
+    target = models.FileField(null = True, upload_to='documents/')

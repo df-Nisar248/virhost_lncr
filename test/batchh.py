@@ -25,11 +25,11 @@
 # # plot raw data
 # # plt.boxplot(df_expression.transpose())
 # # plt.show()
-import pandas as pd
+# import pandas as pd
 
-df = pd.read_table('hipoo.txt')
+# df = pd.read_table('hipoo.txt')
 
-print(df.columns)
+# print(df.columns)
 
 
 

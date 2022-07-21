@@ -1,0 +1,30 @@
+{% extends 'proteome/base.html' %}
+
+{% block content %}
+
+
+<div>
+<label>Download Complete Result</label>
+<a href="{% url 'proteome:download_file' job_id %}"><button class="btn btn-lg btn-danger">Download</button></a>
+</div>
+
+
+<div class="container">
+<div class="row">
+
+      <div class="col col-xl-6">
+      <div>
+
+    {% for volcanoplot in  volcanoplotlist %}
+
+      {% autoescape off %}
+      {{ volcanoplot }}
+      {% endautoescape %}
+    {% endfor %}
+      </div>
+      </div>
+</div>
+</div>
+
+
+{% endblock %}

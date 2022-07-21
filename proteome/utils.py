@@ -1,6 +1,7 @@
 import pandas as pd
 from difflib import SequenceMatcher
 
+
 def abundances(columns):
     abundance_list =  []
     for l in columns:
@@ -108,7 +109,7 @@ def intensities(columns):
     intensitiy_list =  []
     for l in columns:
         l = l.strip()
-        if ('intensity' in l) or ('Intensity' in l) or ('intensities' in l) or ('Intensities' in l):
+        if ('intensity' in l) or ('Intensity' in l) or ('intensities' in l) or ('Intensities' in l) or ('Abundances' in l) or ('Abundance' in l):
             intensitiy_list.append(l)
     intensitiy_list.sort()
     return intensitiy_list
@@ -119,3 +120,27 @@ def removeavgsmp(avg_sample):
         return colname
     else:
         return avg_sample
+
+def lablesforbox(columns):
+    labels = {}
+    for column in columns:
+         labels[column] = truncc(column)
+    return labels
+
+def truncc(column):
+    column = column.replace('Abundance','')
+    column = column.replace('Abundances','')
+    column = column.replace('normalized','')
+    column = column.split()
+    return column[-1]
+
+
+
+
+# def colsforPca(columns):
+#     returncols = list()
+#     for cols in columns:
+#         if cols != 'index':
+#             returncols.append(cols)
+#     print(returncols)
+#     return returncols

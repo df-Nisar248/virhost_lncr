@@ -16,4 +16,3 @@ urlpatterns = [
     path('pvalue/',views.pvalues, name = 'pvalues')
 
 ]
-

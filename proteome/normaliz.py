@@ -4,7 +4,7 @@ from scipy import stats
 from matplotlib import pyplot as plt
 import os
 import numpy as np
-from combat.pycombat import pycombat
+from . import combat
 
 from . models import DataAnalysis
 from . utils import sort_name,removeSpaceAndComma,forPCA,expandNCleanColumns,removeavgsmp
@@ -230,7 +230,7 @@ def normaliz_data_bio(job_id,sample_columns,control_columns,norm_method,missing_
 
         df_before_bc.set_index('Accession', inplace = True)
 
-        df_after_bc = pycombat(df_before_bc,batch_list)
+        df_after_bc = combat.pycombat(df_before_bc,batch_list)
 
         return df, df_PCA_before, df_PCA_after, df_before_bc,  df_after_bc , cna, sna
 
@@ -299,7 +299,7 @@ def normaliz_data_bio(job_id,sample_columns,control_columns,norm_method,missing_
     df_before_bc.set_index('Accession', inplace = True)
 
     # print(batch_list)
-    df_after_bc = pycombat(df_before_bc,batch_list)
+    df_after_bc = combat.pycombat(df_before_bc,batch_list)
 
     # average_normalized_sample_array = []
 
@@ -423,8 +423,10 @@ def pvalAndRatio(cna,sna,job_id, pvalue):
 
         print(forvolcano)
 
-
-        return df,forvolcano
+        forheatmap = df[log2fcarray]
+        forheatmap['Accession'] = df['Accession']
+        forheatmap.set_index('Accession',inplace = True)
+        return df,forvolcano , forheatmap
 
         # for lablefree data
 

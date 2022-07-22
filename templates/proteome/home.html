@@ -2,7 +2,7 @@
 
 {% block content %}
 
-    <form action="{% url 'proteome:inputfile' %}" method="POST" enctype="multipart/form-data" class="m-3" >
+  <form action="{% url 'proteome:inputfile' %}" method="POST" enctype="multipart/form-data" class="m-3" >
     {% csrf_token %}
    <div class="row d-flex justify-content-center">
                   <div class="col-xl-6 ">
@@ -20,7 +20,7 @@
     <div class="row d-flex justify-content-center">
 
 
-        <div class="col-xl-6 shadow-lg" style="background-color: #F8F8FF;">
+        <div class="col-xl-6 shadow-lg p-3" style="background-color: #F8F8FF;">
           <p>Analyze labelled data</p>
 
 
@@ -79,7 +79,7 @@
 </div>
 
 <form action="{% url 'proteome:inputfile' %}">
-  <div class="container" style="position: absolute;left: 50%">
+  <div class="container" style="position:absolute;top:13%;left:40%;">
   <button type="submit" class="btn btn-primary"> Run an Example Analysis</button>
 </div>
 </form>

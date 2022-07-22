@@ -7,24 +7,24 @@ from django.core.files.base import ContentFile
 from django.core.files.images import ImageFile
 from django.conf import settings
 
-from bioinfokit import analys, visuz
-
 import os
 import csv
-from io import StringIO
-import io
+import base64
+from io import BytesIO
+
 import pandas as pd
+
 from plotly.offline import plot
 import plotly.express as px
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 
-from .volcanoplot import volcano
 from .import normaliz
 from .utils import abundances,clean_coulumn_heading,intensities,lablesforbox
-from .models import DataAnalysis , Example , Plots
+from .models import DataAnalysis , Example
 
 normalized_df = pd.DataFrame()
 
@@ -225,7 +225,7 @@ def analaze_cols(request):
 
         pca = PCA(n_components=2)
         components = pca.fit_transform(df_PCA_before)
-        pcafig_before = px.scatter(components, x=0, y=1 )
+        pcafig_before = px.scatter(df_PCA_before, x=0, y=1 )
 
         components = pca.fit_transform(df_PCA_after)
         pcafig_after = px.scatter(components, x=0, y=1)
@@ -307,7 +307,7 @@ def pvalues(request):
         pvalue = request.POST.get('pvalue')
         cna = request.session.get('cna')
         sna = request.session.get('sna')
-        df, forvolcano = normaliz.pvalAndRatio(cna,sna,job_id, pvalue)
+        df, forvolcano , forheatmap= normaliz.pvalAndRatio(cna,sna,job_id, pvalue)
         # result_q = DataAnalysis.objects.get(id =job_id)
         # result_q.resultData = final_data
         # result_q.save()
@@ -320,6 +320,29 @@ def pvalues(request):
             volcanoplotlist.append(volcanoplot)
         # figure = io.BytesIO()
         # content_file = ImageFile(volcanoplot)
-        context = {'job_id':job_id, 'volcanoplotlist': volcanoplotlist}
+        plt.switch_backend('AGG')
+        sns.clustermap(forheatmap,cbar_pos=(0.03,.01, .03, .2),yticklabels=False  ,cmap="RdYlGn_r",figsize=(5,8))
+        heatmap = get_graph()
+        # heatmap_to_plot = plot(heatmap_fig, output_type = "div")
+
+        new_df = df.to_csv(index = False)
+        updated_file = ContentFile(new_df)
+        updated_file.name = "finalresult.csv"
+
+        result_q = DataAnalysis.objects.get(id =job_id)
+        result_q.resultData = updated_file
+        result_q.save()
+
+        context = {'job_id':job_id, 'volcanoplotlist': volcanoplotlist, 'heatmap': heatmap}
         return render(request, 'proteome/pvalandratio.html', context)
 
+
+def get_graph():
+    buffer = BytesIO()
+    plt.savefig(buffer, format = 'png')
+    buffer.seek(0)
+    image_png = buffer.getvalue()
+    graph = base64.b64encode(image_png)
+    graph = graph.decode('utf-8')
+    buffer.close()
+    return graph

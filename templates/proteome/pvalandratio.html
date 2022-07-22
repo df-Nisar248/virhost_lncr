@@ -25,6 +25,9 @@
       </div>
 </div>
 </div>
+{% if heatmap %}
+<img src="data:image/png;base64, {{ heatmap|safe }}">
 
+{% endif %}
 
 {% endblock %}

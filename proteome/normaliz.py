@@ -433,9 +433,6 @@ def pvalAndRatio(cna,sna,job_id, pvalue):
     else:
         return None
 
-
-
-
 def deletemultizero(df,sample_columns,control_columns):
     df.set_index('Accession', inplace = True)
     for sample in sample_columns:
@@ -448,7 +445,6 @@ def deletemultizero(df,sample_columns,control_columns):
             df.drop(labels=indices_to_drop, inplace=True)
             df.reset_index(inplace=True)
     return df
-
 
 def exapndd(foranova,df):
     dflist = []

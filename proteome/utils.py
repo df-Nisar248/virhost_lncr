@@ -145,3 +145,17 @@ def truncc(column):
 #             returncols.append(cols)
 #     print(returncols)
 #     return returncols
+
+def columnsforbox(columns):
+    clean_col = list()
+    for column in columns:
+        if 'Abundances' in column:
+            column = column.replace('Abundances','')
+        if 'Abundance' in column:
+            column = column.replace('Abundance','')
+        if 'normalized' in column:
+            column = column.replace('normalized','')
+
+        clean_col.append(column)
+
+    return clean_col

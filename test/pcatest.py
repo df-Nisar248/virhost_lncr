@@ -1,11 +1,13 @@
 import pandas as pd
-from plotly.offline import plot
-import plotly.express as px
+from matplotlib import pyplot as plt
 from sklearn.decomposition import PCA
 
-df = pd.read_excel('testPCA.xlsx', index_col = "samples")
+df = pd.read_excel('testPCA.xlsx', index_col = "index")
 # x = df[['R1','R2','R3']]
 pca = PCA(n_components=2)
 components = pca.fit_transform(df)
-fig = px.scatter(components, x=0, y=1,)
-fig.show()
+
+
+plt.scatter(components[0],components[1])
+plt.tight_layout()
+plt.show()

@@ -8,15 +8,11 @@
 <a href="{% url 'proteome:download_file' job_id %}"><button class="btn btn-lg btn-danger">Download</button></a>
 </div>
 
-
 <div class="container">
 <div class="row">
-
       <div class="col col-xl-6">
       <div>
-
     {% for volcanoplot in  volcanoplotlist %}
-
       {% autoescape off %}
       {{ volcanoplot }}
       {% endautoescape %}
@@ -26,7 +22,11 @@
 </div>
 </div>
 {% if heatmap %}
-<img src="data:image/png;base64, {{ heatmap|safe }}">
+<img src="data:image/svg+xml;base64, {{ heatmap|safe }}">
+
+<a href="data:image/svg+xml;base64, {{ heatmap|safe }}" download>
+dowlonad the file in SVG format
+</a>
 
 {% endif %}
 

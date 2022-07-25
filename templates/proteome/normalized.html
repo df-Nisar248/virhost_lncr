@@ -2,25 +2,20 @@
 
 {% block content %}
 
+<style type="text/css">
+  .download{
+    margin-left: 5%;
+    text-decoration: none;
+    opacity:0.7;
+  }
+   .download:hover{
+    opacity:1;
+  }
+
+</style>
 
 
 <div class="container mt-3">
-
-<div class="row">
-        <div class="col col-xl-6 ">
-          <div class="ml-5 justify-content-center">
-          <small> PCA plot before Normalization</small>
-          </div>
-        </div>
-
-        <div class="col col-xl-6 ">
-        <div class="ml-5 justify-content-center">
-          <small> PCA plot After Normalization</small>
-        </div>
-        </div>
-</div>
-
-
 
 
 <div class="row">
@@ -28,91 +23,77 @@
       <div class="col col-xl-6">
       <div>
 
-      {% autoescape off %}
-      {{ pcafig_before_plot }}
-      {% endautoescape %}
-      </div>
-      </div>
+{% if pca_before %}
+<img src="data:image/svg+xml;base64, {{ pca_before|safe }}">
 
-    <div class="col col-xl-6">
-    <div>
-    {% autoescape off %}
-    {{ pcafig_after_plot }}
-    {% endautoescape %}
-    </div>
-    </div>
-
-</div>
-
-
-
-</div>
-
-
-{% if box_before_plot %}
-
-
-
-<div class="container mt-3">
-
-<div class="row">
-        <div class="col col-xl-6 ">
-          <div class="ml-5 justify-content-center">
-          <small> Box plot before Normalization</small>
-          </div>
-        </div>
-
-        <div class="col col-xl-6 ">
-        <div class="ml-5 justify-content-center">
-          <small> Box plot After Normalization</small>
-        </div>
-        </div>
-</div>
-
-
-
-
-<div class="row">
-
-      <div class="col col-xl-6">
-      <div>
-
-      {% autoescape off %}
-      {{ box_before_plot }}
-      {% endautoescape %}
-      </div>
-      </div>
-
-    <div class="col col-xl-6">
-    <div>
-    {% autoescape off %}
-    {{ box_after_plot }}
-    {% endautoescape %}
-    </div>
-    </div>
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-
-
+<a class="download" href="data:image/svg+xml;base64, {{ pca_before|safe }}" download>
+dowlonad(SVG)
+</a>
 {% endif %}
 
+      </div>
+      </div>
+    <div class="col col-xl-6">
+    <div>
+
+{% if pca_after %}
+<img src="data:image/svg+xml;base64, {{ pca_after|safe }}">
+
+<a class="download" href="data:image/svg+xml;base64, {{ pca_after|safe }}" download>
+dowlonad(SVG)
+</a>
+{% endif %}
+    </div>
+    </div>
+
+</div>
+</div>
 
 
 
 
+<div class="container mt-3">
+
+
+<div class="row">
+
+      <div class="col col-xl-6">
+      <div>
+
+{% if before_norm_box %}
+<img src="data:image/svg+xml;base64, {{ before_norm_box|safe }}">
+
+<a class="download" href="data:image/svg+xml;base64, {{ before_norm_box|safe }}" download>
+dowlonad(SVG)
+</a>
+{% endif %}
+
+      </div>
+      </div>
+    <div class="col col-xl-6">
+    <div>
+
+{% if after_norm_box %}
+<img src="data:image/svg+xml;base64, {{ after_norm_box|safe }}">
+
+<a class="download" href="data:image/svg+xml;base64, {{ after_norm_box|safe }}" download>
+dowlonad(SVG)
+</a>
+{% endif %}
+    </div>
+    </div>
+
+</div>
+</div>
+
+
+
+<div>
+  <div class="m-5">
 <label>Download Normalized Data</label>
 <a href="{% url 'proteome:download_file' job_id %}"><button class="btn btn-primary">Download</button></a>
-
+</div>
+</div>
 
 <div class="container">
     <div class="row d-flex justify-content-center">

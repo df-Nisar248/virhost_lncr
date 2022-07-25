@@ -7,13 +7,12 @@ from django.core.files.base import ContentFile
 from django.core.files.images import ImageFile
 from django.conf import settings
 
-import os
 import csv
 import base64
 from io import BytesIO
 
 import pandas as pd
-
+import numpy as np
 from plotly.offline import plot
 import plotly.express as px
 import matplotlib.pyplot as plt
@@ -23,7 +22,7 @@ from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 
 from .import normaliz
-from .utils import abundances,clean_coulumn_heading,intensities,lablesforbox
+from .utils import abundances,clean_coulumn_heading,intensities,lablesforbox, sort_name , columnsforbox
 from .models import DataAnalysis , Example
 
 normalized_df = pd.DataFrame()
@@ -218,30 +217,24 @@ def analaze_cols(request):
         result_q.resultData = updated_file
         result_q.save()
 
-        df_PCA_before = df_before_norm.reset_index(drop=True)
-        df_PCA_after = df_after_norm.reset_index(drop=True)
-        df_PCA_before = df_PCA_before.transpose()
-        df_PCA_after = df_PCA_after.transpose()
+        # pca = PCA(n_components=2)
+        # components = pca.fit_transform(df_PCA_before)
+        # pcafig_before = px.scatter(df_PCA_before, x=0, y=1 )
 
-        pca = PCA(n_components=2)
-        components = pca.fit_transform(df_PCA_before)
-        pcafig_before = px.scatter(df_PCA_before, x=0, y=1 )
+        # components = pca.fit_transform(df_PCA_after)
+        # pcafig_after = px.scatter(components, x=0, y=1)
+        pca_before =plot_pca(df_before_norm,sample_columns,control_columns, title = "PCA plot Before Normalization", )
+        pca_after =plot_pca(df_after_norm,sample_columns,control_columns,title = "PCA plot After Normalization")
 
-        components = pca.fit_transform(df_PCA_after)
-        pcafig_after = px.scatter(components, x=0, y=1)
+        df_before_norm.columns = columnsforbox(df_before_norm.columns)
+        before_norm_box = get_box_plot(df_before_norm, title = "Box plot Before Normalization")
 
-        pcafig_before_plot = plot(pcafig_before, output_type = "div")
-        pcafig_after_plot = plot(pcafig_after, output_type = "div")
-
-        lablesbox = lablesforbox(df_after_norm.columns)
-        before_bc_box = px.box(df_before_norm,labels = lablesbox)
-        after_bc_box = px.box(df_after_norm,labels = lablesbox )
-        box_before_plot = plot(before_bc_box, output_type = "div")
-        box_after_plot = plot(after_bc_box, output_type = "div")
+        df_after_norm.columns = columnsforbox(df_after_norm.columns)
+        after_norm_box = get_box_plot(df_after_norm, title = "Box plot After Normalization")
 
         context = {'job_id':job_id,
-            'pcafig_before_plot':pcafig_before_plot,'pcafig_after_plot':pcafig_after_plot,'box_before_plot':
-            box_before_plot, 'box_after_plot': box_after_plot}
+            'pca_before':pca_before,'pca_after':pca_after,'before_norm_box':
+            before_norm_box, 'after_norm_box': after_norm_box}
 
         return render(request, 'proteome/normalized.html', context)
 
@@ -286,9 +279,9 @@ def analaze_cols_bio(request):
         #     df_PCA_after,
         #     )
 
-        before_bc_box = px.box(df_before_bc)
+        before_norm_box = get_box_plot(df_before_bc, title = "Box plot Before Normalization")
 
-        after_bc_box = px.box(df_after_bc)
+        after_norm_box = get_box_plot(df_after_bc, title = "Box plot After Normalization")
 
         box_before_plot = plot(before_bc_box, output_type = "div")
         box_after_plot = plot(after_bc_box, output_type = "div")
@@ -339,10 +332,58 @@ def pvalues(request):
 
 def get_graph():
     buffer = BytesIO()
-    plt.savefig(buffer, format = 'png')
+    plt.savefig(buffer, format = 'svg')
     buffer.seek(0)
     image_png = buffer.getvalue()
     graph = base64.b64encode(image_png)
     graph = graph.decode('utf-8')
     buffer.close()
     return graph
+
+
+def plot_pca(df_for_pca,sample_columns,control_columns,title):
+
+    df = df_for_pca.loc[:, df_for_pca.columns != 'Accession']
+    df = df.transpose()
+
+    scaler = StandardScaler()
+    scaler.fit(df)
+    df_np_array = scaler.transform(df)
+
+    sample_list = list()
+    for samples in sample_columns:
+        for each_sample in samples:
+            sample_list.append(sort_name(samples).strip())
+
+    for control in control_columns:
+        for each_control in control:
+            sample_list.append(sort_name(control).strip())
+
+    pca = PCA(n_components=2)
+
+    components = pca.fit_transform(df_np_array)
+    pca_df = pd.DataFrame(components, columns = ['x','y'])
+    pca_df['samples'] = pd.Series(sample_list)
+    # pca_df.set_index('samples', inplace = True)
+
+    plt.switch_backend('AGG')
+    plt.scatter(pca_df['x'],pca_df['y'], s=50, alpha=0.7)
+
+    plt.title(title)
+
+    plt.tight_layout()
+    pcaplot = get_graph()
+    return pcaplot
+
+
+def get_box_plot(df,title):
+    plt.switch_backend('AGG')
+    #do exception handling here
+
+    df = np.log2(df)
+    df.plot(kind='box', title= title)
+    plt.xticks(fontsize=6, rotation=90)
+    plt.ylabel('Log2 of Abundances')
+    plt.tight_layout()
+    box_plot = get_graph()
+    return box_plot

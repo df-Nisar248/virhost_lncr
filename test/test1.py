@@ -12,7 +12,4 @@
 # print(df_corrected)
 # df_corrected.to_excel('result.xlsx')
 import pandas as pd
-import plotly.express as px
-# df = pd.read_excel('')
-fig = px.scatter(df, x="sepal_width", y="sepal_length")
-fig.show()
+

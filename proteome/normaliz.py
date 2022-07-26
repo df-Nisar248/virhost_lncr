@@ -15,7 +15,6 @@ def normaliz_data(job_id,sample_columns,control_columns,norm_method,missing_val_
     data = DataAnalysis.objects.get(id = job_id)
     datafile = data.file.path
     df = pd.DataFrame()
-
     if (datafile.endswith('.xlsx')):
         df = pd.read_excel(datafile, engine='openpyxl')
 
@@ -27,15 +26,14 @@ def normaliz_data(job_id,sample_columns,control_columns,norm_method,missing_val_
     columns = df.columns
 
     df.columns = removeSpaceAndComma(columns)
-
+    df = deletemultizero(df,sample_columns,control_columns)
     missing_val = float(missing_val_rep)
 
-    df = deletemultizero(df,sample_columns,control_columns)
 
     df.fillna(missing_val, inplace = True )
 
     #for median normalization
-
+    print(df.shape)
     mediun_list = {}
 
     if (norm_method == 'Median'):
@@ -47,6 +45,18 @@ def normaliz_data(job_id,sample_columns,control_columns,norm_method,missing_val_
         for samples in sample_columns:
             for samp_replicates in samples:
                 mediun_list[samp_replicates] = df[samp_replicates].median()
+
+
+    elif (norm_method == 'TMM'):
+
+        for controls in control_columns:
+            for replicates in controls:
+                mediun_list[replicates] = stats.trim_mean(df[replicates], 0.1)
+
+        for samples in sample_columns:
+            for samp_replicates in samples:
+                mediun_list[samp_replicates] = stats.trim_mean(df[samp_replicates], 0.1)
+
 
     elif (norm_method == 'Sum'):
         for controls in control_columns:
@@ -117,8 +127,8 @@ def normaliz_data(job_id,sample_columns,control_columns,norm_method,missing_val_
 
     # df_PCA_before = df_PCA_before.transpose().reset_index()
     # df_PCA_before.set_index('index', inplace=True)
-
     df_PCA_before['Accession']  = df['Accession']
+
     df_PCA_before.set_index('Accession', inplace = True)
 
     df_PCA_after['Accession']  = df['Accession']
@@ -434,17 +444,29 @@ def pvalAndRatio(cna,sna,job_id, pvalue):
         return None
 
 def deletemultizero(df,sample_columns,control_columns):
-    df.set_index('Accession', inplace = True)
+    sc,cc = expandNCleanColumns(sample_columns,control_columns)
+    all_cols = sc+cc
+    no_of_repli = 0
+
+    print(df.shape)
+    df = df.dropna(how='all', subset=all_cols)
+    print(df.shape)
+
     for sample in sample_columns:
-        no_of_samp = len(sample)
-        if no_of_samp == 3:
-            indices_to_drop = list()
-            for index, row in df[sample].iterrows():
-                if ( pd.isnull(row[sample[0]])  and (  pd.isnull(row[sample[1]])  or  pd.isnull(row[sample[2]])  )  or ( pd.isnull(row[sample[1]])  and  pd.isnull(row[sample[2]]) )  ):
-                    indices_to_drop.append(index)
-            df.drop(labels=indices_to_drop, inplace=True)
-            df.reset_index(inplace=True)
+        no_of_repli = len(sample)
+
+    if no_of_repli == 3:
+        indices_to_drop = list()
+        for index, row in df[sample].iterrows():
+            if ( pd.isnull(row[sample[0]])  and (  pd.isnull(row[sample[1]])  or  pd.isnull(row[sample[2]])  )  or ( pd.isnull(row[sample[1]])  and  pd.isnull(row[sample[2]]) )  ):
+                indices_to_drop.append(index)
+        df.drop(labels=indices_to_drop, inplace=True)
+
+    # if no_of_repli == 2:
+    #     indices_to_drop = list()
+
     return df
+
 
 def exapndd(foranova,df):
     dflist = []

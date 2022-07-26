@@ -10,6 +10,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'accounts.apps.AccountsConfig',
     'proteome.apps.ProteomeConfig',
     'rememb_prot.apps.RemembProtConfig',
@@ -27,6 +28,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -103,44 +105,9 @@ USE_L10N = True
 
 USE_TZ = True
 
-# CRISPY_TEMPLATE_PACK = 'bootstrap4'
-# ASGI_APPLICATION = 'virhost_lncr.routing.application'
-
-# CHANNEL_LAYERS = {
-#     "default": {
-#         "BACKEND": "channels_redis.core.RedisChannelLayer",
-#         "CONFIG": {
-#             "hosts": [("127.0.0.1", 6379),],
-#         }
-#     }
-# }
-
-# STATICFILES_FINDERS = [
-#     'django.contrib.staticfiles.finders.FileSystemFinder',
-#     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#     'django_plotly_dash.finders.DashAssetFinder',
-#     'django_plotly_dash.finders.DashComponentFinder',
-# ]
-
-# PLOTLY_COMPONENTS = [
-#     'dash_core_components',
-#     'dash_html_components',
-#     'dash_render',
-#     'dpd_components',
-# ]
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.2/howto/static-files/
-
 STATIC_URL = '/static/'
 STATICFILES_LOCATION = 'static'
-
-if DEBUG:
-    STATICFILES_DIRS = [
-        os.path.join(BASE_DIR, 'static')
-   ]
-else:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 MEDIA_URL = '/media/'

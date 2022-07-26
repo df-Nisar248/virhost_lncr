@@ -1,0 +1,503 @@
+,Accession,Description,Abundance: F4: 127N  Sample  Pre-term_RDS,Abundance: F5: 127N  Sample  Pre-term_RDS,Abundance: F4: 127C  Sample  Pre-term_Healthy,Abundance: F5: 127C  Sample  Pre-term_Healthy,Abundance: F4: 128N  Sample  Term_RDS,Abundance: F5: 128N  Sample  Term_RDS,Abundance: F4: 128C  Sample  Term_Healthy,Abundance: F5: 128C  Sample  Term_Healthy
+0,NP_000033.2,beta-2-glycoprotein 1 precursor [Homo sapiens],140.8,203.1,117.7,173.5,138.7,215.7,113.5,158.6
+1,NP_000053.2,plasma protease C1 inhibitor precursor [Homo sapiens],6768.3,8391.5,3222.0,3940.0,4632.4,5802.4,3081.7,3669.8
+2,NP_000055.2,complement C3 preproprotein [Homo sapiens],3670.0,3056.9,1159.9,803.7,1481.0,1113.9,1666.4,1315.7
+3,NP_000058.1,carbonic anhydrase 2 isoform 1 [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+4,NP_000069.2,cholesteryl ester transfer protein isoform 1 precursor [Homo sapiens],0.0,31.1,0.0,28.5,0.0,21.2,0.0,19.8
+5,NP_000079.2,collagen alpha-1(I) chain preproprotein [Homo sapiens],9268.8,12273.5,7331.3,9265.6,9614.5,12533.8,7469.4,9301.1
+6,NP_000080.2,collagen alpha-2(I) chain precursor [Homo sapiens],155.1,141.8,170.9,150.3,184.5,167.4,182.5,165.2
+7,NP_000081.2,collagen alpha-1(III) chain preproprotein [Homo sapiens],0.0,47.4,0.0,29.1,0.0,53.9,0.0,27.5
+8,NP_000086.2,cartilage oligomeric matrix protein precursor [Homo sapiens],347.0,318.9,479.6,402.2,370.7,320.5,477.8,409.5
+9,NP_000090.1,cystatin-C precursor [Homo sapiens],2283.2,5210.5,906.3,1742.1,1477.2,3284.5,1217.3,2269.8
+10,NP_000091.1,cystatin-B [Homo sapiens],293.1,133.0,341.6,51.4,249.1,85.3,566.7,55.8
+11,NP_000125.2,"fatty acid-binding protein, intestinal [Homo sapiens]",141.0,123.6,206.1,173.3,350.4,247.2,246.1,171.3
+12,NP_000129.3,fibrillin-1 preproprotein [Homo sapiens],439.7,665.1,439.7,652.8,437.5,665.0,359.0,601.6
+13,NP_000138.2,tissue alpha-L-fucosidase precursor [Homo sapiens],65.2,311.8,55.7,241.9,67.2,301.5,53.2,247.9
+14,NP_000172.2,beta-glucuronidase isoform 1 precursor [Homo sapiens],0.0,279.8,0.0,103.7,0.0,243.8,0.0,181.7
+15,NP_000175.1,hemoglobin subunit gamma-2 [Homo sapiens],3173.7,3162.2,507.4,406.7,636.6,640.4,896.3,512.3
+16,NP_000176.2,heparin cofactor 2 precursor [Homo sapiens],38.5,20.0,54.8,31.7,55.0,30.3,76.3,61.1
+17,NP_000177.2,complement factor H isoform a precursor [Homo sapiens],36.3,38.0,25.4,36.7,30.5,32.8,35.4,53.6
+18,NP_000217.2,"keratin, type I cytoskeletal 9 [Homo sapiens]",8448.8,10256.6,11902.5,14993.4,5727.5,7391.9,5849.0,7437.3
+19,NP_000292.1,plasminogen isoform 1 precursor [Homo sapiens],558.2,669.7,509.4,554.8,594.2,707.2,621.1,698.6
+20,NP_000311.2,dihydropteridine reductase isoform 1 [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+21,NP_000345.2,thyroxine-binding globulin precursor [Homo sapiens],4133.9,4074.4,2607.0,2614.8,2382.4,2467.4,1598.7,1818.2
+22,NP_000362.1,transthyretin precursor [Homo sapiens],1077.3,1550.6,508.2,543.6,837.0,1194.7,500.5,590.1
+23,NP_000382.3,tripeptidyl-peptidase 1 preproprotein [Homo sapiens],56.5,30.1,70.4,34.7,58.3,28.5,105.1,25.7
+24,NP_000396.2,ganglioside GM2 activator isoform 1 precursor [Homo sapiens],19919.0,21822.7,13990.1,13997.1,15481.6,17222.1,13653.2,14727.9
+25,NP_000415.2,"keratin, type II cytoskeletal 5 [Homo sapiens]",138.6,0.0,141.1,0.0,98.3,0.0,107.0,0.0
+26,NP_000419.1,latent-transforming growth factor beta-binding protein 2 precursor [Homo sapiens],56.2,113.7,63.9,124.6,74.0,136.4,37.3,70.4
+27,NP_000445.1,superoxide dismutase [Cu-Zn] [Homo sapiens],7751.4,10142.3,5179.9,6305.1,11892.2,16157.7,5169.4,6034.2
+28,NP_000473.2,apolipoprotein A-IV precursor [Homo sapiens],571.0,254.6,346.2,158.5,380.5,181.4,419.6,195.5
+29,NP_000474.2,apolipoprotein C-II precursor [Homo sapiens],1428.0,1324.5,1057.6,1047.5,1010.6,896.0,652.6,529.8
+30,NP_000475.1,amyloid-beta precursor protein isoform a precursor [Homo sapiens],232.8,459.0,259.7,598.4,237.6,568.6,258.2,649.1
+31,NP_000496.2,coagulation factor XII preproprotein [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+32,NP_000497.1,prothrombin preproprotein [Homo sapiens],2387.2,2959.0,2928.8,3618.4,2837.3,3441.8,2596.2,3075.8
+33,NP_000499.1,fibrinogen alpha chain isoform alpha-E preproprotein [Homo sapiens],1612.0,1831.1,796.5,938.4,1202.1,1429.3,819.2,954.4
+34,NP_000512.2,beta-hexosaminidase subunit beta isoform 1 preproprotein [Homo sapiens],194.3,307.4,106.5,155.9,195.3,305.5,103.8,141.4
+35,NP_000518.1,low-density lipoprotein receptor isoform 1 precursor [Homo sapiens],1402.5,1418.5,1334.9,1359.0,1167.9,1178.5,940.2,968.6
+36,NP_000549.1,hemoglobin subunit alpha [Homo sapiens],1999.0,1257.0,232.8,180.5,355.6,235.5,378.7,198.2
+37,NP_000573.1,osteopontin isoform OPN-b precursor [Homo sapiens],245.0,248.3,365.7,402.2,320.2,307.6,333.2,391.1
+38,NP_000578.2,complement component C7 precursor [Homo sapiens],580.2,651.3,463.1,545.6,573.3,677.8,483.6,553.4
+39,NP_000587.1,insulin-like growth factor-binding protein 1 precursor [Homo sapiens],2303.0,1835.5,1154.8,823.9,1241.9,1016.6,1199.5,949.2
+40,NP_000590.1,insulin-like growth factor-binding protein 5 precursor [Homo sapiens],0.0,23.8,0.0,35.2,0.0,46.5,0.0,57.4
+41,NP_000597.2,complement component C8 gamma chain precursor [Homo sapiens],311.7,373.0,174.9,177.6,212.6,222.9,168.9,196.7
+42,NP_000598.2,alpha-1-acid glycoprotein 1 precursor [Homo sapiens],66826.0,59603.2,37045.2,40021.1,90821.1,82182.3,11553.1,12041.4
+43,NP_000599.1,alpha-1-acid glycoprotein 2 precursor [Homo sapiens],30411.8,37510.8,17876.7,23295.3,29881.9,36887.3,10133.3,11831.9
+44,NP_000604.1,hemopexin precursor [Homo sapiens],7401.0,7274.4,3049.7,3118.6,4446.8,4335.3,2761.9,2931.5
+45,NP_000615.3,plasma serine protease inhibitor preproprotein [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+46,NP_000629.3,vitronectin precursor [Homo sapiens],13526.1,16746.9,11818.2,14461.0,13814.3,17784.8,14093.5,17740.3
+47,NP_000748.4,macrophage colony-stimulating factor 1 isoform a precursor [Homo sapiens],497.1,1368.9,537.1,1450.1,520.5,1668.7,344.0,1360.3
+48,NP_000884.1,kininogen-1 isoform 2 precursor [Homo sapiens],39634.2,43972.1,24323.8,26957.1,38928.5,43824.1,27842.2,31862.8
+49,NP_000945.3,prostaglandin-H2 D-isomerase precursor [Homo sapiens],10726.9,13481.1,10254.0,12734.5,10345.0,13524.0,11623.6,14908.0
+50,NP_001002029.3,complement C4-B preproprotein [Homo sapiens],1250.3,1967.2,721.9,1073.1,777.8,1180.0,867.1,1185.8
+51,NP_001002236.1,alpha-1-antitrypsin precursor [Homo sapiens],63714.4,61565.3,16016.4,15594.6,32451.8,31279.0,29858.6,28515.5
+52,NP_001002858.1,annexin A2 isoform 1 [Homo sapiens],22.2,0.0,29.7,0.0,17.9,0.0,40.1,0.0
+53,NP_001004019.1,fibulin-2 isoform a precursor [Homo sapiens],142.7,179.3,127.1,166.8,121.2,153.6,97.7,116.9
+54,NP_001005502.1,carboxypeptidase M precursor [Homo sapiens],225.9,265.2,239.9,247.3,229.0,276.5,306.3,327.9
+55,NP_001010980.1,noncompact myelin-associated protein [Homo sapiens],105.0,86.2,149.0,102.7,126.5,118.3,143.4,126.6
+56,NP_001012772.1,NHL repeat-containing protein 3 isoform a precursor [Homo sapiens],41.4,0.0,37.3,0.0,48.6,0.0,20.9,0.0
+57,NP_001013416.1,insulin-like growth factor-binding protein 3 isoform a precursor [Homo sapiens],23.2,76.3,30.2,104.5,31.0,106.1,32.8,107.5
+58,NP_001013682.2,ferric-chelate reductase 1 isoform 1 precursor [Homo sapiens],133.3,163.6,154.6,139.4,169.9,195.0,94.2,105.3
+59,NP_001014364.1,filaggrin-2 [Homo sapiens],28.9,0.0,33.7,0.0,25.3,0.0,25.5,0.0
+60,NP_001020018.1,TGF-beta receptor type-2 isoform A precursor [Homo sapiens],194.5,279.0,146.3,211.8,170.2,273.9,175.8,261.2
+61,NP_001026866.1,5'-3' exonuclease PLD3 [Homo sapiens],42.3,113.0,29.1,95.4,27.8,90.5,44.7,99.9
+62,NP_001026870.2,Golgi-associated kinase 1B isoform 1 [Homo sapiens],35.5,0.0,23.1,0.0,35.6,0.0,28.0,0.0
+63,NP_001035110.1,monocyte differentiation antigen CD14 precursor [Homo sapiens],3639.3,3681.3,2301.1,2091.6,2473.7,2336.9,4514.9,4153.3
+64,NP_001035810.1,glucose-6-phosphate 1-dehydrogenase isoform b [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+65,NP_001035930.1,prosaposin isoform b preproprotein [Homo sapiens],18499.3,16407.8,14349.9,12699.7,22829.9,20195.0,14145.6,13004.1
+66,NP_001036189.1,nectin-2 isoform delta precursor [Homo sapiens],2620.6,2601.4,2100.3,1916.0,1995.8,1980.7,1707.9,1632.6
+67,NP_001037729.1,prostate-associated microseminoprotein precursor [Homo sapiens],87.5,72.5,44.3,39.5,44.7,47.4,42.7,31.9
+68,NP_001056.1,tumor necrosis factor receptor superfamily member 1A isoform 1 precursor [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+69,NP_001069.1,vascular cell adhesion protein 1 isoform a precursor [Homo sapiens],661.5,535.9,513.1,456.2,670.8,568.4,565.9,499.6
+70,NP_001072.2,cubilin precursor [Homo sapiens],609.1,843.5,445.6,592.6,555.0,783.8,530.0,753.2
+71,NP_001073271.1,lysosomal alpha-glucosidase preproprotein [Homo sapiens],169.4,102.7,377.7,117.4,130.1,95.9,323.6,170.3
+72,NP_001073275.1,pepsin A-3 preproprotein [Homo sapiens],52.2,192.9,31.3,114.3,46.8,176.9,16.7,68.6
+73,NP_001073592.1,major prion protein preproprotein Prp precursor [Homo sapiens],88.3,215.7,108.4,197.5,138.4,287.5,70.0,175.8
+74,NP_001091.1,"actin, alpha skeletal muscle [Homo sapiens]",540.6,312.8,269.6,160.4,207.4,117.7,263.9,154.5
+75,NP_001092755.1,prothymosin alpha isoform 1 [Homo sapiens],861.4,1148.5,757.8,944.2,890.4,1079.8,618.1,901.0
+76,NP_001116078.1,lysosome-associated membrane glycoprotein 2 isoform C precursor [Homo sapiens],917.9,1003.1,1067.8,1235.5,997.3,1100.4,1494.1,1729.5
+77,NP_001121070.1,insulin-like growth factor II isoform 2 [Homo sapiens],426.4,328.5,415.3,340.0,390.0,294.2,749.2,582.7
+78,NP_001121170.1,serine protease inhibitor Kazal-type 5 isoform a preproprotein [Homo sapiens],2096.8,1175.1,1713.1,969.3,2389.5,1398.2,1903.3,1003.2
+79,NP_001124.1,afamin precursor [Homo sapiens],948.4,567.3,843.1,458.4,1014.1,584.3,1140.4,637.8
+80,NP_001124384.1,protein SGT1 homolog isoform B [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+81,NP_001124390.1,tubulin polyglutamylase TTLL6 isoform 1 [Homo sapiens],139.4,107.0,73.4,83.1,110.4,92.1,199.7,207.5
+82,NP_001125.1,alpha-fetoprotein isoform 1 precursor [Homo sapiens],2573.1,2307.7,1280.1,1086.3,2346.1,2032.1,1049.1,896.6
+83,NP_001127666.1,prostatic acid phosphatase isoform TM-PAP precursor [Homo sapiens],92.6,172.5,101.4,179.0,86.9,150.0,94.2,152.5
+84,NP_001129162.1,proenkephalin-A preproprotein [Homo sapiens],69.8,73.0,73.7,74.9,58.8,73.0,74.7,66.8
+85,NP_001139786.1,protein ABHD14B isoform 1 [Homo sapiens],378.4,241.4,149.5,72.3,189.5,97.6,156.0,72.5
+86,NP_001152759.1,triosephosphate isomerase isoform 2 [Homo sapiens],34.5,27.7,19.1,19.1,26.6,28.4,21.5,28.2
+87,NP_001157243.1,collagen alpha-2(XI) chain isoform 4 precursor [Homo sapiens],0.0,30.3,0.0,41.5,0.0,27.5,0.0,62.0
+88,NP_001157789.1,filamin-B isoform 1 [Homo sapiens],0.0,40.5,0.0,61.5,0.0,31.8,0.0,31.1
+89,NP_001159400.3,dystroglycan preproprotein [Homo sapiens],311.4,245.7,124.0,126.6,235.0,189.5,154.6,124.2
+90,NP_001161066.1,lysosomal protective protein isoform c precursor [Homo sapiens],158.9,358.8,147.1,362.3,149.1,312.8,115.3,300.8
+91,NP_001165447.1,cadherin-related family member 2 precursor [Homo sapiens],30.9,30.8,30.8,21.1,29.2,26.3,34.3,20.8
+92,NP_001171271.1,adiponectin precursor [Homo sapiens],0.0,40.1,0.0,48.7,0.0,61.0,0.0,41.5
+93,NP_001171488.1,acyl-CoA-binding protein isoform 4 [Homo sapiens],3835.9,4685.9,1308.1,1616.4,4114.0,5092.6,1833.3,2304.4
+94,NP_001171597.1,immunoglobulin lambda-like polypeptide 5 isoform 1 [Homo sapiens],10446.0,12007.4,5473.2,5344.3,7641.3,8121.0,6118.9,6281.0
+95,NP_001176.1,zinc-alpha-2-glycoprotein precursor [Homo sapiens],67420.7,62990.7,76939.9,71418.4,110781.7,102958.9,50156.7,52351.7
+96,NP_001186088.1,peptidase inhibitor 16 precursor [Homo sapiens],21738.1,23422.5,19053.7,17853.9,20642.7,21336.7,12754.7,13202.0
+97,NP_001191236.1,vitamin D-binding protein isoform 3 precursor [Homo sapiens],4068.9,3643.1,2377.9,2082.4,3288.3,2945.9,3256.0,2797.6
+98,NP_001193594.1,immunoglobulin superfamily member 8 precursor [Homo sapiens],47.6,40.2,37.4,39.1,41.8,41.6,38.1,47.9
+99,NP_001207417.1,cadherin-13 isoform 2 [Homo sapiens],3501.3,5607.5,2315.2,3888.7,3064.0,4975.0,2595.8,4580.9
+100,NP_001229536.1,neural cell adhesion molecule 1 isoform 5 precursor [Homo sapiens],93.2,71.6,112.6,96.1,116.6,96.0,121.6,108.2
+101,NP_001230587.1,glutaredoxin-1 [Homo sapiens],90.6,114.5,48.2,79.6,92.4,100.5,65.0,82.6
+102,NP_001238759.1,osteopontin isoform 5 [Homo sapiens],2148.4,3216.8,2125.1,2872.2,1742.2,2526.4,1541.2,1845.2
+103,NP_001239312.1,glycoprotein hormones alpha chain isoform 1 precursor [Homo sapiens],322.8,697.5,96.9,257.8,231.8,648.9,158.5,318.7
+104,NP_001244901.1,procathepsin L isoform 1 preproprotein [Homo sapiens],70.5,117.0,49.2,75.4,57.2,90.4,43.2,50.9
+105,NP_001245218.1,methanethiol oxidase isoform 3 [Homo sapiens],0.0,48.1,0.0,22.6,0.0,45.0,0.0,30.5
+106,NP_001255.4,corneodesmosin precursor [Homo sapiens],101.9,134.8,47.8,59.7,72.2,85.9,66.6,86.5
+107,NP_001257327.1,inactive tyrosine-protein kinase 7 isoform e [Homo sapiens],75.4,30.9,60.9,19.8,65.6,28.9,55.3,26.4
+108,NP_001257905.1,IST1 homolog isoform c [Homo sapiens],153.8,86.4,130.4,85.7,101.9,68.9,151.9,102.1
+109,NP_001258535.1,brain acid soluble protein 1 [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+110,NP_001265543.1,uromodulin isoform b preproprotein [Homo sapiens],27832.2,30699.3,55717.7,61219.3,36670.3,40168.0,26195.5,28580.3
+111,NP_001266.1,chromogranin-A isoform 1 preproprotein [Homo sapiens],0.0,54.8,0.0,44.3,0.0,47.6,0.0,18.9
+112,NP_001269514.1,matrix remodeling-associated protein 8 isoform 1 precursor [Homo sapiens],85.9,0.0,76.6,0.0,72.5,0.0,133.4,0.0
+113,NP_001274272.1,14 kDa phosphohistidine phosphatase isoform 5 [Homo sapiens],48.8,54.9,68.0,66.7,55.9,54.3,79.7,49.9
+114,NP_001275696.1,armadillo repeat-containing protein 5 isoform c [Homo sapiens],235.3,0.0,275.3,0.0,228.4,0.0,143.5,0.0
+115,NP_001276054.1,interferon alpha/beta receptor 2 isoform a [Homo sapiens],221.9,308.4,162.1,249.5,145.2,231.1,189.9,291.1
+116,NP_001276737.1,alpha-crystallin B chain isoform 1 [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+117,NP_001287831.1,complement decay-accelerating factor isoform 5 precursor [Homo sapiens],3247.1,2771.2,3229.0,2804.8,3748.0,3167.1,3469.4,2927.7
+118,NP_001288196.1,metallothionein-1G isoform 2 [Homo sapiens],843.8,1191.7,832.9,1159.4,1081.2,1458.0,1491.1,2083.0
+119,NP_001289855.1,bone marrow proteoglycan isoform 1 preproprotein [Homo sapiens],119.8,187.8,87.6,125.1,138.5,228.6,112.6,143.2
+120,NP_001290343.1,trypsin-2 isoform 1 preproprotein [Homo sapiens],2152.5,1554.8,559.6,394.2,1903.8,1386.1,839.7,643.3
+121,NP_001291465.1,ephrin type-A receptor 4 isoform a precursor [Homo sapiens],0.0,25.5,0.0,21.0,0.0,29.3,0.0,31.0
+122,NP_001291700.1,G-protein coupled receptor family C group 5 member B isoform 2 [Homo sapiens],89.5,128.1,96.1,166.9,91.3,145.6,99.5,185.5
+123,NP_001298091.1,thy-1 membrane glycoprotein isoform 1 preproprotein [Homo sapiens],688.1,838.8,483.2,499.6,662.2,771.5,356.4,349.4
+124,NP_001303969.2,beta-galactosidase isoform d precursor [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+125,NP_001304947.1,apolipoprotein A-I isoform 1 preproprotein [Homo sapiens],3972.3,4486.4,897.9,976.0,1507.3,1442.2,1695.7,1744.6
+126,NP_001305754.1,beta-hexosaminidase subunit alpha isoform 1 precursor [Homo sapiens],348.0,229.9,191.9,138.5,314.2,214.7,172.4,158.4
+127,NP_001305968.1,"fatty acid-binding protein, brain isoform 2 [Homo sapiens]",0.0,39.4,0.0,37.0,0.0,32.0,0.0,33.5
+128,NP_001306125.1,protein S100-A8 isoform a [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+129,NP_001307540.1,importin subunit alpha-1 [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+130,NP_001307925.1,"fatty acid-binding protein, heart isoform 1 [Homo sapiens]",561.5,1142.6,394.5,866.6,910.8,1515.8,637.1,1358.9
+131,NP_001308349.1,rho GDP-dissociation inhibitor 2 [Homo sapiens],103.3,220.0,109.5,233.5,103.1,207.0,103.3,177.7
+132,NP_001311332.1,peptidase inhibitor 15 preproprotein [Homo sapiens],3358.2,3489.0,5357.4,5359.9,4039.0,4172.3,4143.8,4335.4
+133,NP_001314.1,cystatin-M precursor [Homo sapiens],15828.3,19478.6,5446.4,6008.0,12766.8,15415.6,9662.7,12047.6
+134,NP_001316719.1,glutathione peroxidase 3 isoform 2 precursor [Homo sapiens],688.3,1002.6,176.5,272.4,702.3,988.3,323.1,462.4
+135,NP_001317135.1,migration and invasion enhancer 1 isoform 2 [Homo sapiens],66.6,70.7,60.2,71.4,73.0,75.7,78.6,92.6
+136,NP_001327.2,cathepsin Z preproprotein [Homo sapiens],940.8,1384.8,806.5,1040.3,1126.7,1396.7,745.0,644.4
+137,NP_001335027.1,GDNF family receptor alpha-1 isoform a preproprotein [Homo sapiens],669.3,530.5,436.0,345.1,714.8,547.1,333.6,293.4
+138,NP_001338930.1,neurotrimin isoform 5 precursor [Homo sapiens],51.6,0.0,69.2,0.0,63.3,0.0,61.0,0.0
+139,NP_001343945.1,lysosomal acid phosphatase isoform 1x precursor [Homo sapiens],83.7,68.7,68.3,69.3,71.2,89.2,58.9,33.4
+140,NP_001350162.1,phosphatidylethanolamine-binding protein 4 precursor [Homo sapiens],358.9,542.4,464.0,797.3,627.3,1129.0,569.2,1063.5
+141,NP_001350475.1,N-acetylmuramoyl-L-alanine amidase isoform 2 precursor [Homo sapiens],424.1,542.6,201.5,260.0,482.5,600.8,391.7,507.1
+142,NP_001350617.1,NPC intracellular cholesterol transporter 2 isoform 1 precursor [Homo sapiens],4425.2,4949.9,2278.4,2313.8,4823.4,5419.3,2190.5,2258.9
+143,NP_001352447.1,fibronectin isoform 13 precursor [Homo sapiens],1092.3,1819.8,1439.8,2463.4,1391.6,2200.5,1508.6,2491.8
+144,NP_001353298.1,DNA replication licensing factor MCM3 isoform 3 [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+145,NP_001354906.1,"signal peptide, CUB and EGF-like domain-containing protein 2 isoform 4 precursor [Homo sapiens]",361.5,388.4,496.5,456.9,365.1,385.8,419.9,520.3
+146,NP_001355229.1,general transcription factor II-I repeat domain-containing protein 2A isoform 3 [Homo sapiens],146.2,350.2,155.3,379.7,53.7,197.0,268.5,628.7
+147,NP_001356197.1,aggrecan core protein isoform 3 precursor [Homo sapiens],46.6,0.0,65.3,0.0,36.2,0.0,49.4,0.0
+148,NP_001357587.1,biotinidase isoform 1 precursor [Homo sapiens],33.2,87.1,30.2,67.3,25.6,67.2,28.6,47.0
+149,NP_001358649.1,mucin-1 isoform 22 precursor [Homo sapiens],229.8,376.4,337.9,443.1,228.7,319.6,418.4,606.8
+150,NP_001362207.1,complement factor I isoform 4 preproprotein [Homo sapiens],141.1,69.2,108.0,59.5,97.8,62.9,144.2,77.4
+151,NP_001364459.1,deleted in malignant brain tumors 1 protein isoform e precursor [Homo sapiens],0.0,51.6,0.0,65.9,0.0,62.3,0.0,80.8
+152,NP_001366295.1,"keratin, type I cytoskeletal 10 isoform 2 [Homo sapiens]",17328.5,16532.7,17385.3,18314.4,11288.7,10730.8,11492.2,10602.4
+153,NP_001366539.1,serine protease inhibitor Kazal-type 1 precursor [Homo sapiens],5874.2,6318.2,2975.6,3368.8,4938.0,5410.0,2710.7,2896.7
+154,NP_001368852.1,aminopeptidase N [Homo sapiens],4032.5,4520.7,2680.1,3053.4,3631.6,4114.2,2153.8,2187.5
+155,NP_001369656.1,junctional adhesion molecule A isoform 7 precursor [Homo sapiens],437.0,473.5,238.3,279.5,403.6,482.0,174.6,206.8
+156,NP_001371088.1,fibulin-5 isoform 3 precursor [Homo sapiens],1128.5,860.3,1137.1,859.6,1297.4,1000.5,1101.4,812.7
+157,NP_001371408.1,angiotensinogen precursor [Homo sapiens],25541.5,23466.0,6581.4,6018.5,16417.8,15345.8,5960.2,5293.8
+158,NP_001371601.1,alpha-1-antichymotrypsin precursor [Homo sapiens],10670.2,10725.7,5376.5,5422.9,8101.8,8393.8,6697.9,7079.5
+159,NP_001372655.1,resistin isoform b precursor [Homo sapiens],1481.6,1349.1,738.2,651.1,814.4,718.9,870.6,753.3
+160,NP_001373231.1,antithrombin-III isoform 3 precursor [Homo sapiens],2933.9,2998.8,1372.1,1518.4,2381.0,2524.5,1549.1,1754.4
+161,NP_001373983.1,extracellular sulfatase Sulf-2 isoform e precursor [Homo sapiens],541.7,642.5,735.0,893.7,658.8,807.5,653.8,807.5
+162,NP_001374068.1,deoxyribonuclease-1 isoform 2 precursor [Homo sapiens],89.8,104.0,67.8,106.7,81.2,103.5,74.3,97.6
+163,NP_001393.1,elongation factor 1-alpha 1 [Homo sapiens],0.0,181.1,0.0,191.7,0.0,201.5,0.0,136.7
+164,NP_001395.1,elongation factor 1-gamma [Homo sapiens],0.0,35.1,0.0,21.3,0.0,29.9,0.0,19.6
+165,NP_001433.1,"fatty acid-binding protein, adipocyte [Homo sapiens]",2227.8,2100.1,366.6,392.8,1231.1,1168.3,401.5,425.8
+166,NP_001434.1,"fatty acid-binding protein, liver [Homo sapiens]",6586.5,6105.4,4870.2,4593.3,9509.6,9054.7,6680.4,6361.3
+167,NP_001435.1,fatty acid-binding protein 5 [Homo sapiens],102.3,0.0,39.6,0.0,90.7,0.0,39.4,0.0
+168,NP_001449.3,filamin-C isoform a [Homo sapiens],70.4,0.0,37.7,0.0,88.8,0.0,40.6,0.0
+169,NP_001454.2,secreted frizzled-related protein 3 precursor [Homo sapiens],624.0,562.6,323.7,329.1,596.3,548.9,381.2,305.2
+170,NP_001544.1,insulin-like growth factor-binding protein 7 isoform 1 precursor [Homo sapiens],104.4,117.8,147.4,138.8,95.8,94.6,116.1,118.9
+171,NP_001613.2,alpha-2-HS-glycoprotein isoform 2 preproprotein [Homo sapiens],71339.8,63212.3,16319.6,16907.6,42331.4,38538.1,13592.7,14928.3
+172,NP_001624.1,protein AMBP preproprotein [Homo sapiens],84975.0,88893.0,44602.1,47739.3,98926.1,88815.8,32968.1,35023.4
+173,NP_001633.1,amyloid-like protein 2 isoform 1 precursor [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+174,NP_001634.1,apolipoprotein A-II preproprotein [Homo sapiens],360.1,166.0,136.3,61.2,262.5,117.2,290.5,134.9
+175,NP_001638.1,apolipoprotein D precursor [Homo sapiens],4735.2,5428.0,5063.9,5932.6,5174.7,5862.8,8268.4,9491.8
+176,NP_001701.2,complement factor B preproprotein [Homo sapiens],1416.4,306.0,772.0,203.9,810.2,222.4,860.4,207.4
+177,NP_001729.1,carbonic anhydrase 1 isoform a [Homo sapiens],1988.8,2408.0,1167.9,1442.1,6424.0,7720.5,3897.3,4430.7
+178,NP_001747.3,corticosteroid-binding globulin precursor [Homo sapiens],536.2,589.8,376.7,458.6,441.4,520.3,613.1,760.7
+179,NP_001760.1,CD9 antigen isoform 1 [Homo sapiens],567.7,729.1,575.3,810.6,503.4,659.6,553.4,763.3
+180,NP_001783.2,cadherin-2 isoform 1 preproprotein [Homo sapiens],104.0,57.5,93.4,61.8,101.7,80.9,88.1,56.5
+181,NP_001805.4,dipeptidyl peptidase 1 isoform a preproprotein [Homo sapiens],0.0,319.6,0.0,132.1,0.0,175.0,0.0,115.4
+182,NP_001810.2,secretogranin-1 precursor [Homo sapiens],50.0,95.7,61.2,97.6,78.6,79.8,79.1,133.2
+183,NP_001822.3,clusterin preproprotein [Homo sapiens],3568.8,4097.9,4164.8,4600.3,3038.4,3166.3,3973.0,4708.8
+184,NP_001823.1,colipase isoform 1 preproprotein [Homo sapiens],52.6,418.5,20.8,172.7,43.9,330.8,25.8,156.7
+185,NP_001837.2,collagen alpha-2(IV) chain preproprotein [Homo sapiens],450.4,350.9,399.8,320.4,434.8,372.1,646.4,527.0
+186,NP_001839.2,collagen alpha-1(VI) chain precursor [Homo sapiens],4135.2,3975.7,3660.8,3846.3,4058.2,3725.0,3804.2,3594.4
+187,NP_001840.3,collagen alpha-2(VI) chain isoform 2C2 precursor [Homo sapiens],261.1,125.0,232.7,115.0,259.2,115.7,315.6,132.3
+188,NP_001846.3,collagen alpha-1(XV) chain precursor [Homo sapiens],294.7,150.0,234.0,117.0,167.8,89.0,135.2,100.8
+189,NP_001859.1,carboxypeptidase A1 preproprotein [Homo sapiens],0.0,96.7,0.0,43.8,0.0,108.2,0.0,129.7
+190,NP_001864.1,carboxypeptidase E preproprotein [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+191,NP_001888.2,chondroitin sulfate proteoglycan 4 precursor [Homo sapiens],969.0,631.2,965.5,689.3,758.5,538.9,719.2,575.9
+192,NP_001892.2,CCN family member 2 precursor [Homo sapiens],254.8,302.4,123.3,135.4,346.6,394.1,171.6,180.2
+193,NP_001899.1,cathepsin B isoform 1 preproprotein [Homo sapiens],1228.0,1395.7,963.3,979.6,1403.7,1443.4,973.4,987.8
+194,NP_001924.2,"dihydrolipoyllysine-residue succinyltransferase component of 2-oxoglutarate dehydrogenase complex, mitochondrial isoform 1 precursor [Homo sapiens]",215.8,97.4,222.4,101.0,250.7,106.8,273.0,96.8
+195,NP_001926.2,dipeptidyl peptidase 4 isoform 1 [Homo sapiens],3904.2,3586.8,3223.5,2931.8,4623.5,4232.2,2267.0,2101.3
+196,NP_001928.2,dermatopontin precursor [Homo sapiens],5676.8,6253.2,5278.6,5795.5,4310.1,4752.6,5571.9,6132.7
+197,NP_001934.2,desmoglein-2 preproprotein [Homo sapiens],189.5,117.5,83.3,53.7,164.9,102.1,75.5,43.1
+198,NP_001968.3,glutamyl aminopeptidase isoform 1 [Homo sapiens],1204.3,1369.7,600.5,813.0,777.0,938.9,448.8,746.7
+199,NP_001990.2,fibrillin-2 precursor [Homo sapiens],440.1,840.1,616.0,1217.8,477.3,1018.2,385.7,768.8
+200,NP_002007.1,filaggrin [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+201,NP_002067.1,N-acetylglucosamine-6-sulfatase precursor [Homo sapiens],3999.8,3467.2,3218.7,2818.3,4378.6,3787.6,3280.7,2887.3
+202,NP_002072.2,glypican-1 precursor [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+203,NP_002078.1,progranulin precursor [Homo sapiens],384.6,504.2,372.1,505.9,449.2,503.4,357.0,488.8
+204,NP_002169.1,insulin-like growth factor-binding protein 6 precursor [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+205,NP_002209.2,inter-alpha-trypsin inhibitor heavy chain H4 isoform 1 precursor [Homo sapiens],5701.3,6007.9,1881.9,2068.3,1766.4,1893.6,650.9,714.8
+206,NP_002258.2,importin subunit alpha-4 [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+207,NP_002266.3,"keratin, type I cytoskeletal 15 [Homo sapiens]",108.2,0.0,82.2,0.0,83.5,0.0,100.3,0.0
+208,NP_002278.2,leukocyte-associated immunoglobulin-like receptor 1 isoform a precursor [Homo sapiens],443.3,445.5,322.0,329.7,512.9,519.9,264.6,243.6
+209,NP_002308.2,protein-lysine 6-oxidase isoform 1 preproprotein [Homo sapiens],2215.5,2488.3,556.3,613.5,516.8,573.2,107.3,120.2
+210,NP_002336.1,lumican precursor [Homo sapiens],6972.8,6827.2,2919.9,3173.8,5887.5,5817.2,2871.3,4273.2
+211,NP_002347.5,myristoylated alanine-rich C-kinase substrate [Homo sapiens],127.7,215.3,87.7,133.4,143.7,240.4,134.9,172.6
+212,NP_002372.1,matrilin-3 precursor [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+213,NP_002498.1,tumor necrosis factor receptor superfamily member 16 precursor [Homo sapiens],96.8,0.0,143.9,0.0,129.0,0.0,122.9,0.0
+214,NP_002499.2,nidogen-1 precursor [Homo sapiens],1684.2,2142.1,1462.5,1894.4,1286.7,1653.8,1161.4,1573.9
+215,NP_002505.1,CCN family member 3 precursor [Homo sapiens],1047.5,996.0,949.8,882.0,1029.6,978.9,1272.0,1188.6
+216,NP_002584.2,procollagen C-endopeptidase enhancer 1 precursor [Homo sapiens],115.0,182.7,90.7,95.8,93.5,99.2,99.4,65.9
+217,NP_002606.3,pigment epithelium-derived factor isoform 1 precursor [Homo sapiens],1668.9,1292.2,549.2,564.7,1377.7,1167.1,600.9,664.9
+218,NP_002621.1,gastricsin isoform 1 preproprotein [Homo sapiens],407.7,469.6,339.8,391.3,731.9,869.2,375.6,419.8
+219,NP_002635.2,polymeric immunoglobulin receptor precursor [Homo sapiens],2129.4,2985.4,2159.2,3032.8,2501.8,3563.7,3313.4,4512.8
+220,NP_002643.1,prolactin-inducible protein precursor [Homo sapiens],34.5,0.0,37.2,0.0,48.8,0.0,21.5,0.0
+221,NP_002650.1,urokinase plasminogen activator surface receptor isoform 1 precursor [Homo sapiens],136.5,150.9,119.9,142.9,143.1,154.0,119.0,136.6
+222,NP_002736.3,mitogen-activated protein kinase 1 [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+223,NP_002760.1,trypsin-1 preproprotein [Homo sapiens],19650.5,18959.6,36211.7,35230.7,26207.5,25243.7,28505.7,27540.6
+224,NP_002764.1,prostasin preproprotein [Homo sapiens],70.2,35.9,83.1,55.0,87.2,52.9,81.9,50.8
+225,NP_002817.2,sulfhydryl oxidase 1 isoform a precursor [Homo sapiens],41.9,172.6,39.6,149.2,33.5,128.1,35.5,118.8
+226,NP_002837.1,receptor-type tyrosine-protein phosphatase-like N isoform 1 precursor [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+227,NP_002841.3,receptor-type tyrosine-protein phosphatase S isoform 1 precursor [Homo sapiens],183.4,44.2,207.9,47.3,203.4,43.0,224.4,50.2
+228,NP_002900.2,lithostathine-1-alpha precursor [Homo sapiens],1448.4,1642.0,691.6,705.2,1326.5,1269.7,923.1,1040.4
+229,NP_002925.1,non-secretory ribonuclease precursor [Homo sapiens],438.2,355.0,522.8,399.4,603.5,401.7,649.4,519.1
+230,NP_002954.2,protein S100-A7 [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+231,NP_002956.1,protein S100-A9 [Homo sapiens],0.0,107.7,0.0,97.1,0.0,106.8,0.0,104.6
+232,NP_002989.2,syndecan-2 precursor [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+233,NP_002990.2,syndecan-4 precursor [Homo sapiens],28.8,35.6,21.7,28.3,33.4,28.0,20.9,17.9
+234,NP_002995.1,secreted and transmembrane protein 1 precursor [Homo sapiens],23.7,0.0,32.6,0.0,36.9,0.0,21.8,0.0
+235,NP_003013.1,SH3 domain-binding glutamic acid-rich-like protein [Homo sapiens],758.4,671.1,370.6,284.0,650.4,589.2,390.9,216.2
+236,NP_003052.2,slit homolog 1 protein precursor [Homo sapiens],2185.2,1433.6,870.5,631.2,1847.1,1233.4,811.1,560.9
+237,NP_003093.2,extracellular superoxide dismutase [Cu-Zn] preproprotein [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+238,NP_003216.1,trefoil factor 1 precursor [Homo sapiens],137.2,244.3,165.9,293.8,191.8,345.5,149.7,278.3
+239,NP_003217.4,trefoil factor 3 precursor [Homo sapiens],3437.2,3516.6,3223.3,3309.0,5758.4,5780.0,3107.7,3089.8
+240,NP_003237.2,thrombospondin-1 precursor [Homo sapiens],613.3,671.3,624.0,731.1,693.2,785.4,696.6,910.2
+241,NP_003348.1,uteroglobin precursor [Homo sapiens],7851.4,8223.3,4880.0,5355.8,10984.9,11517.0,8805.3,10681.3
+242,NP_003460.2,secretogranin-2 precursor [Homo sapiens],86.6,222.9,110.5,273.7,96.9,244.6,114.9,264.7
+243,NP_003496.1,frizzled-1 [Homo sapiens],60.7,58.1,47.2,44.3,73.8,61.0,62.2,52.8
+244,NP_003534.1,histone H4 [Homo sapiens],313.6,442.1,224.3,275.8,198.3,141.4,286.3,346.6
+245,NP_003644.2,COP9 signalosome complex subunit 3 isoform 1 [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+246,NP_003721.2,ribonuclease T2 precursor [Homo sapiens],2971.4,3429.5,2090.7,2432.1,2702.4,3120.1,1352.2,1565.4
+247,NP_003811.2,tumor necrosis factor receptor superfamily member 14 isoform 1 precursor [Homo sapiens],40.8,0.0,41.2,0.0,48.6,0.0,52.6,0.0
+248,NP_003827.4,protein delta homolog 1 isoform 1 preproprotein [Homo sapiens],6810.2,11181.3,2705.8,4654.5,5138.0,8351.0,6169.7,9954.5
+249,NP_003869.1,gamma-glutamyl hydrolase precursor [Homo sapiens],2630.4,3030.1,1439.8,1590.9,2316.1,2640.5,1699.5,1975.9
+250,NP_003970.1,retinoic acid-induced protein 3 [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+251,NP_004099.2,ficolin-2 isoform a precursor [Homo sapiens],44.3,73.2,38.9,64.3,24.9,40.2,29.7,51.3
+252,NP_004100.1,"adrenodoxin, mitochondrial precursor [Homo sapiens]",135.2,163.3,142.7,205.7,165.7,247.7,319.8,559.3
+253,NP_004107.1,peptidyl-prolyl cis-trans isomerase FKBP1B isoform a [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+254,NP_004130.2,lipopolysaccharide-binding protein precursor [Homo sapiens],51.5,162.3,24.0,41.4,32.7,60.7,31.9,47.7
+255,NP_004155.2,retinol-binding protein 2 [Homo sapiens],143.0,324.1,184.1,401.9,453.0,713.2,141.0,369.2
+256,NP_004306.3,acid ceramidase isoform b [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+257,NP_004332.2,CAD protein isoform 1 [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+258,NP_004334.1,calreticulin precursor [Homo sapiens],1955.0,2159.6,612.4,587.2,1128.1,1082.1,765.2,718.8
+259,NP_004351.1,cadherin-1 isoform 1 preproprotein [Homo sapiens],9025.9,12106.5,8641.1,11320.6,10170.8,13518.8,5766.0,7884.4
+260,NP_004360.2,collagen alpha-3(VI) chain isoform 1 precursor [Homo sapiens],25944.3,25575.5,13294.5,13459.0,30263.9,28782.6,13347.6,13552.6
+261,NP_004376.2,versican core protein isoform 1 precursor [Homo sapiens],0.0,39.6,0.0,28.4,0.0,35.0,0.0,34.0
+262,NP_004379.1,di-N-acetylchitobiase precursor [Homo sapiens],1086.9,1316.8,954.6,1560.1,883.3,1294.9,1054.8,1555.9
+263,NP_004381.2,pro-cathepsin H isoform a preproprotein [Homo sapiens],385.1,206.4,215.6,124.2,305.3,187.0,258.2,165.3
+264,NP_004420.1,ephrin-B1 precursor [Homo sapiens],936.0,981.5,610.2,636.4,918.2,994.6,607.5,730.7
+265,NP_004431.1,ephrin type-A receptor 7 isoform 1 precursor [Homo sapiens],45.7,0.0,39.6,0.0,42.8,0.0,54.4,0.0
+266,NP_004452.1,phenylalanine--tRNA ligase alpha subunit [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+267,NP_004474.2,"glycine cleavage system H protein, mitochondrial precursor [Homo sapiens]",135.4,0.0,123.1,0.0,122.5,0.0,106.0,0.0
+268,NP_004516.2,low-density lipoprotein receptor-related protein 2 precursor [Homo sapiens],1533.5,2106.4,1348.9,2103.5,1522.7,2305.8,1565.7,2255.5
+269,NP_004675.3,SPARC-like protein 1 isoform 1 precursor [Homo sapiens],2296.8,2090.4,2278.8,2100.6,3332.4,3032.8,1988.0,1823.2
+270,NP_004855.2,growth/differentiation factor 15 preproprotein [Homo sapiens],0.0,63.4,0.0,16.0,0.0,22.1,0.0,25.5
+271,NP_004920.1,calbindin isoform 1 [Homo sapiens],0.0,37.1,0.0,31.6,0.0,42.0,0.0,37.4
+272,NP_004923.1,cadherin-6 isoform 1 preproprotein [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+273,NP_004985.2,matrix metalloproteinase-9 preproprotein [Homo sapiens],85.8,384.1,126.9,471.5,84.9,348.7,96.1,376.0
+274,NP_005005.1,osteomodulin precursor [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+275,NP_005013.1,profilin-1 isoform 2 [Homo sapiens],1657.7,1485.8,595.7,510.5,1340.7,1135.9,1088.9,890.4
+276,NP_005031.1,lysosomal Pro-X carboxypeptidase isoform 1 preproprotein [Homo sapiens],22.0,194.2,22.4,136.7,25.6,217.9,39.0,145.6
+277,NP_005082.1,peptidoglycan recognition protein 1 precursor [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+278,NP_005092.1,ubiquitin-like protein ISG15 [Homo sapiens],41.5,0.0,26.6,0.0,33.2,0.0,44.7,0.0
+279,NP_005132.2,fibrinogen beta chain isoform 1 preproprotein [Homo sapiens],26.3,0.0,42.7,0.0,25.1,0.0,51.6,0.0
+280,NP_005134.1,haptoglobin isoform 1 preproprotein [Homo sapiens],155.0,52.5,152.4,56.7,122.4,46.0,177.6,82.4
+281,NP_005175.2,calmodulin-3 isoform 1 [Homo sapiens],96.1,84.2,68.8,58.1,99.6,96.7,78.7,68.2
+282,NP_005313.1,histone H1.5 [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+283,NP_005414.1,trefoil factor 2 precursor [Homo sapiens],132.0,0.0,105.5,0.0,155.2,0.0,75.5,0.0
+284,NP_005536.1,immunoglobulin superfamily containing leucine-rich repeat protein precursor [Homo sapiens],169.6,82.4,147.1,67.4,130.2,70.7,134.6,67.9
+285,NP_005552.3,lysosome-associated membrane glycoprotein 1 precursor [Homo sapiens],1488.7,1702.2,1463.2,1671.1,1906.1,2068.1,1241.1,1356.6
+286,NP_005555.2,neutrophil gelatinase-associated lipocalin precursor [Homo sapiens],380.2,331.8,163.9,185.7,555.8,405.9,268.0,266.8
+287,NP_005558.1,galectin-3-binding protein precursor [Homo sapiens],5626.9,5413.9,8645.9,7822.0,5302.9,4830.5,6183.6,5581.1
+288,NP_005616.2,syntenin-1 isoform 1 [Homo sapiens],38.3,33.7,30.2,27.7,27.6,21.6,27.8,29.0
+289,NP_005657.1,complement factor H-related protein 2 isoform 1 precursor [Homo sapiens],35.2,127.4,36.9,85.0,30.7,119.3,20.9,93.9
+290,NP_005663.2,prostate stem cell antigen preproprotein [Homo sapiens],243.1,181.8,187.9,141.7,475.9,327.8,220.5,176.1
+291,NP_005690.2,interleukin-18-binding protein isoform c precursor [Homo sapiens],226.0,281.3,318.3,418.3,216.7,244.7,367.7,465.5
+292,NP_005787.1,nuclear transport factor 2 [Homo sapiens],1507.3,2047.3,1305.2,1764.1,1812.1,2467.0,1338.6,1725.3
+293,NP_005814.2,mesothelin isoform 1 preproprotein [Homo sapiens],1886.2,3374.5,1742.6,2499.7,2060.3,3611.2,1422.8,2114.6
+294,NP_005899.3,beta-mannosidase precursor [Homo sapiens],0.0,64.9,0.0,54.4,0.0,74.1,0.0,39.5
+295,NP_005959.2,heterogeneous nuclear ribonucleoprotein M isoform a [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+296,NP_005971.1,protein S100-P [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+297,NP_006030.2,C-type mannose receptor 2 precursor [Homo sapiens],0.0,78.6,0.0,25.2,0.0,44.3,0.0,14.4
+298,NP_006042.3,amyloid-beta A4 precursor protein-binding family B member 3 isoform d [Homo sapiens],44.5,84.3,81.2,118.0,78.9,105.0,52.4,82.3
+299,NP_006094.3,WAP four-disulfide core domain protein 2 precursor [Homo sapiens],2995.9,3087.9,2998.8,3053.9,3630.9,3650.2,3430.3,3286.3
+300,NP_006112.3,"keratin, type II cytoskeletal 1 [Homo sapiens]",22098.8,22478.1,28173.2,28407.1,15252.9,15855.9,14940.9,15872.1
+301,NP_006139.1,LIM and SH3 domain protein 1 isoform a [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+302,NP_006395.2,endothelial protein C receptor precursor [Homo sapiens],197.1,97.1,258.5,169.3,165.6,85.2,186.7,151.3
+303,NP_006477.3,fibulin-1 isoform D precursor [Homo sapiens],147.6,0.0,121.8,0.0,130.4,0.0,55.8,0.0
+304,NP_006484.2,ceroid-lipofuscinosis neuronal protein 5 isoform 1 precursor [Homo sapiens],166.4,140.3,147.2,123.4,202.9,167.2,135.0,109.7
+305,NP_006496.4,poliovirus receptor isoform alpha precursor [Homo sapiens],20.1,52.0,35.2,120.4,38.8,100.4,41.1,95.6
+306,NP_006601.2,mannan-binding lectin serine protease 2 isoform 1 preproprotein [Homo sapiens],5909.0,6659.0,3842.4,4293.9,3667.5,3933.4,4871.5,5645.1
+307,NP_006682.2,lymphatic vessel endothelial hyaluronic acid receptor 1 precursor [Homo sapiens],7568.9,6147.4,7234.5,5988.4,9053.4,7265.9,6541.6,5602.9
+308,NP_006705.1,acid sphingomyelinase-like phosphodiesterase 3a isoform a precursor [Homo sapiens],133.8,95.1,82.9,50.6,129.7,75.2,79.5,54.4
+309,NP_006752.1,14-3-3 protein epsilon [Homo sapiens],155.5,196.0,78.6,123.5,81.6,121.6,53.3,88.1
+310,NP_006805.2,proteasome inhibitor PI31 subunit isoform 1 [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+311,NP_006807.1,vesicular integral-membrane protein VIP36 precursor [Homo sapiens],19901.2,17477.6,12142.3,10203.9,13273.8,10896.1,10571.2,8538.5
+312,NP_008924.1,nucleoplasmin-3 [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+313,NP_008980.1,butyrophilin subfamily 2 member A1 isoform 1 precursor [Homo sapiens],0.0,27.8,0.0,31.0,0.0,25.0,0.0,45.4
+314,NP_009016.1,follistatin-related protein 1 precursor [Homo sapiens],492.2,718.6,316.9,442.5,411.1,608.5,439.0,618.2
+315,NP_009175.2,proline-rich protein 4 isoform 2 precursor [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+316,NP_009193.2,Parkinson disease protein 7 [Homo sapiens],82.7,0.0,36.8,0.0,75.5,0.0,32.6,0.0
+317,NP_009199.1,V-set and immunoglobulin domain-containing protein 4 isoform 1 precursor [Homo sapiens],57.0,58.7,12.5,15.9,42.5,43.5,14.7,8.6
+318,NP_031377.2,multimerin-1 precursor [Homo sapiens],217.3,394.2,174.4,286.2,247.9,443.9,186.4,330.2
+319,NP_036204.2,complement component C1q receptor precursor [Homo sapiens],31.2,136.0,17.6,42.8,30.7,183.8,20.2,29.7
+320,NP_036220.1,6-phosphogluconolactonase [Homo sapiens],187.3,50.0,105.0,25.4,118.3,32.1,122.2,35.0
+321,NP_036230.1,angiopoietin-related protein 2 precursor [Homo sapiens],368.1,344.6,232.8,228.6,202.9,207.7,231.5,163.8
+322,NP_036246.1,caspase-14 precursor [Homo sapiens],23.2,0.0,39.3,0.0,15.3,0.0,24.5,0.0
+323,NP_036425.1,peroxidasin homolog precursor [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+324,NP_036541.2,prion-like protein doppel preproprotein [Homo sapiens],294.5,172.0,189.6,104.0,300.3,165.1,121.1,66.0
+325,NP_036545.1,glutaminyl-peptide cyclotransferase precursor [Homo sapiens],593.3,886.5,532.3,772.6,484.4,672.3,618.1,899.4
+326,NP_036605.2,"thioredoxin, mitochondrial precursor [Homo sapiens]",83.2,43.7,58.2,25.2,113.1,47.4,100.7,48.5
+327,NP_038265.2,glutathione hydrolase 1 proenzyme precursor [Homo sapiens],0.0,42.3,0.0,42.1,0.0,46.2,0.0,37.7
+328,NP_055023.2,dentin sialophosphoprotein preproprotein [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+329,NP_055047.2,vesicle-associated membrane protein 2 isoform 1 [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+330,NP_055059.2,A disintegrin and metalloproteinase with thrombospondin motifs 2 isoform 1 preproprotein [Homo sapiens],295.9,368.5,354.5,436.1,317.2,385.5,350.0,434.8
+331,NP_055135.1,heme-binding protein 2 isoform 2 [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+332,NP_055439.1,protein S100-A6 [Homo sapiens],244.1,209.0,234.2,197.3,276.1,229.9,345.4,289.8
+333,NP_055703.1,protein FAM3C precursor [Homo sapiens],5203.4,5463.4,2350.7,2399.5,4193.4,4439.1,2184.0,2144.9
+334,NP_055814.1,ras-related protein Rab-21 [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+335,NP_055851.1,endonuclease domain-containing 1 protein precursor [Homo sapiens],21.3,189.8,29.4,127.9,26.4,167.9,30.0,97.8
+336,NP_056203.2,protein YIPF3 [Homo sapiens],1806.2,3084.6,1761.5,3285.6,1650.9,2355.2,1666.4,3490.2
+337,NP_056534.2,collagen alpha-3(V) chain preproprotein [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+338,NP_057218.1,carboxypeptidase Q preproprotein [Homo sapiens],182.2,182.7,212.8,186.0,341.5,350.3,216.0,161.6
+339,NP_057563.3,protein shisa-5 isoform a precursor [Homo sapiens],6539.1,7767.0,7072.3,8653.7,6219.5,7543.9,6394.8,7763.9
+340,NP_057603.1,ameloblastin precursor [Homo sapiens],230.2,239.1,316.8,354.7,253.5,271.6,304.3,317.9
+341,NP_057630.2,complement C1r subcomponent-like protein isoform 1 precursor [Homo sapiens],198.9,210.8,178.3,170.7,198.2,179.7,185.2,185.3
+342,NP_057632.2,Golgi membrane protein 1 [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+343,NP_057717.1,alpha-hemoglobin-stabilizing protein [Homo sapiens],151.7,88.4,21.2,22.9,77.1,57.9,30.7,32.4
+344,NP_057723.1,tumor necrosis factor receptor superfamily member 12A precursor [Homo sapiens],4289.0,4605.3,3475.1,3668.2,5015.4,5215.0,2455.7,2638.3
+345,NP_057936.1,folate receptor alpha precursor [Homo sapiens],369.1,461.6,463.1,546.1,383.1,459.1,390.5,443.1
+346,NP_058634.4,EGF-containing fibulin-like extracellular matrix protein 2 precursor [Homo sapiens],289.9,209.8,237.9,205.3,265.1,204.3,277.8,221.7
+347,NP_059118.2,calmodulin-like protein 5 [Homo sapiens],44.5,125.7,47.6,166.4,57.3,158.8,95.2,256.6
+348,NP_060520.2,MANSC domain-containing protein 1 isoform 1 precursor [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+349,NP_061974.2,apolipoprotein M isoform 1 [Homo sapiens],621.6,649.1,384.5,409.4,726.3,706.5,390.5,526.0
+350,NP_061980.1,myeloid-derived growth factor precursor [Homo sapiens],2210.1,3439.3,1122.2,1743.1,2515.9,3977.2,702.7,974.2
+351,NP_064601.3,aminopeptidase B isoform a [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+352,NP_065137.1,endosialin precursor [Homo sapiens],2137.2,2868.0,2245.6,2905.4,1991.4,2624.7,2185.3,2940.6
+353,NP_065145.2,charged multivesicular body protein 1b [Homo sapiens],53.4,132.7,49.3,118.7,55.8,137.3,61.6,155.2
+354,NP_065160.1,secreted Ly-6/uPAR-related protein 1 precursor [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+355,NP_065699.1,twisted gastrulation protein homolog 1 precursor [Homo sapiens],684.1,536.6,559.3,492.7,653.4,521.6,547.7,420.4
+356,NP_065784.1,protein HEG homolog 1 precursor [Homo sapiens],0.0,84.2,0.0,117.3,0.0,91.4,0.0,105.0
+357,NP_066278.3,hepatocyte growth factor-like protein isoform 1 precursor [Homo sapiens],59.0,64.4,78.8,86.2,79.2,76.7,85.2,98.8
+358,NP_066925.1,kunitz-type protease inhibitor 2 isoform a precursor [Homo sapiens],177.6,323.2,170.4,296.3,199.4,355.3,190.6,338.7
+359,NP_066932.1,thymosin beta-4 [Homo sapiens],6576.9,7162.0,1579.8,1597.7,5340.1,5231.0,2688.3,2782.6
+360,NP_066972.1,coactosin-like protein [Homo sapiens],2097.1,1819.7,627.2,545.2,962.4,838.8,964.5,877.6
+361,NP_066978.1,CD209 antigen isoform 1 [Homo sapiens],55.0,43.4,46.4,40.3,46.3,50.8,75.5,58.9
+362,NP_067066.1,costars family protein ABRACL [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+363,NP_068656.2,fibrinogen gamma chain isoform gamma-B precursor [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+364,NP_068713.2,tyrosine-protein kinase receptor UFO isoform 1 precursor [Homo sapiens],524.3,749.3,643.6,701.9,787.2,735.1,765.2,856.1
+365,NP_071449.1,xylosyltransferase 1 precursor [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+366,NP_076435.1,LYNX1-SLURP2 protein precursor [Homo sapiens],0.0,67.7,0.0,46.2,0.0,68.2,0.0,63.5
+367,NP_077727.3,mimecan isoform 1 [Homo sapiens],959.6,923.4,465.4,612.4,869.6,902.2,534.4,691.6
+368,NP_077739.1,desmocollin-1 isoform Dsc1a preproprotein [Homo sapiens],429.0,174.6,268.3,112.3,358.8,149.0,294.0,120.8
+369,NP_077740.1,desmocollin-2 isoform Dsc2a preproprotein [Homo sapiens],918.8,1108.8,539.0,615.7,946.5,1079.7,317.0,281.7
+370,NP_079032.2,multimerin-2 precursor [Homo sapiens],0.0,49.8,0.0,43.2,0.0,50.9,0.0,46.0
+371,NP_079202.2,intraflagellar transport protein 56 isoform 1 [Homo sapiens],580.1,538.6,649.5,661.1,1274.0,1296.0,539.4,512.0
+372,NP_110379.2,T-complex protein 1 subunit alpha isoform a [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+373,NP_110437.2,thioredoxin domain-containing protein 5 isoform 1 precursor [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+374,NP_112576.1,SH3 domain-binding glutamic acid-rich-like protein 3 [Homo sapiens],4844.4,4745.9,4738.5,4602.5,5490.5,5375.8,4116.5,4230.3
+375,NP_114141.2,hemicentin-1 precursor [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+376,NP_114409.2,plasma alpha-L-fucosidase precursor [Homo sapiens],139.9,367.5,95.1,213.8,105.8,264.9,90.9,216.1
+377,NP_115584.1,anthrax toxin receptor 1 isoform 1 precursor [Homo sapiens],26.6,24.6,39.5,34.5,25.8,31.9,50.8,33.0
+378,NP_116171.3,hepatitis A virus cellular receptor 2 precursor [Homo sapiens],116.0,91.9,127.5,107.4,129.8,96.5,146.1,102.5
+379,NP_116197.4,leucine-rich repeat and immunoglobulin-like domain-containing nogo receptor-interacting protein 1 isoform a precursor [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+380,NP_291031.2,guanylin precursor [Homo sapiens],134.7,85.7,114.8,68.8,138.0,80.1,155.4,104.7
+381,NP_443112.2,phosphoinositide-3-kinase-interacting protein 1 isoform 1 precursor [Homo sapiens],337.5,420.3,280.2,381.2,345.6,360.7,323.0,377.3
+382,NP_443203.1,liver-expressed antimicrobial peptide 2 precursor [Homo sapiens],206.3,159.1,962.6,479.9,1406.6,663.6,1016.7,540.7
+383,NP_443204.1,leucine-rich alpha-2-glycoprotein precursor [Homo sapiens],13057.6,13052.2,8663.9,8620.1,5185.3,4983.7,6028.3,6079.4
+384,NP_444513.1,dermcidin isoform 1 preproprotein [Homo sapiens],1008.2,836.8,548.0,389.3,908.3,737.8,737.3,523.9
+385,NP_477521.1,mucin-like protein 1 precursor [Homo sapiens],1182.2,1103.4,1207.2,1126.8,1449.4,1352.8,1538.1,1418.0
+386,NP_510966.1,adhesion G protein-coupled receptor E5 isoform 1 preproprotein [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+387,NP_569057.2,collectin-12 [Homo sapiens],10918.5,9683.9,7985.5,7430.3,12634.1,11404.4,10534.0,9876.4
+388,NP_570602.2,alpha-1B-glycoprotein precursor [Homo sapiens],1143.3,1174.9,945.3,1004.4,998.7,954.1,1023.6,1312.9
+389,NP_597734.2,synaptopodin-2 isoform a [Homo sapiens],311.8,944.3,886.6,2567.9,455.8,1301.4,702.9,2127.3
+390,NP_612449.2,vasorin precursor [Homo sapiens],2851.4,1176.1,4431.6,1678.2,4365.3,1424.5,1888.3,1211.4
+391,NP_620156.1,galactose mutarotase [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+392,NP_620411.2,endothelial cell-selective adhesion molecule precursor [Homo sapiens],428.6,152.5,202.7,88.5,399.5,165.2,250.4,89.9
+393,NP_647473.1,ATP-dependent zinc metalloprotease YME1L1 isoform 1 [Homo sapiens],89.3,0.0,63.4,0.0,55.6,0.0,128.7,0.0
+394,NP_647537.1,attractin isoform 1 preproprotein [Homo sapiens],134.9,0.0,103.8,0.0,125.0,0.0,133.0,0.0
+395,NP_653247.1,immunoglobulin J chain precursor [Homo sapiens],160.0,23.9,241.7,41.4,187.0,29.9,306.6,62.9
+396,NP_660295.3,zymogen granule protein 16 homolog B precursor [Homo sapiens],202.2,312.2,255.9,433.4,213.1,336.7,231.9,408.8
+397,NP_660339.1,cell adhesion molecule 4 precursor [Homo sapiens],1112.5,1204.7,1002.0,1217.6,1072.2,1290.0,1183.8,1516.5
+398,NP_694953.2,cartilage intermediate layer protein 2 precursor [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+399,NP_710152.1,PILR alpha-associated neural protein isoform a precursor [Homo sapiens],0.0,105.9,0.0,108.0,0.0,57.8,0.0,346.0
+400,NP_733746.1,sialate O-acetylesterase isoform 1 precursor [Homo sapiens],131.0,276.0,114.4,180.3,153.3,227.3,101.8,193.5
+401,NP_733779.1,S-phase kinase-associated protein 1 isoform b [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+402,NP_775489.2,tryptophan 5-hydroxylase 2 [Homo sapiens],64.1,190.5,147.6,355.9,70.3,220.8,118.0,296.5
+403,NP_775813.2,putative phospholipase B-like 2 isoform 1 precursor [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+404,NP_776169.2,neuronal growth regulator 1 precursor [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+405,NP_776213.1,interleukin-1 receptor antagonist protein isoform 2 [Homo sapiens],7147.7,7091.0,2341.3,2326.0,3314.4,3255.6,1115.3,1121.0
+406,NP_787098.3,2-oxoglutarate and iron-dependent oxygenase domain-containing protein 3 isoform 2 [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+407,NP_848665.1,reticulon-4 receptor-like 2 precursor [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+408,NP_872372.1,vitelline membrane outer layer protein 1 homolog isoform 1 precursor [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+409,NP_877421.2,neuroblastoma suppressor of tumorigenicity 1 isoform 1 [Homo sapiens],1618.1,1683.8,816.1,830.4,774.4,759.6,1237.5,1304.8
+410,NP_878253.1,glycerophosphodiester phosphodiesterase domain-containing protein 4 [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+411,NP_932070.1,BH3-interacting domain death agonist isoform 1 [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+412,NP_937877.1,ribonuclease pancreatic precursor [Homo sapiens],117.9,263.4,43.9,117.5,109.4,278.0,36.6,78.8
+413,NP_940894.1,C-type lectin domain family 4 member G isoform 1 [Homo sapiens],520.1,691.5,256.5,365.5,301.6,419.7,64.7,78.1
+414,NP_976075.1,CD59 glycoprotein preproprotein [Homo sapiens],8872.3,11081.5,5432.6,6239.1,6879.8,8595.5,2014.9,2547.1
+415,NP_991108.1,ly6/PLAUR domain-containing protein 2 precursor [Homo sapiens],248.8,198.3,200.9,145.8,241.9,185.6,241.3,161.5
+416,sp,"retinol-binding protein 4 isoform a precursor [Homo sapiens]
+retinol-binding protein 4 isoform a precursor [Homo sapiens]",39654.4,33005.9,4663.9,3743.8,25522.7,21570.2,14287.6,11630.7
+417,sp,0.0,35.2,45.3,45.0,61.2,73.7,84.7,68.0,86.4
+418,sp,0.0,1058.6,405.2,273.0,105.9,480.0,186.0,286.0,113.2
+419,sp,"alpha-amylase 1B precursor [Homo sapiens]
+alpha-amylase 1B precursor [Homo sapiens]
+alpha-amylase 1A precursor [Homo sapiens]
+alpha-amylase 1C isoform X1 [Homo sapiens]
+alpha-amylase 1C precursor [Homo sapiens]
+alpha-amylase 1C precursor [Homo sapiens]
+alpha-amylase 1A precursor [Homo sapiens]",49.5,43.0,63.6,49.9,131.1,84.1,126.5,96.0
+420,sp,albumin preproprotein [Homo sapiens],344629.1,402523.0,137357.0,150403.5,290994.6,332264.6,262608.0,309245.9
+421,sp,lactotransferrin isoform 1 preproprotein [Homo sapiens],70.9,93.7,100.0,80.2,89.9,91.7,100.8,93.6
+422,sp,cathepsin D preproprotein [Homo sapiens],2908.1,2904.6,1690.3,1579.6,2596.5,2486.5,1673.3,1624.3
+423,sp,0.0,112132.3,117713.2,89682.7,82909.9,88172.2,89376.8,88289.1,87377.4
+424,sp,gelsolin isoform a precursor [Homo sapiens],28662.0,36798.0,24606.9,29973.8,27216.1,34907.3,17485.1,22816.1
+425,sp,0.0,2976.9,5145.4,3234.1,5402.0,2215.0,3358.6,2455.5,3716.9
+426,sp,0.0,96560.4,104483.4,42663.0,46746.5,87692.9,96401.0,57142.3,63606.1
+427,XP_005244806.1,agrin isoform X1 [Homo sapiens],3497.9,3694.5,2203.4,2337.4,2897.6,3012.9,1432.7,1781.8
+428,XP_005247472.1,histidine-rich glycoprotein isoform X1 [Homo sapiens],0.0,76.0,0.0,56.2,0.0,50.8,0.0,76.6
+429,XP_005249096.1,histone H2B type 1-D isoform X1 [Homo sapiens],409.0,259.0,205.8,131.4,153.3,94.9,267.2,162.0
+430,XP_005253288.1,CD44 antigen isoform X1 [Homo sapiens],1407.5,1792.9,1145.4,1606.8,1082.2,1550.3,1058.2,1598.6
+431,XP_005254606.1,beta-2-microglobulin isoform X1 [Homo sapiens],50430.1,56278.0,6751.2,7229.6,19301.0,21429.2,11937.6,13362.3
+432,XP_005255820.1,cadherin-11 isoform X1 [Homo sapiens],1351.1,708.7,896.7,572.4,950.9,591.9,999.9,632.1
+433,XP_005256758.2,alpha-2-antiplasmin isoform X2 [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+434,XP_005260727.1,tyrosine-protein phosphatase non-receptor type substrate 1 isoform X1 [Homo sapiens],47.1,35.7,52.8,26.4,51.9,32.7,71.2,37.4
+435,XP_005262677.1,syndecan-1 isoform X1 [Homo sapiens],0.0,19.0,0.0,17.5,0.0,18.5,0.0,42.8
+436,XP_005266132.1,dipeptidyl peptidase 2 isoform X1 [Homo sapiens],223.6,345.0,266.3,388.7,182.9,226.5,207.3,309.2
+437,XP_005266431.1,plastin-2 isoform X1 [Homo sapiens],50.4,0.0,29.2,0.0,38.4,0.0,66.2,0.0
+438,XP_005267043.1,"mannosyl-oligosaccharide 1,2-alpha-mannosidase IA isoform X1 [Homo sapiens]",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+439,XP_005267462.1,nidogen-2 isoform X1 [Homo sapiens],52.7,0.0,41.0,0.0,57.5,0.0,42.8,0.0
+440,XP_006718083.1,lysyl oxidase homolog 4 isoform X1 [Homo sapiens],0.0,24.8,0.0,28.1,0.0,26.7,0.0,33.6
+441,XP_006719119.1,alpha-2-macroglobulin isoform X1 [Homo sapiens],248.2,278.8,108.8,89.5,191.6,154.1,334.6,306.8
+442,XP_006719137.1,L-lactate dehydrogenase B chain isoform X1 [Homo sapiens],254.1,253.2,202.7,168.2,178.7,158.8,279.1,255.6
+443,XP_006721784.1,CMRF35-like molecule 9 isoform X1 [Homo sapiens],29.8,0.0,30.3,0.0,30.9,0.0,24.8,0.0
+444,XP_006723962.1,ICOS ligand isoform X1 [Homo sapiens],267.4,250.1,315.9,281.3,293.6,259.9,293.7,272.4
+445,XP_011508160.1,pappalysin-2 isoform X1 [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+446,XP_011510737.1,ceruloplasmin isoform X1 [Homo sapiens],935.9,1276.1,438.2,544.8,582.7,752.5,534.6,726.7
+447,XP_011516977.1,lipocalin-1 isoform X1 [Homo sapiens],1601.9,1858.7,1501.2,1733.9,2296.8,2589.9,1880.5,2146.3
+448,XP_011519930.1,neogenin isoform X3 [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+449,XP_011520397.1,CD276 antigen isoform X1 [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+450,XP_011522164.2,asialoglycoprotein receptor 2 isoform X1 [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+451,XP_011522750.1,AP-2 complex subunit beta isoform X1 [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+452,XP_011524280.1,laminin subunit alpha-3 isoform X1 [Homo sapiens],136.2,260.8,16.8,35.3,60.0,106.9,3.3,11.4
+453,XP_011524671.1,kallikrein-11 isoform X1 [Homo sapiens],6471.5,6212.3,7517.7,6576.5,2620.3,2532.7,5909.3,5773.1
+454,XP_011525662.1,WD repeat-containing protein 87 isoform X1 [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+455,XP_011525796.1,dermokine isoform X1 [Homo sapiens],44.3,205.4,34.0,124.4,39.2,148.7,55.6,158.5
+456,XP_011525842.1,napsin-A isoform X1 [Homo sapiens],177.7,109.9,141.4,97.3,181.9,94.9,189.6,164.0
+457,XP_011527540.1,oxytocin-neurophysin 1 isoform X1 [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+458,XP_011527602.1,NSFL1 cofactor p47 isoform X1 [Homo sapiens],0.0,21.9,0.0,22.9,0.0,25.2,0.0,44.0
+459,XP_011527755.1,chondrolectin isoform X2 [Homo sapiens],0.0,85.4,0.0,68.3,0.0,79.6,0.0,58.7
+460,XP_011529261.1,moesin isoform X1 [Homo sapiens],36.3,31.1,41.5,32.7,30.8,24.8,46.4,39.9
+461,XP_011530007.1,dentin matrix acidic phosphoprotein 1 isoform X1 [Homo sapiens],40.0,47.8,66.4,56.5,48.0,48.7,52.2,28.7
+462,XP_011530326.1,endomucin isoform X1 [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+463,XP_011531155.1,latent-transforming growth factor beta-binding protein 1 isoform X1 [Homo sapiens],2642.7,2894.0,1693.4,1960.7,2504.0,2873.9,939.5,1132.0
+464,XP_011533736.1,collagen alpha-1(XII) chain isoform X1 [Homo sapiens],2377.5,2444.9,2857.1,2904.9,2196.7,2268.8,2868.1,2856.9
+465,XP_011535336.1,Fanconi anemia group M protein isoform X1 [Homo sapiens],1315.3,1010.8,1807.4,1309.7,1716.2,1253.9,1287.0,985.7
+466,XP_011536228.1,contactin-1 isoform X1 [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+467,XP_011539620.1,basement membrane-specific heparan sulfate proteoglycan core protein isoform X1 [Homo sapiens],24781.8,30689.6,15606.2,18665.1,22463.7,28160.5,19425.4,22647.4
+468,XP_011543165.1,autophagy-related protein 2 homolog A isoform X1 [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+469,XP_011544500.1,immunoglobulin heavy variable 4-38-2-like [Homo sapiens],517.7,600.8,185.6,198.8,301.7,340.1,301.2,331.4
+470,XP_016855808.1,NAD(P)H-hydrate epimerase isoform X1 [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+471,XP_016855823.1,collagen alpha-1(XI) chain isoform X1 [Homo sapiens],118.8,135.8,157.1,197.5,115.9,158.6,162.4,205.6
+472,XP_016861283.1,serine palmitoyltransferase small subunit B isoform X1 [Homo sapiens],120.8,119.3,226.2,195.9,182.1,179.8,906.8,689.0
+473,XP_016862450.1,receptor-type tyrosine-protein phosphatase gamma isoform X1 [Homo sapiens],465.2,436.8,422.8,395.2,486.2,439.3,371.4,353.1
+474,XP_016862606.1,tetranectin isoform X2 [Homo sapiens],21.6,22.9,38.2,32.3,30.0,25.4,41.1,34.1
+475,XP_016863334.1,pro-epidermal growth factor isoform X1 [Homo sapiens],923.3,1189.5,1190.9,1600.8,888.1,1103.3,1416.0,1645.7
+476,XP_016868261.1,"maltase-glucoamylase, intestinal isoform X1 [Homo sapiens]",1489.4,1561.8,2148.8,2384.4,2337.6,2520.4,1616.8,1797.7
+477,XP_016868902.1,lymphocyte antigen 6H isoform X1 [Homo sapiens],1096.0,843.1,924.3,674.0,915.3,643.5,1448.8,1113.0
+478,XP_016869298.1,collagen alpha-1(XIV) chain isoform X1 [Homo sapiens],53.6,0.0,59.3,0.0,49.9,0.0,29.4,0.0
+479,XP_016869749.1,ciliary neurotrophic factor receptor subunit alpha isoform X1 [Homo sapiens],127.9,0.0,121.9,0.0,138.1,0.0,123.3,0.0
+480,XP_016870167.1,tenascin isoform X1 [Homo sapiens],349.8,274.0,293.7,243.0,320.5,248.9,387.3,241.2
+481,XP_016872946.1,cell adhesion molecule 1 isoform X1 [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+482,XP_016874317.1,collagen alpha-1(II) chain isoform X1 [Homo sapiens],357.9,537.5,425.9,645.2,477.1,725.5,541.7,854.0
+483,XP_016875721.1,CD27 antigen isoform X1 [Homo sapiens],331.4,321.8,419.9,316.0,226.8,235.4,336.3,333.3
+484,XP_016875895.1,ephrin-B2 isoform X1 [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+485,XP_016879023.1,chromosome transmission fidelity protein 18 homolog isoform X4 [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+486,XP_016881964.1,adhesion G protein-coupled receptor L1 isoform X1 [Homo sapiens],195.0,116.3,178.4,85.0,217.4,116.7,153.5,81.6
+487,XP_016882687.1,ubiquitin-60S ribosomal protein L40 isoform X1 [Homo sapiens],10164.3,8380.4,7578.7,6477.3,13893.4,11319.0,5484.3,4810.9
+488,XP_016884289.1,arylsulfatase A isoform X1 [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+489,XP_024304475.1,proteoglycan 4 isoform X1 [Homo sapiens],583.7,482.8,410.0,365.7,655.6,557.3,490.7,434.4
+490,XP_024306539.1,alpha-N-acetylglucosaminidase isoform X1 [Homo sapiens],587.3,486.9,591.1,532.3,608.0,469.4,798.9,529.6
+491,XP_024306545.1,protein disulfide-isomerase isoform X1 [Homo sapiens],63.7,91.2,45.3,56.7,63.5,88.2,45.8,64.9
+492,XP_024308523.1,EGF-containing fibulin-like extracellular matrix protein 1 isoform X2 [Homo sapiens],4127.8,4479.6,3081.2,3525.0,3845.9,4074.4,3725.5,4128.7
+493,XP_024309818.1,ecto-ADP-ribosyltransferase 3 isoform X1 [Homo sapiens],0.0,21.6,0.0,16.5,0.0,31.7,0.0,34.0
+494,XP_024310139.1,transmembrane protein 161B isoform X1 [Homo sapiens],0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0

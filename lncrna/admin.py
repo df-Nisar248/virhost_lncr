@@ -86,10 +86,10 @@ class LncrnaTargetAdmin(admin.ModelAdmin):
                 created = LncrnaTarget.objects.update_or_create (
                     regulator = data['Regulator'],
                     target = data['Target'],
-                    regulatory_mech = data['regulatoryMechanism'],
-                    regulatory_type = data['regulatoryType'],
-                    Target_type = data['TargetType'],
-                    regulator_ensemble_id = data['RegulatorEnsembleID'],
+                    regulatory_mech = data['Regulatory Mechanism'],
+                    regulatory_type = data['Regulatory Type'],
+                    Target_type = data['Target Type'],
+                    regulator_ensemble_id = data['Regulator EnsembleID'],
                     )
 
                 # url = reverse('admin:index')

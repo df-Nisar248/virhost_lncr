@@ -4,7 +4,6 @@ from django.core.files.base import ContentFile
 from django.http import HttpResponse
 from django.http import Http404
 from django.core.files.base import ContentFile
-from django.core.files.images import ImageFile
 from django.conf import settings
 import os
 import csv
@@ -24,7 +23,7 @@ from sklearn.preprocessing import StandardScaler
 from .import normaliz
 from .utils import abundances,clean_coulumn_heading,intensities,lablesforbox, sort_name , columnsforbox
 from .models import DataAnalysis , Example
-
+from . volcanoplot import volcano
 normalized_df = pd.DataFrame()
 
 @login_required
@@ -223,7 +222,7 @@ def analaze_cols(request):
 
         # components = pca.fit_transform(df_PCA_after)
         # pcafig_after = px.scatter(components, x=0, y=1)
-        pca_before =plot_pca(df_before_norm,sample_columns,control_columns, title = "PCA plot Before Normalization", )
+        pca_before =plot_pca(df_before_norm,sample_columns,control_columns, title = "PCA plot Before Normalization")
         pca_after =plot_pca(df_after_norm,sample_columns,control_columns,title = "PCA plot After Normalization")
 
         df_before_norm.columns = columnsforbox(df_before_norm.columns)
@@ -300,24 +299,21 @@ def pvalues(request):
         pvalue = request.POST.get('pvalue')
         cna = request.session.get('cna')
         sna = request.session.get('sna')
-        df, forvolcano , forheatmap= normaliz.pvalAndRatio(cna,sna,job_id, pvalue)
+        df, forvolcano , forheatmap, total_up= normaliz.pvalAndRatio(cna,sna,job_id, pvalue)
         # result_q = DataAnalysis.objects.get(id =job_id)
         # result_q.resultData = final_data
         # result_q.save()
         volcanoplotlist = list()
+        print(forvolcano)
         for volcanocols in forvolcano:
             volcanodf = df[volcanocols]
-            volcanodf.set_index('Accession', inplace = True)
-            fig = px.scatter(volcanodf, x=volcanocols[0], y = volcanocols[1])
-            volcanoplot = plot(fig, output_type = "div")
-            volcanoplotlist.append(volcanoplot)
-        # figure = io.BytesIO()
-        # content_file = ImageFile(volcanoplot)
-        plt.switch_backend('AGG')
-        sns.clustermap(forheatmap,cbar_pos=(0.03,.01, .03, .2),yticklabels=False  ,cmap="RdYlGn_r",figsize=(5,8))
-        heatmap = get_graph()
-        # heatmap_to_plot = plot(heatmap_fig, output_type = "div")
+            volcanodf['Accession'] = df['Description'].apply(extract_gene)
 
+            get_volacno = volcano(volcanodf,lfc = volcanocols[0], pv = volcanocols[1],geneid = volcanocols[2],
+                lfc_thr=(-0.02,0.02),pv_thr=(0.05,0.067), genenames = "deg")
+            volcanoplotlist.append(get_volacno)
+
+        heat_map = plot_heatmap(forheatmap)
         new_df = df.to_csv(index = False)
         updated_file = ContentFile(new_df)
         updated_file.name = "finalresult.csv"
@@ -326,7 +322,9 @@ def pvalues(request):
         result_q.resultData = updated_file
         result_q.save()
 
-        context = {'job_id':job_id, 'volcanoplotlist': volcanoplotlist, 'heatmap': heatmap}
+        pie_chart = get_pie_chart()
+        context = {'job_id':job_id, 'volcanoplotlist': volcanoplotlist, 'heat_map': heat_map, 'total_up': total_up,
+        'pie_chart':pie_chart}
         return render(request, 'proteome/pvalandratio.html', context)
 
 
@@ -387,3 +385,48 @@ def get_box_plot(df,title):
     plt.tight_layout()
     box_plot = get_graph()
     return box_plot
+
+
+def plot_heatmap(df):
+    cols = list()
+    for x in df.columns:
+       x = x.replace('LOG2 foldchange of','')
+       x = x.strip()
+       cols.append(x)
+    df.columns = cols
+    plt.switch_backend('AGG')
+    sns.clustermap(df,cbar_pos=(0.03,.01, .03, .2),yticklabels=False  ,cmap="RdYlGn_r",figsize=(6,10))
+    heatmap = get_graph()
+    return heatmap
+
+
+def get_volcano_plot(df):
+    x= df.columns[0]
+    y = df.columns[1]
+    plt.switch_backend('AGG')
+    plt.scatter(df[x],df[y], s=40, alpha=0.7 )
+    plt.tight_layout()
+    volcano_plot = get_graph()
+    return volcano_plot
+
+
+def get_pie_chart():
+    plt.switch_backend('AGG')
+    # plt.style.use("fivethirtyeight")
+    plt.figure(figsize=(3, 3))
+
+    slices = [1515,450,541]
+    labels = ['sampleA','SampleB','sampleC']
+    plt.pie(slices, labels = labels, wedgeprops={'edgecolor':'black'},
+        textprops={'fontsize': 5})
+    pie_chart = get_graph()
+    return pie_chart
+
+
+
+
+def extract_gene(x):
+    x = x.split('#')
+    gene = x[0]
+    gene = gene.strip()
+    return gene

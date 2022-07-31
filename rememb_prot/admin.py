@@ -24,11 +24,11 @@ class RemembprotaAdmin(admin.ModelAdmin):
     def upload_csv(self, request):
         if (request.method == 'POST' ):
             csv_file = request.FILES['csv_upload']
-            if not csv_file.name.endswith('.csv'):
-                messages.warning(request,'the wrong type of file was uploaded ')
-                return HttpResponseRedirect(request.path_info)
+            # if not csv_file.name.endswith('.csv'):
+            #     messages.warning(request,'the wrong type of file was uploaded ')
+            #     return HttpResponseRedirect(request.path_info)
 
-            df = pd.read_csv(csv_file, encoding_errors='ignore')
+            df = pd.read_excel(csv_file)
             df.fillna('', inplace=True)
 
             df_records = df.to_dict('records')
@@ -36,9 +36,29 @@ class RemembprotaAdmin(admin.ModelAdmin):
             for data in df_records:
                 print(data)
                 created = Remembprot.objects.update_or_create (
-                    idd = data['idd'],
-                    name = data['name'],
-                    address = data['address'],
+
+                pmid = data['PMID'],
+                author = data['Author'],
+                paper = data['Title of the paper'],
+                organism = data['Organism'],
+                CellOrtissue = data['Cell/tissue'],
+                disease = data['Disease'],
+                profileOrDifex = data['Profile and/or differential expression'],
+                contxtOfIdent = data['Context of identification'],
+                contxtOfDiferentialREG = data['Context of differential regulation'],
+                test = data['Test'],
+                control = data['Control'],
+                foldchange = data['Fold change'],
+                expression = data['Expression'],
+                protienExtractMethod = data['Method of protein extraction'],
+                geneSymbol = data['Membrane protein Gene symbol'],
+                geneID = data['Entrez Gene ID'],
+                ontology = data['Ontology'],
+                membraneType = data['Membrane type'],
+                peripheral = data['Peripheral'],
+                refSeq  = data['RefSeq Protein Accession'],
+                predictedTmh = data['Number of predicted TMHs'],
+                isTrans = data['is it Transmembrane']
                       )
 
 

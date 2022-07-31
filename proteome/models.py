@@ -17,7 +17,7 @@ class Example(models.Model):
     name = models.CharField(null = True, max_length = 255)
     file = models.FileField(null = True, upload_to='example/')
     usethis = models.BooleanField(default=True)
-    labledData = models.BooleanField(default=False)
+    labledData = models.BooleanField(default=True)
     lableFreeData = models.BooleanField(default=False)
     number_of_sample = models.IntegerField(default = 0)
 

@@ -7,6 +7,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('ciods.urls')),
     path('VirhostlncR/',include('lncrna.urls',namespace ='lncrna')),
+    path('RemembProt/',include('rememb_prot.urls',namespace ='rememb_prot')),
     path('proteomeanalysis/',include('proteome.urls',namespace='proteome')),
     path('contact/',include('contact.urls')),
     path('accounts/', include('accounts.urls', namespace='users')),

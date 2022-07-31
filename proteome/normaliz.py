@@ -5,7 +5,6 @@ from matplotlib import pyplot as plt
 import os
 import numpy as np
 from . import combat
-
 from . models import DataAnalysis
 from . utils import sort_name,removeSpaceAndComma,forPCA,expandNCleanColumns,removeavgsmp
 
@@ -33,7 +32,6 @@ def normaliz_data(job_id,sample_columns,control_columns,norm_method,missing_val_
     df.fillna(missing_val, inplace = True )
 
     #for median normalization
-    print(df.shape)
     mediun_list = {}
 
     if (norm_method == 'Median'):
@@ -308,7 +306,6 @@ def normaliz_data_bio(job_id,sample_columns,control_columns,norm_method,missing_
 
     df_before_bc.set_index('Accession', inplace = True)
 
-    # print(batch_list)
     df_after_bc = combat.pycombat(df_before_bc,batch_list)
 
     # average_normalized_sample_array = []
@@ -380,6 +377,8 @@ def pvalAndRatio(cna,sna,job_id, pvalue):
 
         minuslog10array = list()
         log2fcarray = list()
+        pvalue_array = list()
+
         for samples in sna:
             df_sample = df[[y for y in samples]]
             #caculating average normalized
@@ -391,16 +390,20 @@ def pvalAndRatio(cna,sna,job_id, pvalue):
             if pvalue == 'ttest':
                 #T-test
                 _,df["P VALUE of"+sort_name(samples)]= stats.ttest_ind(df[controlcols],df_sample,axis=1, equal_var = False)
-                df["Minus Log10(PVAL) "+sort_name(samples)] = abs(np.log10(df["P VALUE of"+sort_name(samples)]))
-                minuslog10array.append("Minus Log10(PVAL) "+sort_name(samples))
+                df["significant"+sort_name(samples)] = np.repeat(0,df.shape[0])
+
+                df["Expression "+sort_name(samples)] = np.repeat("Non Significant",df.shape[0])
+
+                pvalue_array.append("P VALUE of"+sort_name(samples))
+                df["Adjusted P Value"+sort_name(samples)] = abs(np.log10(df["P VALUE of"+sort_name(samples)]))
+
+                minuslog10array.append("Adjusted P Value"+sort_name(samples))
             else:
                 #ANOVA
                 _,df["P VALUE using One-Way-ANOVA"]= stats.f_oneway(*exapndd(foranova,df), axis = 1)
-
+                pvalue_array.append("P VALUE of"+sort_name(samples))
                 df["Minus Log10(PVAL)"] = abs(np.log10(df["P VALUE of"+sort_name(samples)]))
-
                 minuslog10array.append("Minus Log10(PVAL)")
-
 
             df["average_normalized_of_CONTROL"] = df[controlcols].mean(axis =1 )
 
@@ -412,14 +415,13 @@ def pvalAndRatio(cna,sna,job_id, pvalue):
             foldchange_array.append('FOLDCHANGE of '+ sample_name)
             df['FOLDCHANGE of '+ sample_name ] = df[avg_sample].div(df["average_normalized_of_CONTROL"])
 
-        print(foldchange_array)
         #caluclating log2 of foldchange
         for foldchange in foldchange_array:
             name = foldchange.replace("FOLDCHANGE of ",'')
             df['LOG2 foldchange of'+ name ] = np.log2(df[foldchange])
             log2fcarray.append('LOG2 foldchange of'+ name )
 
-        # forvolcano = df[['Accession','LOG2 foldchange of  (by Bio. Rep.): Sample- A','Minus Log10(PVAL)   (by Bio. Rep.): Sample- A']]
+        # forvolcano = df[['Accession','LOG2 foldchange of  (by Bio. Rep.): Sample- A','Adjusted P Value  (by Bio. Rep.): Sample- A']]
         forvolcano = list()
         i = 0
         for fc in log2fcarray:
@@ -428,15 +430,15 @@ def pvalAndRatio(cna,sna,job_id, pvalue):
             volcano.append(minuslog10array[i])
             i+=1
             volcano.append("Accession")
-
             forvolcano.append(volcano)
 
-        print(forvolcano)
-
         forheatmap = df[log2fcarray]
-        forheatmap['Accession'] = df['Accession']
+        forheatmap['Accession'] = df['Description'].apply(extract_gene)
         forheatmap.set_index('Accession',inplace = True)
-        return df,forvolcano , forheatmap
+        df , total_up = expression_calc(df,foldchange_array,pvalue_array)
+
+        return df,forvolcano , forheatmap , total_up
+
 
         # for lablefree data
 
@@ -448,12 +450,10 @@ def deletemultizero(df,sample_columns,control_columns):
     all_cols = sc+cc
     no_of_repli = 0
 
-    print(df.shape)
     df = df.dropna(how='all', subset=all_cols)
-    print(df.shape)
 
-    for sample in sample_columns:
-        no_of_repli = len(sample)
+    no_of_repli = len(sample_columns[0])
+    sample = sample_columns[0]
 
     if no_of_repli == 3:
         indices_to_drop = list()
@@ -473,19 +473,38 @@ def exapndd(foranova,df):
     for sam in foranova:
         dflist.append(df[sam])
     return dflist
-    print(dflist)
+
+
+def expression_calc(df,foldchange_array,pvalue_array):
+    sgnificant_array = list()
+    expression_array = list()
+    for p_value in pvalue_array:
+        samp_name = p_value.replace("P VALUE of",'')
+        samp_name = samp_name.strip()
+        sgnificant_array.append('significant'+samp_name)
+
+        df.loc[df[p_value] < 0.05,'significant'+samp_name] = 1
+
+    i = 0
+    for samp in sgnificant_array:
+        sample_name = samp.replace('significant','')
+        sample_name = sample_name.strip()
+        df.loc[((df[samp] == 1) & (df[foldchange_array[i]] >= 1.0)),'Expression '+sample_name ] = "Upregulated"
+        df.loc[((df[samp] == 1) & (df[foldchange_array[i]] < 0.9)),'Expression '+sample_name ] = "Downregulated"
+        i += 1
+        expression_array.append('Expression '+sample_name)
+
+    exp_df = df[expression_array]
+    exp_df['overall'] = exp_df.eq("Upregulated").all(axis=1)
+    print(exp_df['overall'].dtype)
+    upreg_pro =  len(exp_df.loc[exp_df['overall'] == True])
+    df.drop(sgnificant_array, inplace = True,  axis=1)
+    return df , upreg_pro
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+def extract_gene(x):
+    x = x.split('#')
+    gene = x[0]
+    gene = gene.strip()
+    return gene

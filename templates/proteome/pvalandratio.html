@@ -3,31 +3,148 @@
 {% block content %}
 
 
-<div>
-<label>Download Complete Result</label>
-<a href="{% url 'proteome:download_file' job_id %}"><button class="btn btn-lg btn-danger">Download</button></a>
-</div>
+<style type="text/css">
+    .heading {
+    text-decoration: none;
+    position: relative;
+}
+.heading:after {
+    content: '';
+
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 1px;
+
+    border-width: 0 0 1px;
+    border-style: solid;
+}
+</style>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="d-flex justify-content-center">
+            <h2 class="h2 heading"> Results</h2>
+            </div>
+        </div>
+    </div>
+
+    <hr align="center" width="100%">
+    <div class="row">
+        <div class="col col-xl-4">
+            <div class="d-flex justify-content-center">
+            <small>
+                Differentially expressed proteins across all samples
+            </small>
+            </div>
+        </div>
+
+        <div class="col col-xl-4">
+            <div class="d-flex justify-content-center">
+            <h6 class="h6"> Number of Upregulated protien across all samples</h6>
+            </div>
+        </div>
+
+        <div class="col col-xl-4">
+            <div class="d-flex justify-content-center">
+            <h6 class="h6"> statistics:</h6>
+            </div>
+        </div>
+    </div>
+
+ <div class="row">
+        <div class="col col-xl-4">
+            <div class="d-flex justify-content-center">
+
+            <img src="data:image/svg+xml;base64, {{ pie_chart|safe }}">
+
+            </div>
+        </div>
+
+        <div class="col col-xl-4">
+            <div class="d-flex justify-content-center">
+            <h1 class="h1"> {{ total_up }}</h1>
+            </div>
+        </div>
+
+        <div class="col col-xl-4">
+            <div class="d-flex justify-content-center">
+                <ul>
+                    <li>
+                        <p>Upregulated protien in sampleA : 10</p>
+                    </li>
+
+                    <li>
+                        <p>Upregulated protien in sampleB : 20</p>
+                    </li>
+
+                    <li>
+                        <p>Upregulated protien in sampleC : 30 </p>
+                    </li>
+
+                    <li>
+                    <a href="{% url 'proteome:download_file' job_id %}">Download full report(.csv)</a>
+
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+           <div class="col col-xl-4">
+
+            </div>
+
+               <div class="col col-xl-4">
+
+            </div>
+
+           <div class="col col-xl-4">
+
+
+            </div>
+    </div>
+
+        <hr align="center" width="100%" class="mb-3">
+
+
+
+
+
 
 <div class="container">
 <div class="row">
-      <div class="col col-xl-6">
-      <div>
+
     {% for volcanoplot in  volcanoplotlist %}
-      {% autoescape off %}
-      {{ volcanoplot }}
-      {% endautoescape %}
+          <div class="col col-xl-4">
+          <div class="d-flex justify-content-center">
+    <img src="data:image/svg+xml;base64, {{ volcanoplot|safe }}">
+    </div>
+</div>
     {% endfor %}
-      </div>
+
       </div>
 </div>
-</div>
-{% if heatmap %}
-<img src="data:image/svg+xml;base64, {{ heatmap|safe }}">
+     <hr align="center" width="100%" class="mb-5 mt-5">
 
-<a href="data:image/svg+xml;base64, {{ heatmap|safe }}" download>
-dowlonad the file in SVG format
-</a>
-
-{% endif %}
+    <div class="container">
+        <div class="row">
+            <div class="col col-xl-12">
+                <div class="d-flex justify-content-center">
+            {% if heat_map %}
+            <img src="data:image/svg+xml;base64, {{ heat_map|safe }}">
+            <a href="data:image/svg+xml;base64, {{ heat_map|safe }}" download>
+            dowlonad(SVG)
+            </a>
+            {% endif %}
+            </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}

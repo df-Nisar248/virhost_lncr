@@ -3,22 +3,21 @@ import matplotlib.pyplot as plt
 import numpy as np
 import sys
 from matplotlib.colors import ListedColormap
+
 import base64
 from io import BytesIO
-from chart_studio import plotly as py
 
 
 
-# def get_graph():
-#     buffer = BytesIO()
-#     plt.savefig(buffer, format = 'png')
-#     buffer.seek(0)
-#     image_png = buffer.getvalue()
-#     graph = base64.b64encode(image_png)
-#     graph = graph.decode('utf-8')
-#     buffer.close()
-#     return graph
-
+def get_graph():
+    buffer = BytesIO()
+    plt.savefig(buffer, format = 'svg')
+    buffer.seek(0)
+    image_png = buffer.getvalue()
+    graph = base64.b64encode(image_png)
+    graph = graph.decode('utf-8')
+    buffer.close()
+    return graph
 
 def volcano(df="dataframe", lfc=None, pv=None, lfc_thr=(1, 1), pv_thr=(0.05, 0.05), color=("green", "grey", "red"),
                 valpha=1, geneid=None, genenames=None, gfont=8, dim=(5, 5), r=300, ar=90, dotsize=8, markerdot="o",
@@ -28,7 +27,7 @@ def volcano(df="dataframe", lfc=None, pv=None, lfc_thr=(1, 1), pv_thr=(0.05, 0.0
                 figname='volcano', legendanchor=None,
                 legendlabels=['significant up', 'not significant', 'significant down'], theme=None):
 
-    mpl_fig = plt.figure()
+    plt.switch_backend('AGG')
 
     _x = r'$ log_{2}(Fold Change)$'
     _y = r'$ -log_{10}(P-value)$'
@@ -75,7 +74,7 @@ def volcano(df="dataframe", lfc=None, pv=None, lfc_thr=(1, 1), pv_thr=(0.05, 0.0
                 if (df.loc[df[geneid] == i, lfc].iloc[0] >= lfc_thr[0] and df.loc[df[geneid] == i, pv].iloc[0] < pv_thr[0]) or \
                         (df.loc[df[geneid] == i, lfc].iloc[0] <= -lfc_thr[1] and df.loc[df[geneid] == i, pv].iloc[0] < pv_thr[1]):
                     if gstyle == 1:
-                        plt.text(df.loc[d[geneid] == i, lfc].iloc[0], df.loc[df[geneid] == i, 'logpv_add_axy'].iloc[0], i,
+                        plt.text(df.loc[df[geneid] == i, lfc].iloc[0], df.loc[df[geneid] == i, 'logpv_add_axy'].iloc[0], i,
                                       fontsize=gfont)
                     elif gstyle == 2:
                         plt.annotate(i, xy=(df.loc[df[geneid] == i, lfc].iloc[0], df.loc[d[geneid] == i, 'logpv_add_axy'].iloc[0]),
@@ -120,13 +119,10 @@ def volcano(df="dataframe", lfc=None, pv=None, lfc_thr=(1, 1), pv_thr=(0.05, 0.0
         _y = axylabel
     general.axis_labels(_x, _y, axlabelfontsize, axlabelfontname)
     general.axis_ticks(xlm, ylm, axtickfontsize, axtickfontname, ar)
-    general.get_figure(show, r, figtype, figname, theme)
-
-    unique_url = py.plot_mpl(mpl_fig, filename="my first plotly plot")
-
-    return unique_url
 
 
+    volcano_plot = get_graph()
+    return volcano_plot
 
     # class GeneExpression:
 
@@ -145,16 +141,7 @@ class general:
                    '#ee6c81', '#65734b', '#14325c', '#704307', '#b5b3be', '#f67280', '#ffd082', '#ffd800',
                    '#ad62aa', '#21bf73', '#a0855b', '#5edfff', '#08ffc8', '#ca3e47', '#c9753d', '#6c5ce7')
 
-    @staticmethod
-    def get_figure(show, r, figtype, fig_name, theme):
-        if show:
-            plt.show()
-        else:
-            plt.savefig(fig_name+'.'+figtype, format=figtype, bbox_inches='tight', dpi=r)
-        if theme == 'dark':
-            plt.style.use('default')
-        plt.clf()
-        plt.close()
+
 
 
     @staticmethod
@@ -209,3 +196,5 @@ class general:
     @staticmethod
     def dark_bg():
         plt.style.use('dark_background')
+
+

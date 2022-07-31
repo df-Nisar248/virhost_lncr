@@ -50,6 +50,7 @@ def sort_name(samples):
     if 'average_normalized' in name:
         name = name.replace('average_normalized','')
 
+    name = name.strip()
     return name
 
 
